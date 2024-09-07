@@ -1,0 +1,11 @@
+{
+  "name": "dashboard",
+  "version": "1.0.0",
+  "description": "Dashboard to Display GitHub Statistics",
+  "author": "Jack Plowman",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/JackPlowman/github-stats.git"
+  }
+}
