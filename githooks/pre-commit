@@ -11,3 +11,5 @@ for script in $(ls -1 $GIT_HOOKS_PATH 2> /dev/null); do
   te=$(($SECONDS - $ts))
   printf "Script Took (${te}s)\n"
 done
+
+echo "pre-commit complete \n\n"
