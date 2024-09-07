@@ -1,4 +1,5 @@
 <!-- markdownlint-disable -->
+<!-- textlint-disable -->
 
 # Conventional Commits 1.0.0
 
@@ -200,4 +201,5 @@ revert: let us never again speak of the noodle incident
 Refs: 676104e, a215868
 ```
 
+<!-- textlint-enable -->
 <!-- markdownlint-restore -->
