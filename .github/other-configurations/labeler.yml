@@ -11,8 +11,7 @@ dependencies:
 python:
   - any:
       - changed-files:
-          - any-glob-to-any-file:
-              ["*.py", "**/*.py"]
+          - any-glob-to-any-file: ["*.py", "**/*.py"]
 python-tests:
   - any:
       - changed-files:
@@ -20,8 +19,7 @@ python-tests:
 typescript:
   - any:
       - changed-files:
-          - any-glob-to-any-file:
-              ["*.ts", "**/*.ts", "**/tsconfig.json"]
+          - any-glob-to-any-file: ["*.ts", "**/*.ts", "**/tsconfig.json"]
 typescript-tests:
   - any:
       - changed-files:
