@@ -1,7 +1,6 @@
 #!/bin/bash
 set +x
 
-echo $cwd
 GIT_HOOKS_PATH="githooks/pre-commit-scripts"
 
 for script in $(ls -1 $GIT_HOOKS_PATH 2> /dev/null); do
@@ -12,4 +11,4 @@ for script in $(ls -1 $GIT_HOOKS_PATH 2> /dev/null); do
   printf "Script Took (${te}s)\n"
 done
 
-echo "pre-commit complete \n\n"
+printf "pre-commit complete \n\n"
