@@ -1,5 +1,5 @@
 #!/bin/bash
-set -ex
+set +x
 
 echo $cwd
 GIT_HOOKS_PATH="githooks/pre-commit-scripts"
