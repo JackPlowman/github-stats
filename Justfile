@@ -32,3 +32,4 @@ format-check:
 # Install pre commit hook to run on all commits
 install-pre-commit:
     cp -f githooks/pre-commit .git/hooks/pre-commit
+    chmod ug+x .git/hooks/*
