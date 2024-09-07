@@ -2,13 +2,12 @@
 set -x
 
 echo $cwd
+GIT_HOOKS_PATH="githooks/pre-commit-scripts"
 
-for script in $(ls -1 githooks/pre-commit-scripts 2> /dev/null); do
-  echo $script
-  echo hi2
-  # ts=$SECONDS
-  # printf "Running githook: $(echo $script | sed "s;$project_dir/;;g")"
-  # $script "$@"
-  # te=$(($SECONDS - $ts))
-  # printf " (${te}s)\n"
+for script in $(ls -1 $GIT_HOOKS_PATH 2> /dev/null); do
+  ts=$SECONDS
+  printf "Running githook: $script"
+  bash $GIT_HOOKS_PATH/$script
+  te=$(($SECONDS - $ts))
+  printf " (${te}s)\n"
 done
