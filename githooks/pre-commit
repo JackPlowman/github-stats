@@ -1,12 +1,10 @@
 #!/bin/bash
 set +x
 
-GIT_HOOKS_PATH="githooks/pre-commit-scripts"
-
-for script in $(ls -1 $GIT_HOOKS_PATH 2> /dev/null); do
+for script in $(ls -1 githooks/pre-commit-scripts 2> /dev/null); do
   ts=$SECONDS
   printf "Running githook: $script \n"
-  bash $GIT_HOOKS_PATH/$script
+  bash githooks/pre-commit-scripts/$script
   te=$(($SECONDS - $ts))
   printf "Script Took (${te}s)\n"
 done
