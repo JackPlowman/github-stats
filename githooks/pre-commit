@@ -1,8 +1,7 @@
 #!/bin/bash
 set -x
 
-echo $GIT_DIR
-echo hi
+echo $cwd
 
 # for script in $(ls -1 $current_dir/scripts/*-pre-commit.sh 2> /dev/null); do
 #   ts=$SECONDS
