@@ -39,5 +39,6 @@
       "changelog-path": "CHANGELOG.md",
       "release-type": "simple"
     }
-  }
+  },
+  "draft-pull-request": true
 }
