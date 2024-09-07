@@ -1,12 +1,13 @@
 #!/bin/bash
 set +x
 
+# shellcheck disable=SC2045
 for script in $(ls -1 githooks/pre-commit-scripts/*.sh 2> /dev/null); do
   ts=$SECONDS
-  printf "Running githook: $script \n"
+  echo "Running githook: $script \n"
   bash "githooks/pre-commit-scripts/$script"
-  te=$SECONDS - $ts
-  printf "Script Took (%ss)\n" "$te"
+  te=$($SECONDS - $ts)
+  echo "Script Took (${te}s)\n"
 done
 
 printf "pre-commit complete \n\n"
