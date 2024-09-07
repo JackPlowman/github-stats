@@ -1,0 +1,49 @@
+# labels auto assigned to PR, keep in sync with labels.yml
+documentation:
+  - any:
+      - changed-files:
+          - any-glob-to-any-file: ["README.md", "docs/**"]
+dependencies:
+  - any:
+      - changed-files:
+          - any-glob-to-any-file: ["**/poetry.lock", "package-lock.json"]
+      - head-branch: ["^dependabot"]
+python:
+  - any:
+      - changed-files:
+          - any-glob-to-any-file:
+              ["*.py", "**/*.py", "**/poetry.lock", "**/pyproject.toml"]
+python-tests:
+  - any:
+      - changed-files:
+          - any-glob-to-any-file: ["**/tests/*.py"]
+typescript:
+  - any:
+      - changed-files:
+          - any-glob-to-any-file:
+              ["*.ts", "**/*.ts", "**/tsconfig.json", "**/package.json"]
+typescript-tests:
+  - any:
+      - changed-files:
+          - any-glob-to-any-file: ["**/tests/*.ts"]
+just:
+  - any:
+      - changed-files:
+          - any-glob-to-any-file: ["Justfile", "**/*.just"]
+github_actions:
+  - any:
+      - changed-files:
+          - any-glob-to-any-file:
+              [".github/workflows/*", ".github/workflows/**/*"]
+end-to-end-tests:
+  - any:
+      - changed-files:
+          - any-glob-to-any-file: ["testing/**"]
+analyser:
+  - any:
+      - changed-files:
+          - any-glob-to-any-file: ["analyser/**"]
+dashboard:
+  - any:
+      - changed-files:
+          - any-glob-to-any-file: ["dashboard/**"]
