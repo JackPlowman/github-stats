@@ -1,4 +1,4 @@
 #!/bin/sh
-set +x
+set -e +x
 
 git update-index -g

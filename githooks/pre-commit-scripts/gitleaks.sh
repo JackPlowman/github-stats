@@ -1,5 +1,4 @@
 #!/bin/bash
-set +x
-set -e
+set -e +x
 
 gitleaks detect --source .
