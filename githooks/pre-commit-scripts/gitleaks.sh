@@ -1,6 +1,7 @@
 #!/bin/bash
-set -e+x
+set +x
+set -e
 
 gitleaks detect --source .
 
-exit 2
+exit 1
