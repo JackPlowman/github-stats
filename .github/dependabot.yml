@@ -8,3 +8,11 @@ updates:
     schedule:
       interval: "daily"
     target-branch: "main"
+
+  - package-ecosystem: "pip"
+    directory: "analyser"
+    commit-message:
+      prefix: "deps(python)"
+    schedule:
+      interval: "monthly"
+    target-branch: "main"
