@@ -58,6 +58,9 @@
 - color: 66A615
   name: just
   description: Pull requests that update Just code
+- color: 00ff44
+  name: shell
+  description: Pull requests that update Shell code
 # Custom
 - color: 2b67c6
   name: python-tests
@@ -75,3 +78,6 @@
 - color: f27100
   name: dashboard
   description: Pull requests that update dashboard code
+- color: ff0073
+  name: git-hooks
+  description: Pull requests that update git hooks

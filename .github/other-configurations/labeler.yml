@@ -28,6 +28,10 @@ just:
   - any:
       - changed-files:
           - any-glob-to-any-file: ["Justfile", "**/*.just"]
+shell:
+  - any:
+      - changed-files:
+          - any-glob-to-any-file: ["**/*.sh"]
 github_actions:
   - any:
       - changed-files:
@@ -45,3 +49,7 @@ dashboard:
   - any:
       - changed-files:
           - any-glob-to-any-file: ["dashboard/**"]
+git-hooks:
+  - any:
+      - changed-files:
+          - any-glob-to-any-file: ["githooks/**"]
