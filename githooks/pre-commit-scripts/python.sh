@@ -3,6 +3,6 @@ set -e +x
 
 just analyser::install
 
-just analyser::ruff-format
+just analyser::ruff-format-fix
 
-just analyser::ruff-lint
+just analyser::ruff-lint-fix

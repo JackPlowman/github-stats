@@ -36,6 +36,7 @@ ignore = [
   "PLR2004", # Ignore magic value
   "D104",    # Ignore missing docstring in public package
   "D100",    # Ignore missing docstring in public module
+  "T201",    # Ignore print statement (until we have a logger)
 ]
 
 # Allow autofix for all enabled rules (when `--fix`) is provided.
