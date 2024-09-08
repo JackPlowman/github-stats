@@ -2,7 +2,7 @@
   "name": "dashboard",
   "version": "1.0.0",
   "description": "Dashboard to Display GitHub Statistics",
-  "author": "Jack Plowman",
+  "author": "Jack Plowman <62281988+JackPlowman@users.noreply.github.com>",
   "license": "MIT",
   "repository": {
     "type": "git",
