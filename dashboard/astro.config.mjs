@@ -9,8 +9,12 @@ import sitemap from "@astrojs/sitemap";
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://jackplowman.github.io/github-stats',
-  integrations: [react(), tailwind({
-    applyBaseStyles: false,
-  }), sitemap()],
+  site: "https://jackplowman.github.io/github-stats",
+  integrations: [
+    react(),
+    tailwind({
+      applyBaseStyles: false,
+    }),
+    sitemap(),
+  ],
 });
