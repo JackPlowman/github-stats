@@ -76,5 +76,8 @@ convention = "google" # Use Google docstring convention.
 [tool.ruff.lint.isort]
 known-first-party = ["analyser"]
 
+[tool.pytest.ini_options]
+norecursedirs = "cloned_repositories"
+
 [tool.vulture]
 ignore_names = ["side_effect"]
