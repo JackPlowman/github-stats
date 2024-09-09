@@ -1,5 +1,7 @@
-from ..statistics import create_statistics, create_repository_statistics
 from unittest.mock import MagicMock, patch
+
+from analyser.application.statistics import create_repository_statistics, create_statistics
+
 FILE_PATH = "analyser.application.statistics"
 
 
@@ -14,9 +16,9 @@ def test_create_statistics(
     mock_retrieve_repositories: MagicMock,
 ) -> None:
     # Arrange
-    repository=MagicMock()
-    repository.owner.login =owner= "JackPlowman"
-    repository.name =repo_name= "github-stats-prototype"
+    repository = MagicMock()
+    repository.owner.login = owner = "JackPlowman"
+    repository.name = repo_name = "github-stats-prototype"
     mock_retrieve_repositories.return_value = [repository]
     mock_clone_repo.return_value = "TestPath"
     mock_create_repository_statistics.return_value = MagicMock(repository_name="Test1", total_files=10)
