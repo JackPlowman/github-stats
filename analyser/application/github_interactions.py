@@ -19,7 +19,7 @@ def clone_repo(owner_name: str, repository_name: str) -> str:
     Returns:
         str: The path to the repository.
     """
-    file_path = f"repos/{repository_name}"
+    file_path = f"cloned_repositories/{repository_name}"
     if not Path.exists(Path(file_path)):
         repo_url = f"https://github.com/{owner_name}/{repository_name}.git"
         Repo.clone_from(repo_url, Path(file_path))
@@ -34,8 +34,8 @@ def retrieve_repositories() -> PaginatedList[Repository]:
     Returns:
         PaginatedList[Repository]: The list of repositories.
     """
-    user = getenv("REPOSITORY_OWNER", "")
-    if user == "":
+    repository_owner = getenv("REPOSITORY_OWNER", "")
+    if repository_owner == "":
         msg = "REPOSITORY_OWNER environment variable is not set."
         raise ValueError(msg)
     token = getenv("GITHUB_TOKEN", "")
@@ -45,7 +45,7 @@ def retrieve_repositories() -> PaginatedList[Repository]:
     else:
         github = Github(token)
         print("Using authenticated GitHub API")
-    repositories = github.search_repositories(query=f"user:{user} archived:false")
+    repositories = github.search_repositories(query=f"user:{repository_owner} archived:false")
     print(
         f"Repositories found repositories_count={repositories.totalCount}, "
         f"repositories={[repository.full_name for repository in repositories]}"
