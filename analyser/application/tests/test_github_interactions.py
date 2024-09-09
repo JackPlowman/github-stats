@@ -1,7 +1,7 @@
 from unittest.mock import MagicMock, call, patch
 
 from analyser.application.github_interactions import clone_repo, retrieve_repositories
-
+import pytest
 FILE_PATH = "analyser.application.github_interactions"
 
 
@@ -62,3 +62,16 @@ def test_retrieve_repositories__authenticated(mock_getenv: MagicMock, mock_githu
     mock_github.assert_called_once_with(token)
     mock_getenv.assert_has_calls([call("REPOSITORY_OWNER", ""), call("GITHUB_TOKEN", "")])
     assert repositories == search_return
+
+
+@patch(f"{FILE_PATH}.Github")
+@patch(f"{FILE_PATH}.getenv")
+def test_retrieve_repositories__no_repository_owner(mock_getenv: MagicMock, mock_github: MagicMock) -> None:
+    # Arrange
+    mock_getenv.return_value = ""
+    # Act
+    with pytest.raises(ValueError, match="REPOSITORY_OWNER environment variable is not set."):
+        retrieve_repositories()
+    # Assert
+    mock_github.assert_not_called()
+    mock_getenv.assert_called_once_with("REPOSITORY_OWNER", "")

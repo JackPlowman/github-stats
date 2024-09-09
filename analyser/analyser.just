@@ -61,4 +61,3 @@ ruff-format-fix:
 
 vulture:
     poetry run vulture application
-
