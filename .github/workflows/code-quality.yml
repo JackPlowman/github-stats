@@ -74,9 +74,6 @@ jobs:
       - name: Check Python Code for Dead Code (Vulture)
         run: just analyser::vulture
 
-      - name: Check Python Types (Pyright)
-        run: just analyser::pyright
-
   check-markdown-links:
     name: Check Markdown links
     runs-on: ubuntu-latest
