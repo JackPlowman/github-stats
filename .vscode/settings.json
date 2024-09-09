@@ -10,5 +10,5 @@
     "**/__pycache__": true,
     "**/.ruff_cache": true,
     "**/.pytest_cache": true
-  },
+  }
 }

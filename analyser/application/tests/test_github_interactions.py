@@ -1,7 +1,9 @@
 from unittest.mock import MagicMock, call, patch
 
-from analyser.application.github_interactions import clone_repo, retrieve_repositories
 import pytest
+
+from analyser.application.github_interactions import clone_repo, retrieve_repositories
+
 FILE_PATH = "analyser.application.github_interactions"
 
 
