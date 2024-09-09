@@ -77,4 +77,4 @@ convention = "google" # Use Google docstring convention.
 known-first-party = ["analyser"]
 
 [tool.vulture]
-ignore_names = []
+ignore_names = ["side_effect"]
