@@ -7,7 +7,7 @@
   "version": "0.2.0",
   "configurations": [
     {
-      "name": "Analyser ",
+      "name": "Debug Analyser",
       "type": "debugpy",
       "request": "launch",
       "module": "application",
@@ -18,6 +18,12 @@
       },
       "console": "integratedTerminal",
       "justMyCode": true
+    },
+    {
+      "command": "./node_modules/.bin/astro dev",
+      "name": "Dashboard Development server",
+      "request": "launch",
+      "type": "node-terminal"
     }
   ]
 }

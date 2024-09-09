@@ -16,3 +16,16 @@ updates:
     schedule:
       interval: "monthly"
     target-branch: "main"
+
+  - package-ecosystem: "npm"
+    directory: "dashboard"
+    commit-message:
+      prefix: "deps(typescript)"
+    schedule:
+      interval: "monthly"
+    target-branch: "main"
+    groups:
+      astro:
+        patterns:
+          - "astro"
+          - "@astrojs/*"
