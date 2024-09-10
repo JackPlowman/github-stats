@@ -1,11 +1,47 @@
+# ------------------------------------------------------------------------------
+# General Commands
+# ------------------------------------------------------------------------------
+
 # Install Node Dependencies
 install:
     npm install
 
+dev:
+  npx astro dev
+
+start:
+  npx astro dev
+
+build:
+    npx astro check && npx astro build
+
+preview:
+    npx astro preview
+
 # Run unit tests
 unit-test:
-    npm run test
+    npx jest
 
 # Run unit tests with coverage
 unit-test-coverage:
-    npm run test:coverage
+    npx jest --coverage
+
+# ------------------------------------------------------------------------------
+# Prettier
+# ------------------------------------------------------------------------------
+
+prettier-check:
+    npx prettier src --check
+
+prettier-format:
+    npx prettier src --check --write
+
+# ------------------------------------------------------------------------------
+# ESLint
+# ------------------------------------------------------------------------------
+
+eslint-check:
+    npx eslint src
+
+eslint-format:
+    npx eslint src --fix
