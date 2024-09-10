@@ -97,9 +97,6 @@ jobs:
         with:
           name: typescript-coverage-artifact
 
-      - name: test
-        run: ls -la
-
       - name: SonarCloud Scan
         uses: SonarSource/sonarcloud-github-action@v3.0.0
         env:
