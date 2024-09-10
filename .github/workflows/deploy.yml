@@ -28,7 +28,7 @@ jobs:
       - name: Install Python 3.12 with Poetry Cache
         uses: actions/setup-python@v5
         with:
-          python-version: 3.12
+          python-version-file: ".python-version"
           cache: "poetry"
 
       - name: Set up Just
