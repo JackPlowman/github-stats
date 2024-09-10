@@ -56,7 +56,7 @@ jobs:
           fetch-depth: 0
 
       - name: Use Node.js
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
           node-version-file: ".node-version"
           cache: "npm"
@@ -91,13 +91,11 @@ jobs:
         uses: actions/download-artifact@v3
         with:
           name: python-coverage-artifact
-          path: ./
 
       - name: Download TypeScript Coverage Artifact
         uses: actions/download-artifact@v3
         with:
           name: typescript-coverage-artifact
-          path: ./
 
       - name: test
         run: ls -la
