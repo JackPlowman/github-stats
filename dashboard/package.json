@@ -10,6 +10,10 @@
     "url": "https://github.com/JackPlowman/github-stats.git"
   },
   "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro check && astro build",
+    "preview": "astro preview",
     "astro": "astro"
   },
   "dependencies": {
