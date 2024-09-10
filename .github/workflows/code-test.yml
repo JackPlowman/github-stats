@@ -78,7 +78,7 @@ jobs:
           path: dashboard/coverage/clover.xml
 
   sonarcloud-scan:
-    name: Test Python Code
+    name: SonarCloud Scan
     needs: [python-unit-tests, typescript-unit-tests]
     runs-on: ubuntu-latest
     steps:
