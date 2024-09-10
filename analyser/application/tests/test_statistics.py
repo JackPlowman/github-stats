@@ -7,11 +7,13 @@ FILE_PATH = "analyser.application.statistics"
 
 @patch(f"{FILE_PATH}.retrieve_repositories")
 @patch(f"{FILE_PATH}.clone_repo")
+@patch(f"{FILE_PATH}.remove_excluded_files")
 @patch(f"{FILE_PATH}.create_repository_statistics")
 @patch(f"{FILE_PATH}.DataFrame")
 def test_create_statistics(
     mock_data_frame: MagicMock,
     mock_create_repository_statistics: MagicMock,
+    _mock_remove_excluded_files: MagicMock,
     mock_clone_repo: MagicMock,
     mock_retrieve_repositories: MagicMock,
 ) -> None:

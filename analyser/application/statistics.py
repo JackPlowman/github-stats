@@ -4,7 +4,8 @@ from polars import DataFrame
 from structlog import get_logger, stdlib
 
 from .catalogued_repository import CataloguedRepository
-from .github_interactions import clone_repo, retrieve_repositories
+from .utils.github_interactions import clone_repo, retrieve_repositories
+from .utils.repository_actions import remove_excluded_files
 
 logger: stdlib.BoundLogger = get_logger()
 
@@ -20,6 +21,8 @@ def create_statistics() -> None:
         owner_name, repository_name = repository.owner.login, repository.name
         # Clone the repository to analyser/cloned_repositories
         path = clone_repo(owner_name, repository_name)
+        # Remove excluded files
+        remove_excluded_files(path)
         # Create statistics for the repository
         catalogued_repository = create_repository_statistics(repository_name, path)
         list_of_repositories.append(catalogued_repository)
