@@ -46,7 +46,7 @@ jobs:
         run: cp -r analyser/statistics/*.csv dashboard/src/data
 
       - name: Install, build, and upload your site
-        uses: withastro/action@v2
+        uses: withastro/action@v3
         with:
           path: ./dashboard
           node-version: 22
