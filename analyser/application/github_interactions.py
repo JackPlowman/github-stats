@@ -5,6 +5,9 @@ from pathlib import Path
 
 from git import Repo
 from github import Github, PaginatedList, Repository
+from structlog import get_logger, stdlib
+
+logger: stdlib.BoundLogger = get_logger()
 
 
 def clone_repo(owner_name: str, repository_name: str) -> str:
@@ -23,8 +26,7 @@ def clone_repo(owner_name: str, repository_name: str) -> str:
     if not Path.exists(Path(file_path)):
         repo_url = f"https://github.com/{owner_name}/{repository_name}.git"
         Repo.clone_from(repo_url, Path(file_path))
-        print(f"Cloned repository {owner_name}/{repository_name}")
-
+        logger.info("Cloned repository", owner_name=owner_name, repository_name=repository_name)
     return file_path
 
 
@@ -41,13 +43,14 @@ def retrieve_repositories() -> PaginatedList[Repository]:
     token = getenv("GITHUB_TOKEN", "")
     if token == "":
         github = Github()
-        print("Using unauthenticated GitHub API")
+        logger.debug("Using unauthenticated GitHub API")
     else:
         github = Github(token)
-        print("Using authenticated GitHub API")
+        logger.debug("Using authenticated GitHub API")
     repositories = github.search_repositories(query=f"user:{repository_owner} archived:false")
-    print(
-        f"Repositories found repositories_count={repositories.totalCount}, "
-        f"repositories={[repository.full_name for repository in repositories]}"
+    logger.info(
+        "Found repositories",
+        repositories_count=repositories.totalCount,
+        repositories=[repository.full_name for repository in repositories],
     )
     return repositories
