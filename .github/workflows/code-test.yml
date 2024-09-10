@@ -88,12 +88,12 @@ jobs:
           fetch-depth: 0
 
       - name: Download Python Coverage Artifact
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
           name: python-coverage-artifact
 
       - name: Download TypeScript Coverage Artifact
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
           name: typescript-coverage-artifact
 
