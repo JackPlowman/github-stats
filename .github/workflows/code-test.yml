@@ -75,7 +75,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: typescript-coverage-artifact
-          path: dashboard/coverage/clover.xml
+          path: dashboard/coverage
 
   sonarcloud-scan:
     name: SonarCloud Scan
