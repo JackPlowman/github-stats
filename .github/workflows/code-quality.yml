@@ -37,6 +37,9 @@ jobs:
           VALIDATE_PYTHON_PYLINT: false
           VALIDATE_PYTHON_RUFF: false
           VALIDATE_PYTHON_PYINK: false
+          VALIDATE_TYPESCRIPT_ES: false
+          VALIDATE_TYPESCRIPT_PRETTIER: false
+          VALIDATE_TYPESCRIPT_STANDARD: false
 
   check-python-code-format-and-quality:
     name: Check Python Code Format and Quality
@@ -70,6 +73,34 @@ jobs:
 
       - name: Check Python Code for Dead Code (Vulture)
         run: just analyser::vulture
+
+  check-typescript-code-format-and-quality:
+    name: Check TypeScript Code Format and Quality
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Use Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version-file: ".node-version"
+          cache: "npm"
+          cache-dependency-path: "dashboard/package-lock.json"
+
+      - name: Set up Just
+        uses: extractions/setup-just@v2
+
+      - name: Install Node Dependencies
+        run: just dashboard::install
+
+      - name: Run Prettier
+        run: just dashboard::prettier-check
+
+      - name: Run ESLint
+        run: just dashboard::eslint-check
 
   check-markdown-links:
     name: Check Markdown links

@@ -7,10 +7,10 @@ install:
     npm install
 
 dev:
-  npx astro dev
+    npx astro dev
 
 start:
-  npx astro dev
+    npx astro dev
 
 build:
     npx astro check && npx astro build
