@@ -97,6 +97,19 @@ jobs:
         with:
           name: typescript-coverage-artifact
 
+      - name: Use Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version-file: ".node-version"
+          cache: "npm"
+          cache-dependency-path: "dashboard/package-lock.json"
+
+      - name: Set up Just
+        uses: extractions/setup-just@v2
+
+      - name: Install Node Dependencies
+        run: just dashboard::install
+
       - name: SonarCloud Scan
         uses: SonarSource/sonarcloud-github-action@v3.0.0
         env:
