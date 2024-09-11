@@ -1,18 +1,14 @@
 ---
-import '@/styles/globals.css'
-import Layout from '../layouts/Layout.astro';
-import Card from '@/components/Card.astro';
+import "@/styles/globals.css";
+import Layout from "../layouts/Layout.astro";
+import Card from "@/components/Card.astro";
 ---
 
 <Layout title="Check out my GitHub Stats">
   <main>
     <h1><span class="text-gradient">GitHub Stats</span></h1>
     <ul role="list" class="link-card-grid">
-      <Card
-        href="/"
-        title=""
-        body=""
-      />
+      <Card href="/" title="" body="" />
     </ul>
   </main>
 </Layout>
@@ -33,7 +29,7 @@ import Card from '@/components/Card.astro';
     line-height: 1;
     text-align: center;
     margin-bottom: 1em;
-    color:#000;
+    color: #000;
   }
   .text-gradient {
     background-image: var(--accent-gradient);

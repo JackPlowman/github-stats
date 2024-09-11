@@ -29,10 +29,10 @@ def create_statistics() -> None:
     logger.info("List of repositories", list_of_repositories=list_of_repositories)
     DataFrame(
         {
-            "repository_name": [repository.repository_name for repository in list_of_repositories],
+            "repository": [repository.repository_name for repository in list_of_repositories],
             "total_files": [repository.total_files for repository in list_of_repositories],
         }
-    ).write_csv("statistics/repository_statistics.csv")
+    ).write_json("statistics/repository_statistics.json")
 
 
 def create_repository_statistics(repository_name: str, path_to_repo: str) -> CataloguedRepository:

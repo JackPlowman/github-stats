@@ -43,7 +43,7 @@ jobs:
         run: just analyser::run
 
       - name: Copy generated files to github pages folder
-        run: cp -r analyser/statistics/*.csv dashboard/src/data
+        run: cp -r analyser/statistics/*.json dashboard/src/data
 
       - name: Install, build, and upload your site
         uses: withastro/action@v3
