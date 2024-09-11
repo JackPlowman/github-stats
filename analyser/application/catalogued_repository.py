@@ -7,3 +7,4 @@ class CataloguedRepository:
 
     repository_name: str
     total_files: int
+    total_commits: int
