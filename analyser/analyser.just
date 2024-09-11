@@ -43,6 +43,10 @@ unit-test-debug:
 # Ruff - # Set up red-knot when it's ready
 # ------------------------------------------------------------------------------
 
+ruff-fix:
+    just analyser::ruff-lint-fix
+    just analyser::ruff-format-fix
+
 ruff-lint:
     poetry run ruff check application
 

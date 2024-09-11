@@ -1,12 +1,13 @@
 from pathlib import Path
 
+import git
 from polars import DataFrame
 from structlog import get_logger, stdlib
 
 from .catalogued_repository import CataloguedRepository
 from .utils.github_interactions import clone_repo, retrieve_repositories
 from .utils.repository_actions import remove_excluded_files
-import git
+
 logger: stdlib.BoundLogger = get_logger()
 
 
