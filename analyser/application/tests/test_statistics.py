@@ -23,7 +23,7 @@ def test_create_statistics(
     repository.name = repo_name = "github-stats-prototype"
     mock_retrieve_repositories.return_value = [repository]
     mock_clone_repo.return_value = "TestPath"
-    mock_create_repository_statistics.return_value = MagicMock(repository_name="Test1", total_files=10)
+    mock_create_repository_statistics.return_value = MagicMock(repository_name="Test1", total_files=10, total_commits=0)
     # Act
     create_statistics()
     # Assert
@@ -34,11 +34,13 @@ def test_create_statistics(
         {
             "repository": ["Test1"],
             "total_files": [10],
+            "total_commits": [0],
         }
     )
 
 
-def test_create_repository_statistics() -> None:
+@patch(f"{FILE_PATH}.git.Repo")
+def test_create_repository_statistics(_mock_repo: MagicMock) -> None:
     # Arrange
     repository_name = "Test1"
     path_to_repo = "TestPath"
