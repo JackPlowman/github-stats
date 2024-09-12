@@ -16,6 +16,10 @@ updates:
     schedule:
       interval: "monthly"
     target-branch: "main"
+    groups:
+      python:
+        patterns:
+          - "*"
 
   - package-ecosystem: "npm"
     directory: "dashboard"
@@ -25,7 +29,6 @@ updates:
       interval: "monthly"
     target-branch: "main"
     groups:
-      astro:
+      typescript:
         patterns:
-          - "astro"
-          - "@astrojs/*"
+          - "*"
