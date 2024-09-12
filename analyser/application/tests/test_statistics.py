@@ -32,7 +32,7 @@ def test_create_statistics(
     mock_create_repository_statistics.assert_called_once_with(repo_name, "TestPath")
     mock_data_frame.assert_called_once_with(
         {
-            "repository_name": ["Test1"],
+            "repository": ["Test1"],
             "total_files": [10],
         }
     )
