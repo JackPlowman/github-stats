@@ -43,5 +43,5 @@ prettier-format:
 eslint-check:
     npx eslint src
 
-eslint-format:
+eslint-fix:
     npx eslint src --fix

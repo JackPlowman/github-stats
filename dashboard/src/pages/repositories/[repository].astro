@@ -6,15 +6,14 @@ import "@/styles/globals.css";
 
 interface Repository {
   repository: string;
-  total_files: number
-  total_commits: number
+  total_files: number;
+  total_commits: number;
 }
 
 export function getStaticPaths() {
   return repositories.flatMap((repository: Repository) => ({
-      params: { repository: repository.repository },
-    }))
-
+    params: { repository: repository.repository },
+  }));
 }
 
 const { repository } = Astro.params;
