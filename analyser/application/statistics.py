@@ -26,22 +26,34 @@ def create_statistics() -> None:
         catalogued_repository = create_repository_statistics(repository_name, path)
         list_of_repositories.append(catalogued_repository)
     logger.info("List of repositories", list_of_repositories=list_of_repositories)
-    DataFrame(
+    dataframe_data = [
         {
-            "repository": [repository.repository_name for repository in list_of_repositories],
-            "total_files": [repository.total_files for repository in list_of_repositories],
-            "total_commits": [repository.total_commits for repository in list_of_repositories],
+            "repository": repository.repository_name,
+            "total_files": repository.total_files,
+            "total_commits": repository.total_commits,
         }
-    ).write_json("statistics/repository_statistics.json")
+        for repository in list_of_repositories
+    ]
+    DataFrame(dataframe_data).write_json("statistics/repository_statistics.json")
 
 
-def create_repository_statistics(repository_name: str, path_to_repo: str) -> CataloguedRepository:
-    """Create statistics for a repository."""
+def create_repository_statistics(
+    repository_name: str, path_to_repo: str
+) -> CataloguedRepository:
+    """Create statistics for a repository.
+
+    Args:
+        repository_name (str): The name of the repository.
+        path_to_repo (str): The path to the repository.
+
+    Returns:
+        CataloguedRepository: The catalogued repository.
+    """
     logger.info("Analysing repository", repository_name=repository_name)
     file_count = 0
     # Retrieve the total number of commits
     repo = git.Repo(path_to_repo)
-    total_commits = repo.git.rev_list("--count", "HEAD")
+    total_commits = int(repo.git.rev_list("--count", "HEAD"))
     # Remove excluded files
     remove_excluded_files(path_to_repo)
     # Count the number of files
