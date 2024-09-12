@@ -1,3 +1,4 @@
+/* eslint-disable */
 import * as React from "react";
 import { ChevronRightIcon, DotsHorizontalIcon } from "@radix-ui/react-icons";
 import { Slot } from "@radix-ui/react-slot";
@@ -113,3 +114,4 @@ export {
   BreadcrumbSeparator,
   BreadcrumbEllipsis,
 };
+/* eslint-enable */
