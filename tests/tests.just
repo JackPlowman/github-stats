@@ -27,17 +27,17 @@ run:
 # ------------------------------------------------------------------------------
 
 ruff-fix:
-    just analyser::ruff-lint-fix
-    just analyser::ruff-format-fix
+    just tests::ruff-lint-fix
+    just tests::ruff-format-fix
 
 ruff-lint:
-    poetry run ruff check application
+    poetry run ruff check end_to_end
 
 ruff-lint-fix:
-    poetry run ruff check application --fix
+    poetry run ruff check end_to_end --fix
 
 ruff-format:
-    poetry run ruff format --check application
+    poetry run ruff format --check end_to_end
 
 ruff-format-fix:
-    poetry run ruff format application
+    poetry run ruff format end_to_end
