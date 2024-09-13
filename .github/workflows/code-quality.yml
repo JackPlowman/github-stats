@@ -135,7 +135,6 @@ jobs:
       - name: Check Python Code Format (Ruff)
         run: just tests::ruff-format
 
-
   check-markdown-links:
     name: Check Markdown links
     runs-on: ubuntu-latest
