@@ -12,18 +12,10 @@ python:
   - any:
       - changed-files:
           - any-glob-to-any-file: ["*.py", "**/*.py"]
-python-tests:
-  - any:
-      - changed-files:
-          - any-glob-to-any-file: ["**/tests/*.py"]
 typescript:
   - any:
       - changed-files:
           - any-glob-to-any-file: ["*.ts", "**/*.ts", "**/tsconfig.json"]
-typescript-tests:
-  - any:
-      - changed-files:
-          - any-glob-to-any-file: ["**/tests/*.ts"]
 just:
   - any:
       - changed-files:

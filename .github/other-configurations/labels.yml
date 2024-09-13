@@ -62,12 +62,6 @@
   name: shell
   description: Pull requests that update Shell code
 # Custom
-- color: 2b67c6
-  name: python-tests
-  description: Pull requests that update python tests
-- color: 00ff1e
-  name: typescript-tests
-  description: Pull requests that update typescript tests
 - color: 00f2de
   name: end-to-end-tests
   description: Pull requests that update end to end tests
