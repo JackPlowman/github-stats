@@ -1,0 +1,73 @@
+[tool.poetry]
+name = "tests"
+authors = ["Jack Plowman <62281988+JackPlowman@users.noreply.github.com>"]
+license = "MIT"
+package-mode = false
+
+[tool.poetry.dependencies]
+python = "^3.12"
+requests = "^2.32.3"
+pytest = "^8.3.3"
+pytest-bdd = "^7.2.0"
+defusedxml = "^0.7.1"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.ruff]
+line-length = 120
+
+[tool.ruff.lint]
+# Add the `line-too-long` rule to the enforced rule set.
+extend-select = ["E501"]
+select = ["ALL"]
+
+ignore = [
+  "COM812",  # Ignore due to conflict with Ruff formatter
+  "ISC001",  # Ignore due to conflict with Ruff formatter
+  "PLR2004", # Ignore magic value
+  "D104",    # Ignore missing docstring in public package
+  "D100",    # Ignore missing docstring in public module
+  "T201",    # Ignore print statement (until we have a logger)
+  "S101",    # Ignore asserts
+  "F811",    # Ignore redefinition of function
+]
+
+# Allow autofix for all enabled rules (when `--fix`) is provided.
+fixable = ["ALL"]
+unfixable = []
+
+# Exclude a variety of commonly ignored directories.
+exclude = [
+  ".bzr",
+  ".direnv",
+  ".eggs",
+  ".git",
+  ".hg",
+  ".mypy_cache",
+  ".nox",
+  ".pants.d",
+  ".pytype",
+  ".ruff_cache",
+  ".svn",
+  ".tox",
+  ".venv",
+  "__pypackages__",
+  "_build",
+]
+
+# Allow unused variables when underscore-prefixed.
+dummy-variable-rgx = "^(_+|(_+[a-zA-Z0-9_]*[a-zA-Z0-9]+?))$"
+
+[tool.ruff.lint.per-file-ignores]
+"**test_*.py" = ["S101", "D102", "D103", "SLF001", "PT019"]
+
+[tool.ruff.lint.pydocstyle]
+convention = "google" # Use Google docstring convention.
+
+[tool.ruff.lint.isort]
+known-first-party = [
+  "tests",
+  "utils",
+  ]
