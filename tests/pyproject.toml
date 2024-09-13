@@ -11,6 +11,9 @@ pytest = "^8.3.3"
 pytest-bdd = "^7.2.0"
 defusedxml = "^0.7.1"
 
+[tool.poetry.group.dev.dependencies]
+ruff = "^0.6.5"
+
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
