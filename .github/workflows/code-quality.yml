@@ -105,6 +105,37 @@ jobs:
       - name: Run ESLint
         run: just dashboard::eslint-check
 
+  check-tests-code-format-and-quality:
+    name: Check Tests Code Format and Quality
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Install Poetry
+        run: pipx install poetry
+
+      - name: Install Python 3.12 with Poetry Cache
+        uses: actions/setup-python@v5
+        with:
+          python-version-file: ".python-version"
+          cache: "poetry"
+
+      - name: Set up Just
+        uses: extractions/setup-just@v2
+
+      - name: Install Poetry Dependencies
+        run: just tests::install
+
+      - name: Check Python Code Quality (Ruff)
+        run: just tests::ruff-lint
+
+      - name: Check Python Code Format (Ruff)
+        run: just tests::ruff-format
+
+
   check-markdown-links:
     name: Check Markdown links
     runs-on: ubuntu-latest
