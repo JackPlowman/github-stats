@@ -40,7 +40,7 @@ github_actions:
 end-to-end-tests:
   - any:
       - changed-files:
-          - any-glob-to-any-file: ["testing/**"]
+          - any-glob-to-any-file: ["tests/**"]
 analyser:
   - any:
       - changed-files:
