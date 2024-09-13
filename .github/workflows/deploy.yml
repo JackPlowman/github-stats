@@ -4,7 +4,6 @@ on:
   push:
     branches:
       - main
-      - fix_astro_css
 
 permissions:
   contents: write
