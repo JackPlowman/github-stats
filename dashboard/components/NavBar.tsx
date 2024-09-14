@@ -1,6 +1,6 @@
+import MainNav from "@/components/MainNav";
 import Search from "@/components/Search";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import MainNav from "@/components/MainNav";
 
 export default function NavBar() {
   return (
