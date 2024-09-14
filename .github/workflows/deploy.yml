@@ -46,6 +46,9 @@ jobs:
         run: cp -r analyser/statistics/*.json dashboard/data
 
       - name: Build Site
+        run: just dashboard::install
+
+      - name: Build Site
         run: just dashboard::build
 
       - name: Upload artifact
