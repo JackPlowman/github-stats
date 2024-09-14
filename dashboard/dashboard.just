@@ -28,7 +28,7 @@ unit-test-coverage:
 # ------------------------------------------------------------------------------
 
 prettier-check:
-    npx prettier src --check
+    npx prettier . --check
 
 prettier-format:
-    npx prettier src --check --write
+    npx prettier . --check --write
