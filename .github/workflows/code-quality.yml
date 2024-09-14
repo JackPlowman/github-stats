@@ -103,7 +103,7 @@ jobs:
         run: just dashboard::prettier-check
 
       - name: Run ESLint
-        run: just dashboard::eslint-check
+        run: just dashboard::lint
 
   check-tests-code-format-and-quality:
     name: Check Tests Code Format and Quality
