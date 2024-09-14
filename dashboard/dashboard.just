@@ -9,14 +9,11 @@ install:
 dev:
     npx astro dev
 
-start:
-    npx astro dev
-
 build:
-    npx astro check && npx astro build
+    npx next build
 
-preview:
-    npx astro preview
+lint:
+    npx next lint
 
 # Run unit tests
 unit-test:
@@ -35,13 +32,3 @@ prettier-check:
 
 prettier-format:
     npx prettier src --check --write
-
-# ------------------------------------------------------------------------------
-# ESLint
-# ------------------------------------------------------------------------------
-
-eslint-check:
-    npx eslint src
-
-eslint-fix:
-    npx eslint src --fix

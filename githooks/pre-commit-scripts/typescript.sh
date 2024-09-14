@@ -3,6 +3,4 @@ set -e +x
 
 just dashboard::install
 
-just dashboard::eslint-fix
-
-just dashboard::prettier-format
+just dashboard::lint
