@@ -6,6 +6,7 @@ env:
 ignorePatterns:
   - "!.*"
   - "**/node_modules/.*"
+  - "dashboard/**"
 
 parser: "@typescript-eslint/parser"
 
