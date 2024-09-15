@@ -1,10 +1,13 @@
 # Initial Tech Choices
 
-This document outlines the initial tech choices for the project.
+## TLDR (Too Long Didn't Read)
+
+This document outlines the initial tech choices for the project. With the main technologies being Python and TypeScript.
 
 ## Table of Contents
 
 - [Initial Tech Choices](#initial-tech-choices)
+  - [TLDR (Too Long Didn't Read)](#tldr-too-long-didnt-read)
   - [Table of Contents](#table-of-contents)
   - [Current Environment](#current-environment)
   - [Decision](#decision)
