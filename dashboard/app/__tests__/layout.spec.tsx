@@ -6,7 +6,7 @@ import Layout from '../layout';
 
 test('renders default layout', async () => {
   // Act
-  const {findByText} = render(<Layout children={<p>Hello World</p>} />);
+  const {findByText} = render(<Layout children={<p>Hello World</p>} />); // eslint-disable-line react/no-children-prop
   // Assert
   const navbar = await findByText(/Overview/i);
   expect(navbar).toBeTruthy();
