@@ -36,4 +36,3 @@ List the cons of the decision.
 ## Consequences
 
 List any consequences of the decision.
-
