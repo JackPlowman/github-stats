@@ -1,4 +1,4 @@
-# Migrate Typescript Framework
+# Migrate TypeScript Framework
 
 ## TLDR (Too Long Didn't Read)
 
@@ -6,7 +6,7 @@ This document outlines the requirements for migrating the frontend framework fro
 
 ## Table of Contents
 
-- [Migrate Typescript Framework](#migrate-typescript-framework)
+- [Migrate TypeScript Framework](#migrate-typescript-framework)
   - [TLDR (Too Long Didn't Read)](#tldr-too-long-didnt-read)
   - [Table of Contents](#table-of-contents)
   - [Current Environment](#current-environment)
