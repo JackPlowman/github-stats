@@ -4,7 +4,7 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 
 export default function NavBar() {
   return (
-    <div className="hidden flex-col md:flex">
+    <div className="hidden flex-col md:flex" id="navbar">
       <div className="border-b">
         <div className="flex h-16 items-center px-4">
           <MainNav className="mx-6" />
