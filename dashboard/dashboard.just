@@ -23,11 +23,11 @@ lint:
 
 # Run unit tests
 unit-test:
-    npx jest
+    npm run test
 
 # Run unit tests with coverage
 unit-test-coverage:
-    npx jest --coverage
+    npm run test:coverage
 
 # ------------------------------------------------------------------------------
 # Prettier
