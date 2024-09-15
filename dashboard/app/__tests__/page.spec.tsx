@@ -9,4 +9,6 @@ test("renders home page", async () => {
   // Assert
   const heading = await findByText(/Welcome to Next.js!/i);
   expect(heading).toBeTruthy();
+  // check content
+  expect(findByText).toMatchSnapshot();
 });
