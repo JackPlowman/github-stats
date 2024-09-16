@@ -1,4 +1,4 @@
-import { Commits, CommitsPieChart } from "@/components/PieChart";
+import { CommitsPieChart } from "@/components/PieChart";
 
 import repositories from "../../../../data/repository_statistics.json";
 
