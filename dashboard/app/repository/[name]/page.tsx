@@ -28,7 +28,6 @@ export default function RepositoryPage({
       <h1>Repository Name {repository.repository}</h1>
       <h2>Total Files {repository.total_files}</h2>
       <h2>Total Commits {repository.total_commits}</h2>
-      {/* <CommitsPieChart chartData={{user: "Jack", total: params.total_commits }} /> */}
       <CommitsPieChart
         chartData={{ user: "Jack", total: repository.total_commits }}
       />
