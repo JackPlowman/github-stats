@@ -15,7 +15,7 @@ python:
 typescript:
   - any:
       - changed-files:
-          - any-glob-to-any-file: ["*.ts", "**/*.ts", "**/tsconfig.json"]
+          - any-glob-to-any-file: ["*.ts", "*.tsx", "**/*.ts", "**/*.tsx", "**/tsconfig.json"]
 just:
   - any:
       - changed-files:
