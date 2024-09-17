@@ -14,9 +14,6 @@ jobs:
   build-and-deploy:
     name: Build
     runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
 
     steps:
       - name: Checkout
@@ -45,46 +42,51 @@ jobs:
         run: just analyser::run
 
       - name: Copy generated files to github pages folder
-        run: cp -r analyser/statistics/*.json dashboard/src/data
+        run: cp -r analyser/statistics/*.json dashboard/data
 
-      - name: Install, build, and upload your site
-        uses: withastro/action@v3
+      - name: Build Site
+        run: just dashboard::install
+
+      - name: Build Site
+        run: just dashboard::build
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
         with:
-          path: ./dashboard
-          node-version: 22
+          path: dashboard/out
 
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
 
-  test:
-    name: Test
-    runs-on: ubuntu-latest
-    needs: build-and-deploy
+  # test:
+  #   name: Test
+  #   runs-on: ubuntu-latest
+  #   needs: build-and-deploy
 
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
+  #   steps:
+  #     - name: Checkout
+  #       uses: actions/checkout@v4
+  #       with:
+  #         fetch-depth: 0
 
-      - name: Install Poetry
-        run: pipx install poetry
+  #     - name: Install Poetry
+  #       run: pipx install poetry
 
-      - name: Install Python 3.12 with Poetry Cache
-        uses: actions/setup-python@v5
-        with:
-          python-version-file: ".python-version"
-          cache: "poetry"
+  #     - name: Install Python 3.12 with Poetry Cache
+  #       uses: actions/setup-python@v5
+  #       with:
+  #         python-version-file: ".python-version"
+  #         cache: "poetry"
 
-      - name: Set up Just
-        uses: extractions/setup-just@v2
+  #     - name: Set up Just
+  #       uses: extractions/setup-just@v2
 
-      - name: Install Poetry Dependencies
-        run: just tests::install
+  #     - name: Install Poetry Dependencies
+  #       run: just tests::install
 
-      - name: Run tests
-        run: just tests::run
+  #     - name: Run tests
+  #       run: just tests::run
 
   revert-to-main:
     name: Build Main
@@ -122,10 +124,19 @@ jobs:
         run: just analyser::run
 
       - name: Copy generated files to github pages folder
-        run: cp -r analyser/statistics/*.json dashboard/src/data
+        run: cp -r analyser/statistics/*.json dashboard/data
 
-      - name: Install, build, and upload your site
-        uses: withastro/action@v3
+      - name: Build Site
+        run: just dashboard::install
+
+      - name: Build Site
+        run: just dashboard::build
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
         with:
-          path: ./dashboard
-          node-version: 22
+          path: dashboard/out
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
