@@ -1,5 +1,5 @@
 import git
-from polars import DataFrame
+from pandas import DataFrame
 from structlog import get_logger, stdlib
 
 from .analysis.repository_analysis import analyse_repository
@@ -26,7 +26,6 @@ def create_statistics() -> None:
         list_of_repositories.append(catalogued_repository)
 
     logger.info("List of repositories", list_of_repositories=list_of_repositories)
-
     DataFrame(
         [
             {
@@ -37,7 +36,7 @@ def create_statistics() -> None:
             }
             for repository in list_of_repositories
         ]
-    ).write_json("statistics/repository_statistics.json")
+    ).to_json("statistics/repository_statistics.json", orient="records")
 
 
 def create_repository_statistics(repository_name: str, path_to_repo: str) -> CataloguedRepository:

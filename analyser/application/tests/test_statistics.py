@@ -31,11 +31,14 @@ def test_create_statistics(
     mock_clone_repo.assert_called_once_with(owner, repo_name)
     mock_create_repository_statistics.assert_called_once_with(repo_name, "TestPath")
     mock_data_frame.assert_called_once_with(
-        {
-            "repository": ["Test1"],
-            "total_files": [10],
-            "total_commits": [0],
-        }
+        [
+            {
+                "repository": "Test1",
+                "total_files": 10,
+                "total_commits": 0,
+                "languages": mock_create_repository_statistics.return_value.languages,
+            }
+        ]
     )
 
 

@@ -24,7 +24,7 @@ def analyse_programming_languages(file_path: str, repository_languages: Reposito
     """
     guess = guess_language_from_file(file_path)
     if guess:
-        logger.info("Guessed language", guess=guess, file_path=file_path)
+        logger.debug("Guessed language", guess=guess, file_path=file_path)
         repository_languages.add_file(language_name=guess, file_path=file_path)
     return repository_languages
 
@@ -43,5 +43,5 @@ def guess_language_from_file(file_path: str) -> str | None:
             lexer = lexers.guess_lexer_for_filename(file_path, file.read())
             return lexer.name
     except (ClassNotFound, UnicodeDecodeError):
-        logger.warning("Could not guess language from file", file_path=file_path)
+        logger.debug("Could not guess language from file", file_path=file_path)
         return None

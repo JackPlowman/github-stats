@@ -12,7 +12,6 @@ class RepositoryLanguages:
     languages: dict[str, dict[str, int | str | list[str]]] = field(default_factory=dict)
     # example: {"Python": {"file_count": 1, "file_paths": ["file.py"]}}  # noqa: ERA001
 
-
     def add_file(self, language_name: str, file_path: str) -> None:
         """Add a file to the repository languages.
 

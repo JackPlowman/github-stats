@@ -31,7 +31,7 @@ run:
     poetry run python -m application
 
 run-with-defaults:
-    REPOSITORY_OWNER=JackPlowman poetry run python -m application
+    DEBUG=true REPOSITORY_OWNER=JackPlowman poetry run python -m application
 
 unit-test:
     poetry run pytest application --cov=application --cov-report=xml
