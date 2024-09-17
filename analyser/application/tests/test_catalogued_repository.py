@@ -1,4 +1,4 @@
-from analyser.application.analysis.repository_languages import RepositoryLanguages
+from analyser.application.file_analysis.repository_languages import RepositoryLanguages
 from analyser.application.catalogued_repository import CataloguedRepository
 
 

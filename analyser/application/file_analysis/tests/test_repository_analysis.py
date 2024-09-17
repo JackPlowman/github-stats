@@ -1,6 +1,6 @@
 from unittest.mock import MagicMock, patch
 
-from analyser.application.analysis.repository_analysis import RepositoryAnalysis, analyse_repository
+from analyser.application.file_analysis.repository_analysis import RepositoryAnalysis, analyse_repository
 
 FILE_PATH = "analyser.application.analysis.repository_analysis"
 

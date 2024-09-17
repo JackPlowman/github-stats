@@ -1,6 +1,10 @@
-from dataclasses import dataclass
+from __future__ import annotations
 
-from .analysis.repository_languages import RepositoryLanguages
+from dataclasses import dataclass
+from typing import TYPE_CHECKING
+
+if TYPE_CHECKING:
+    from .file_analysis.repository_languages import RepositoryLanguages
 
 
 @dataclass
@@ -9,5 +13,6 @@ class CataloguedRepository:
 
     repository_name: str
     total_files: int
+    commits: dict[str, int]
     total_commits: int
     languages: RepositoryLanguages
