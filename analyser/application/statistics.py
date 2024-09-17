@@ -24,6 +24,7 @@ def create_statistics() -> None:
         # Create statistics for the repository
         catalogued_repository = create_repository_statistics(repository_name, path)
         list_of_repositories.append(catalogued_repository)
+
     logger.info("List of repositories", list_of_repositories=list_of_repositories)
 
     DataFrame(
@@ -32,6 +33,7 @@ def create_statistics() -> None:
                 "repository": repository.repository_name,
                 "total_files": repository.total_files,
                 "total_commits": repository.total_commits,
+                "languages": repository.languages,
             }
             for repository in list_of_repositories
         ]
@@ -61,5 +63,5 @@ def create_repository_statistics(repository_name: str, path_to_repo: str) -> Cat
         repository_name=repository_name,
         total_files=analysed_repository.file_count,
         total_commits=total_commits,
-        languages=analysed_repository.languages,
+        languages=analysed_repository.languages.get_data(),
     )

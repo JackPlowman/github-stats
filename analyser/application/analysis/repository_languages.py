@@ -12,6 +12,7 @@ class RepositoryLanguages:
     languages: dict[str, dict[str, int | str | list[str]]] = field(default_factory=dict)
     # example: {"Python": {"file_count": 1, "file_paths": ["file.py"]}}  # noqa: ERA001
 
+
     def add_file(self, language_name: str, file_path: str) -> None:
         """Add a file to the repository languages.
 
@@ -31,3 +32,7 @@ class RepositoryLanguages:
         languages_strings = [f"{language}: {self.languages[language]['file_count']}" for language in self.languages]
         language_string = ", ".join(languages_strings)
         return f"RepositoryLanguages(languages={language_string})"
+
+    def get_data(self) -> dict[str, int]:
+        """Return the data for the repository languages."""
+        return {language: self.languages[language]["file_count"] for language in self.languages}
