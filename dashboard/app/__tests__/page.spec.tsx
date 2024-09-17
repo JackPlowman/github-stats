@@ -7,7 +7,7 @@ test("renders home page", async () => {
   // Act
   const { findByText } = render(<Home />);
   // Assert
-  const heading = await findByText(/Welcome to Next.js!/i);
+  const heading = await findByText(/GitHub Stats/i);
   expect(heading).toBeTruthy();
   // check content
   expect(findByText).toMatchSnapshot();
