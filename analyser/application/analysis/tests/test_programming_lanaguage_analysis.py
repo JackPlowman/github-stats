@@ -1,5 +1,7 @@
 from unittest.mock import MagicMock, patch
+
 from pygments.util import ClassNotFound
+
 from analyser.application.analysis.programming_language_analysis import (
     analyse_programming_languages,
     guess_language_from_file,
