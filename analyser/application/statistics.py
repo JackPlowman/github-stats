@@ -26,12 +26,16 @@ def create_statistics() -> None:
         catalogued_repository = create_repository_statistics(repository_name, path)
         list_of_repositories.append(catalogued_repository)
     logger.info("List of repositories", list_of_repositories=list_of_repositories)
+
     DataFrame(
-        {
-            "repository": [repository.repository_name for repository in list_of_repositories],
-            "total_files": [repository.total_files for repository in list_of_repositories],
-            "total_commits": [repository.total_commits for repository in list_of_repositories],
-        }
+        [
+            {
+                "repository": repository.repository_name,
+                "total_files": repository.total_files,
+                "total_commits": repository.total_commits,
+            }
+            for repository in list_of_repositories
+        ]
     ).write_json("statistics/repository_statistics.json")
 
 
