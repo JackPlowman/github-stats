@@ -8,12 +8,13 @@ from .repository_languages import RepositoryLanguages
 
 logger: stdlib.BoundLogger = get_logger()
 
+
 @dataclass
 class RepositoryAnalysis:
     """A repository analysis."""
+
     file_count: int
     languages: RepositoryLanguages
-
 
 
 def analyse_repository(path_to_repo: str) -> RepositoryAnalysis:

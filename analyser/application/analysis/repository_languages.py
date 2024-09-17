@@ -4,6 +4,7 @@ from dataclasses import dataclass, field
 
 # Consider typed dicts instead of this class
 
+
 @dataclass
 class RepositoryLanguages:
     """The file language types generated from a repository."""
@@ -27,9 +28,6 @@ class RepositoryLanguages:
 
     def __repr__(self) -> str:
         """Return a string representation of the repository languages."""
-        languages_strings = [
-            f"{language}: {self.languages[language]['file_count']}"
-            for language in self.languages
-        ]
+        languages_strings = [f"{language}: {self.languages[language]['file_count']}" for language in self.languages]
         language_string = ", ".join(languages_strings)
         return f"RepositoryLanguages(languages={language_string})"
