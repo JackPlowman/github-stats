@@ -2,11 +2,12 @@ import git
 from pandas import DataFrame
 from structlog import get_logger, stdlib
 
-from .file_analysis.repository_analysis import analyse_repository
 from .catalogued_repository import CataloguedRepository
+from .commits.commits import get_commits
+from .file_analysis.repository_analysis import analyse_repository
 from .utils.github_interactions import clone_repo, retrieve_repositories
 from .utils.repository_actions import remove_excluded_files
-from .commits.commits import get_commits
+
 logger: stdlib.BoundLogger = get_logger()
 
 

@@ -23,4 +23,3 @@ def get_commits(path_to_repo: str) -> dict[str, int]:
             user_commits[commit.author.name] += 1
 
     return user_commits
-
