@@ -1,9 +1,8 @@
-from pathlib import Path
-
 import git
 from polars import DataFrame
 from structlog import get_logger, stdlib
 
+from .analysis.repository_analysis import analyse_repository
 from .catalogued_repository import CataloguedRepository
 from .utils.github_interactions import clone_repo, retrieve_repositories
 from .utils.repository_actions import remove_excluded_files
@@ -50,18 +49,17 @@ def create_repository_statistics(repository_name: str, path_to_repo: str) -> Cat
         CataloguedRepository: The catalogued repository.
     """
     logger.info("Analysing repository", repository_name=repository_name)
-    file_count = 0
     # Retrieve the total number of commits
     repo = git.Repo(path_to_repo)
     total_commits = int(repo.git.rev_list("--count", "HEAD"))
     # Remove excluded files
     remove_excluded_files(path_to_repo)
-    # Count the number of files
-    iterator = Path(path_to_repo).walk()
-    for root, _dirs, files in iterator:
-        for file in files:
-            file_count += 1
-            file_path = f"{root.__str__()}/{file}"
-            logger.debug("Analysing file", file_path=file_path)
+    # Analyse the repository files
+    analysed_repository = analyse_repository(path_to_repo)
     # Return the catalogued repository
-    return CataloguedRepository(repository_name, file_count, total_commits)
+    return CataloguedRepository(
+        repository_name=repository_name,
+        total_files=analysed_repository.file_count,
+        total_commits=total_commits,
+        languages=analysed_repository.languages,
+    )
