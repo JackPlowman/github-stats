@@ -18,7 +18,7 @@ pandas = "^2.2.2"
 pytest = "8.3.3"
 pytest-cov = "5.0.0"
 ruff = "^0.6.5"
-vulture = "2.11"
+vulture = "2.12"
 
 [build-system]
 requires = ["poetry-core"]
