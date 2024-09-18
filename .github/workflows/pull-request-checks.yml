@@ -24,7 +24,7 @@ jobs:
       - name: Check PR Title
         uses: deepakputhraya/action-pr-title@v1.0.2
         with:
-          allowed_prefixes: "feat: ,fix: ,bug: ,ci: ,refactor: ,docs: ,build: ,chore(,deps(,chore: ,feat!: ,fix!: ,refactor!: " # title should start with the given prefix
+          allowed_prefixes: "feat: ,fix: ,bug: ,ci: ,refactor: ,docs: ,build: ,chore(,deps(,chore: ,feat!: ,fix!: ,refactor!: ,test: " # title should start with the given prefix
   labeller:
     runs-on: ubuntu-latest
     steps:
