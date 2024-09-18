@@ -22,6 +22,9 @@ install:
 run:
     poetry run pytest end_to_end --gherkin-terminal-reporter -vv
 
+validate-schema:
+    poetry run check-jsonschema --schemafile repository_statistics_schema.json repository_statistics.json
+
 # ------------------------------------------------------------------------------
 # Ruff - # Set up red-knot when it's ready
 # ------------------------------------------------------------------------------
