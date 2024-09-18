@@ -7,7 +7,7 @@ from analyser.application.file_analysis.programming_language_analysis import (
     guess_language_from_file,
 )
 
-FILE_PATH = "analyser.application.analysis.programming_language_analysis"
+FILE_PATH = "analyser.application.file_analysis.programming_language_analysis"
 
 
 @patch(f"{FILE_PATH}.guess_language_from_file")

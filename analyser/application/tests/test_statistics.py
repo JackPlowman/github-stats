@@ -23,7 +23,9 @@ def test_create_statistics(
     repository.name = repo_name = "github-stats-prototype"
     mock_retrieve_repositories.return_value = [repository]
     mock_clone_repo.return_value = "TestPath"
-    mock_create_repository_statistics.return_value = MagicMock(repository_name="Test1", total_files=10, total_commits=0)
+    mock_create_repository_statistics.return_value = MagicMock(
+        repository_name="Test1", total_files=10, commits=[], total_commits=0
+    )
     # Act
     create_statistics()
     # Assert
@@ -36,14 +38,16 @@ def test_create_statistics(
                 "repository": "Test1",
                 "total_files": 10,
                 "total_commits": 0,
+                "commits": [],
                 "languages": mock_create_repository_statistics.return_value.languages,
             }
         ]
     )
 
 
+@patch(f"{FILE_PATH}.get_commits")
 @patch(f"{FILE_PATH}.git.Repo")
-def test_create_repository_statistics(_mock_repo: MagicMock) -> None:
+def test_create_repository_statistics(_mock_repo: MagicMock, mock_get_commits: MagicMock) -> None:
     # Arrange
     repository_name = "Test1"
     path_to_repo = "TestPath"
@@ -52,3 +56,5 @@ def test_create_repository_statistics(_mock_repo: MagicMock) -> None:
     # Assert
     assert catalogued_repository.repository_name == repository_name
     assert catalogued_repository.total_files == 0
+    assert catalogued_repository.total_commits == 1
+    assert catalogued_repository.commits == mock_get_commits.return_value
