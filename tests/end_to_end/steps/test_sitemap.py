@@ -17,7 +17,7 @@ def step_impl() -> Response:
     Returns:
         Response: The response from the request.
     """
-    response = get(f"{PROJECT_URL}/sitemap-index.xml", timeout=10)
+    response = get(f"{PROJECT_URL}/sitemap.xml", timeout=10)
     assert response.status_code == 200
     return response
 
