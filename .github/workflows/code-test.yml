@@ -151,3 +151,45 @@ jobs:
 
       - name: Validate Schema
         run: just tests::validate-schema
+
+  docker-build-test:
+    name: Docker Build Test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Install Poetry
+        run: pipx install poetry
+
+      - name: Install Python 3.12 with Poetry Cache
+        uses: actions/setup-python@v5
+        with:
+          python-version-file: ".python-version"
+          cache: "poetry"
+
+      - name: Set up Just
+        uses: extractions/setup-just@v2
+
+      - name: Set up Node.js with Cache
+        uses: actions/setup-node@v4
+        with:
+          node-version-file: ".node-version"
+          cache: "npm"
+          cache-dependency-path: "dashboard/package-lock.json"
+
+      - name: Install Poetry Dependencies
+        run: just analyser::install
+
+      - name: Generate GitHub Pages
+        env:
+          REPOSITORY_OWNER: ${{ github.repository_owner }}
+        run: just analyser::run
+
+      - name: Copy generated files to github pages folder
+        run: cp -r analyser/statistics/*.json dashboard/data
+
+      - name: Run Build Test
+        run: just dashboard-docker-build

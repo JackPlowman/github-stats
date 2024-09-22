@@ -44,3 +44,11 @@ updates:
       typescript:
         patterns:
           - "*"
+
+  - package-ecosystem: "docker"
+    directory: "docker/dashboard"
+    commit-message:
+      prefix: "deps(docker)"
+    schedule:
+      interval: "monthly"
+    target-branch: "main"

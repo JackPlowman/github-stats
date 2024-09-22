@@ -31,6 +31,13 @@ jobs:
           python-version-file: ".python-version"
           cache: "poetry"
 
+      - name: Set up Node.js with Cache
+        uses: actions/setup-node@v4
+        with:
+          node-version-file: ".node-version"
+          cache: "npm"
+          cache-dependency-path: "dashboard/package-lock.json"
+
       - name: Set up Just
         uses: extractions/setup-just@v2
 

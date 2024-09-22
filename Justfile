@@ -3,6 +3,21 @@ mod dashboard 'dashboard/dashboard.just'
 mod tests 'tests/tests.just'
 
 # ------------------------------------------------------------------------------
+# Docker
+# ------------------------------------------------------------------------------
+
+dashboard-docker-build:
+    just dashboard::install dashboard::build
+    cp -r dashboard/out docker/dashboard
+    cd docker/dashboard && docker build -t github-stats-dashboard -f Dockerfile .
+
+compose-up:
+    docker compose -f=docker/docker-compose.yml up -d
+
+compose-down:
+    docker compose -f=docker/docker-compose.yml down
+
+# ------------------------------------------------------------------------------
 # Prettier
 # ------------------------------------------------------------------------------
 
