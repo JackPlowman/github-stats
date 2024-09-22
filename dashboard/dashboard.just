@@ -6,9 +6,6 @@
 install:
     npm install
 
-start:
-    npm run start
-
 # Start the development server
 dev:
     npm run dev

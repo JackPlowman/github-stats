@@ -22,8 +22,11 @@ install:
 run:
     poetry run pytest end_to_end --gherkin-terminal-reporter -vv
 
+run-local:
+    PROJECT_URL=http://localhost:3000/github-stats poetry run pytest end_to_end --gherkin-terminal-reporter -vvvv
+
 validate-schema:
-    poetry run check-jsonschema --schemafile repository_statistics_schema.json repository_statistics.json
+    poetry run check-jsonschema --schemafile schema_validation/repository_statistics_schema.json schema_validation/repository_statistics.json
 
 # ------------------------------------------------------------------------------
 # Ruff - # Set up red-knot when it's ready

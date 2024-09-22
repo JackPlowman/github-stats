@@ -7,9 +7,9 @@
   "license": "MIT",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "SITE_URL=http://localhost:3000/github-stats next dev",
     "build": "next build",
-    "start": "next start",
+    "postbuild": "next-sitemap --config next-sitemap.config.mjs",
     "lint": "next lint",
     "test": "jest",
     "test:coverage": "jest --coverage --silent"
@@ -23,6 +23,7 @@
     "clsx": "^2.1.1",
     "lucide-react": "^0.441.0",
     "next": "14.2.11",
+    "next-sitemap": "^4.2.3",
     "react": "^18",
     "react-dom": "^18",
     "recharts": "^2.12.7",

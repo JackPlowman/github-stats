@@ -147,7 +147,7 @@ jobs:
         run: just analyser::run
 
       - name: Copy generated files to github pages folder
-        run: cp -r analyser/statistics/*.json tests
+        run: cp -r analyser/statistics/*.json tests/schema_validation
 
       - name: Validate Schema
         run: just tests::validate-schema

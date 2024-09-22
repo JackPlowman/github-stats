@@ -2,7 +2,7 @@ from defusedxml.ElementTree import fromstring
 from pytest_bdd import scenarios, then, when
 from requests import Response, get
 
-from end_to_end.utils.constants import PROJECT_URL
+from end_to_end.utils.variables import PROJECT_URL
 
 scenarios("../features/sitemap.feature")
 
