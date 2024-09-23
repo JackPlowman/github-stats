@@ -2,12 +2,13 @@ from defusedxml.ElementTree import fromstring
 from pytest_bdd import scenarios, then, when
 from requests import Response, get
 
-from end_to_end.utils.variables import PROJECT_URL
+from end_to_end.utils.variables import PROJECT_URL, docker_translation
 
 scenarios("../features/sitemap.feature")
 
 EXPECTED_SITEMAP_PATH = "sitemap-0.xml"
 EXPECTED_SITEMAP_URL = f"{PROJECT_URL}/{EXPECTED_SITEMAP_PATH}"
+EXPECTED_CONTENT_TYPE = "text/xml"
 
 
 @when("I request the sitemap index", target_fixture="sitemap_index_response")
@@ -29,7 +30,7 @@ def step_impl(sitemap_index_response: Response) -> None:
     Args:
         sitemap_index_response (Response): The response from the request.
     """
-    assert sitemap_index_response.headers["Content-Type"] == "application/xml"
+    assert sitemap_index_response.headers["Content-Type"] == EXPECTED_CONTENT_TYPE
 
 
 @then("the sitemap index should link to the sitemap")
@@ -39,12 +40,12 @@ def step_impl(sitemap_index_response: Response) -> None:
     Args:
         sitemap_index_response (Response): The response from the request.
     """
-    assert sitemap_index_response.headers["Content-Type"] == "application/xml"
+    assert sitemap_index_response.headers["Content-Type"] == EXPECTED_CONTENT_TYPE
     sitemap_index_element = fromstring(sitemap_index_response.content)
     assert sitemap_index_element.tag == "{http://www.sitemaps.org/schemas/sitemap/0.9}sitemapindex"
     sitemap_element = sitemap_index_element.find("{http://www.sitemaps.org/schemas/sitemap/0.9}sitemap")
     loc_element = sitemap_element.find("{http://www.sitemaps.org/schemas/sitemap/0.9}loc").text
-    assert loc_element == EXPECTED_SITEMAP_URL
+    assert loc_element == docker_translation(EXPECTED_SITEMAP_URL)
 
 
 @when("I request the sitemap", target_fixture="sitemap_response")
@@ -66,7 +67,7 @@ def step_impl(sitemap_response: Response) -> None:
     Args:
         sitemap_response (Response): The response from the request.
     """
-    assert sitemap_response.headers["Content-Type"] == "application/xml"
+    assert sitemap_response.headers["Content-Type"] == EXPECTED_CONTENT_TYPE
 
 
 @then("the sitemap should contain the project urls")
@@ -76,7 +77,7 @@ def step_impl(sitemap_response: Response) -> None:
     Args:
         sitemap_response (Response): The response from the request.
     """
-    assert sitemap_response.headers["Content-Type"] == "application/xml"
+    assert sitemap_response.headers["Content-Type"] == EXPECTED_CONTENT_TYPE
     sitemap_element = fromstring(sitemap_response.content)
     assert sitemap_element.tag == "{http://www.sitemaps.org/schemas/sitemap/0.9}urlset"
     assert len(sitemap_element.findall("{http://www.sitemaps.org/schemas/sitemap/0.9}url")) > 0
@@ -93,6 +94,6 @@ def step_impl(sitemap_response: Response) -> None:
     assert sitemap_element.tag == "{http://www.sitemaps.org/schemas/sitemap/0.9}urlset"
     for url_element in sitemap_element.findall("{http://www.sitemaps.org/schemas/sitemap/0.9}url"):
         loc_element = url_element.find("{http://www.sitemaps.org/schemas/sitemap/0.9}loc")
-        assert loc_element.text.startswith(PROJECT_URL)
-        response = get(loc_element.text, timeout=10)
+        assert loc_element.text.startswith(docker_translation(PROJECT_URL))
+        response = get(docker_translation(loc_element.text), timeout=10)
         assert response.status_code == 200

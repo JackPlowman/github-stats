@@ -7,9 +7,11 @@
   "license": "MIT",
   "private": true,
   "scripts": {
-    "dev": "SITE_URL=http://localhost:3000/github-stats next dev",
+    "dev": "NEXT_PUBLIC_SITE_URL=http://localhost:3000/github-stats next dev",
     "build": "next build",
     "postbuild": "next-sitemap --config next-sitemap.config.mjs",
+    "build:local": "NEXT_PUBLIC_SITE_URL=http://localhost:8000 next build",
+    "postbuild:local": "NEXT_PUBLIC_SITE_URL=http://localhost:8000 next-sitemap --config next-sitemap.config.mjs",
     "lint": "next lint",
     "test": "jest",
     "test:coverage": "jest --coverage --silent"

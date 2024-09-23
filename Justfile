@@ -7,15 +7,17 @@ mod tests 'tests/tests.just'
 # ------------------------------------------------------------------------------
 
 dashboard-docker-build:
-    just dashboard::install dashboard::build
-    cp -r dashboard/out docker/dashboard
     cd docker/dashboard && docker build -t github-stats-dashboard -f Dockerfile .
 
+end-to-end-tests-docker-build:
+    cp tests/poetry.lock tests/pyproject.toml docker/end_to_end_tests
+    cd docker/end_to_end_tests && docker build -t end-to-end-tests -f Dockerfile .
+
 compose-up:
-    docker compose -f=docker/docker-compose.yml up -d
+    docker compose -f=docker/docker-compose-local-test.yml up
 
 compose-down:
-    docker compose -f=docker/docker-compose.yml down
+    docker compose -f=docker/docker-compose-local-test.yml down
 
 # ------------------------------------------------------------------------------
 # Prettier

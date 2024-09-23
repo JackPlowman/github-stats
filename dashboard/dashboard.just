@@ -12,7 +12,10 @@ dev:
 
 # Build an optimized production version of the app
 build:
-    npm run build
+    npm run build && npm run postbuild
+
+build-local:
+    npm run build:local && npm run postbuild:local
 
 # Lint typescript code with ESLint
 lint:
