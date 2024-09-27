@@ -13,5 +13,6 @@ services:
     command: poetry run pytest end_to_end --gherkin-terminal-reporter
     environment:
       - PROJECT_URL=http://host.docker.internal:8000
+      - ENVIRONMENT=local
     volumes:
       - ../tests/end_to_end:/end_to_end

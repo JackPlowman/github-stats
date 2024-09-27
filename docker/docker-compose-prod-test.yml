@@ -1,0 +1,10 @@
+services:
+  end_to_end_tests:
+    container_name: end-to-end-tests
+    image: end-to-end-tests
+    command: poetry run pytest end_to_end --gherkin-terminal-reporter
+    environment:
+      - PROJECT_URL=https://jackplowman.github.io/github-stats
+      - ENVIRONMENT=prod
+    volumes:
+      - ../tests/end_to_end:/end_to_end

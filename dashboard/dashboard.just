@@ -15,7 +15,7 @@ build:
     npm run build && npm run postbuild
 
 build-local:
-    npm run build:local && npm run postbuild:local
+    npm run build && npm run postbuild:local
 
 # Lint typescript code with ESLint
 lint:

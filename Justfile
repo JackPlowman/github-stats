@@ -13,11 +13,17 @@ end-to-end-tests-docker-build:
     cp tests/poetry.lock tests/pyproject.toml docker/end_to_end_tests
     cd docker/end_to_end_tests && docker build -t end-to-end-tests -f Dockerfile .
 
-compose-up:
+compose-up-local-test:
     docker compose -f=docker/docker-compose-local-test.yml up
 
-compose-down:
+compose-down-local-test:
     docker compose -f=docker/docker-compose-local-test.yml down
+
+compose-up-prod-test:
+    docker compose -f=docker/docker-compose-prod-test.yml up
+
+compose-down-prod-test:
+    docker compose -f=docker/docker-compose-prod-test.yml down
 
 # ------------------------------------------------------------------------------
 # Prettier
