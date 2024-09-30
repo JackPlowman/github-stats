@@ -21,15 +21,6 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Install Poetry
-        run: pipx install poetry
-
-      - name: Install Python 3.12 with Poetry Cache
-        uses: actions/setup-python@v5
-        with:
-          python-version-file: ".python-version"
-          cache: "poetry"
-
       - name: Set up Node.js with Cache
         uses: actions/setup-node@v4
         with:
@@ -40,16 +31,13 @@ jobs:
       - name: Set up Just
         uses: extractions/setup-just@v2
 
-      - name: Install Poetry Dependencies
-        run: just analyser::install
-
-      - name: Generate GitHub Pages
-        env:
-          REPOSITORY_OWNER: ${{ github.repository_owner }}
-        run: just analyser::run
+      - name: GitHub Stats Analyser
+        uses: JackPlowman/github-stats-analyser@v1.0.1
+        with:
+          repository_owner: ${{ github.repository_owner }}
 
       - name: Copy generated files to github pages folder
-        run: cp -r analyser/statistics/*.json dashboard/data
+        run: cp -r repository_statistics.json dashboard/data
 
       - name: Install Dashboard Dependenciesg
         run: just dashboard::install
