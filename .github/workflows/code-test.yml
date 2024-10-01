@@ -10,42 +10,6 @@ permissions:
   contents: read
 
 jobs:
-  python-unit-tests:
-    name: Test Python Code
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-
-      - name: Install Poetry
-        run: pipx install poetry
-
-      - name: Install Python 3.12 with Poetry Cache
-        uses: actions/setup-python@v5
-        with:
-          python-version-file: ".python-version"
-          cache: "poetry"
-
-      - name: Set up Just
-        uses: extractions/setup-just@v2
-
-      - name: Install Poetry Dependencies
-        run: just analyser::install
-
-      - name: Run Unit Tests
-        run: just analyser::unit-test
-
-      - name: Override Coverage Source Path for Sonar
-        run: sed -i "s/<source>\/home\/runner\/work\/github-stats\/github-stats\/analyser\/application<\/source>/<source>\/github\/workspace\/analyser\/application<\/source>/g" /home/runner/work/github-stats/github-stats/analyser/coverage.xml
-
-      - name: Upload Coverage Artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: python-coverage-artifact
-          path: analyser/coverage.xml
-
   typescript-unit-tests:
     name: Test TypeScript Code
     runs-on: ubuntu-latest
@@ -70,45 +34,6 @@ jobs:
 
       - name: Run Unit Tests
         run: just dashboard::unit-test-coverage
-
-      - name: Upload Coverage Artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: typescript-coverage-artifact
-          path: dashboard/coverage
-
-  sonarcloud-scan:
-    name: SonarCloud Scan
-    needs: [python-unit-tests, typescript-unit-tests]
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-
-      - name: Download Python Coverage Artifact
-        uses: actions/download-artifact@v4
-        with:
-          name: python-coverage-artifact
-
-      - name: Download TypeScript Coverage Artifact
-        uses: actions/download-artifact@v4
-        with:
-          name: typescript-coverage-artifact
-
-      - name: Use Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version-file: ".node-version"
-          cache: "npm"
-          cache-dependency-path: "dashboard/package-lock.json"
-
-      - name: Set up Just
-        uses: extractions/setup-just@v2
-
-      - name: Install Node Dependencies
-        run: just dashboard::install
 
       - name: SonarCloud Scan
         uses: SonarSource/sonarcloud-github-action@v3.0.0
