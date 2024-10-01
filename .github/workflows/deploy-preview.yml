@@ -113,13 +113,13 @@ jobs:
       - name: Install Poetry Dependencies
         run: just analyser::install
 
-      - name: Generate GitHub Pages
-        env:
-          REPOSITORY_OWNER: ${{ github.repository_owner }}
-        run: just analyser::run
+      - name: GitHub Stats Analyser
+        uses: JackPlowman/github-stats-analyser@v1.0.1
+        with:
+          repository_owner: ${{ github.repository_owner }}
 
       - name: Copy generated files to github pages folder
-        run: cp -r analyser/statistics/*.json dashboard/data
+        run: cp -r repository_statistics.json dashboard/data
 
       - name: Build Site
         run: just dashboard::install
