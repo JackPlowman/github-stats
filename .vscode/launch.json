@@ -5,25 +5,5 @@
 
   // To get python interpreter path use `poetry debug info`
   "version": "0.2.0",
-  "configurations": [
-    {
-      "name": "Debug Analyser",
-      "type": "debugpy",
-      "request": "launch",
-      "module": "application",
-      "cwd": "${workspaceFolder}/analyser",
-      "env": {
-        "DEBUG": "true",
-        "REPOSITORY_OWNER": "JackPlowman"
-      },
-      "console": "integratedTerminal",
-      "justMyCode": true
-    },
-    {
-      "command": "./node_modules/.bin/astro dev",
-      "name": "Dashboard Development server",
-      "request": "launch",
-      "type": "node-terminal"
-    }
-  ]
+  "configurations": []
 }

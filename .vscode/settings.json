@@ -1,8 +1,4 @@
 {
-  "python.testing.cwd": "${workspaceFolder}/analyser",
-  "python.testing.unittestEnabled": false,
-  "python.testing.pytestEnabled": true,
-  "python.testing.autoTestDiscoverOnSaveEnabled": true,
   "python.analysis.inlayHints.pytestParameters": true,
   "files.exclude": {
     ".ruff_cache": true,
