@@ -1,4 +1,3 @@
-mod analyser 'analyser/analyser.just'
 mod dashboard 'dashboard/dashboard.just'
 mod tests 'tests/tests.just'
 
@@ -41,13 +40,11 @@ prettier-format:
 
 format:
     just --fmt --unstable
-    just --fmt --unstable --justfile analyser/analyser.just
     just --fmt --unstable --justfile dashboard/dashboard.just
     just --fmt --unstable --justfile tests/tests.just
 
 format-check:
     just --fmt --check --unstable
-    just --fmt --check --unstable --justfile analyser/analyser.just
     just --fmt --check --unstable --justfile dashboard/dashboard.just
     just --fmt --check --unstable --justfile tests/tests.just
 

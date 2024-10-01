@@ -66,12 +66,13 @@
   name: end-to-end-tests
   description: Pull requests that update end to end tests
 # Components
-- color: f200f2
-  name: analyser
-  description: Pull requests that update analyser code
 - color: f27100
   name: dashboard
   description: Pull requests that update dashboard code
 - color: ff0073
   name: git-hooks
   description: Pull requests that update git hooks
+# Legacy Components
+- color: f200f2
+  name: analyser
+  description: Pull requests that update analyser code
