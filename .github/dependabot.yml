@@ -10,18 +10,6 @@ updates:
     target-branch: "main"
 
   - package-ecosystem: "pip"
-    directory: "analyser"
-    commit-message:
-      prefix: "deps(python)"
-    schedule:
-      interval: "monthly"
-    target-branch: "main"
-    groups:
-      python:
-        patterns:
-          - "*"
-
-  - package-ecosystem: "pip"
     directory: "tests"
     commit-message:
       prefix: "deps(python-tests)"
