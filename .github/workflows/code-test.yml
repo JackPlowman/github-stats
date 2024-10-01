@@ -69,16 +69,8 @@ jobs:
           cache: "npm"
           cache-dependency-path: "dashboard/package-lock.json"
 
-      - name: Install Poetry Dependencies
-        run: just analyser::install
-
-      - name: GitHub Stats Analyser
-        uses: JackPlowman/github-stats-analyser@v1.0.1
-        with:
-          repository_owner: ${{ github.repository_owner }}
-
-      - name: Copy generated files to github pages folder
-        run: cp -r repository_statistics.json dashboard/data
+      - name: Copy example file to github pages folder
+        run: cp -r data/repository_statistics.json dashboard/data
 
       - name: Run Build Test
         run: just dashboard-docker-build

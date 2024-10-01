@@ -1,0 +1,19 @@
+[
+  {
+    "repository": "tech-radar",
+    "total_files": 27,
+    "total_commits": 19,
+    "commits": {
+      "Jack Plowman": 19
+    },
+    "languages": {
+      "INI": 1,
+      "Markdown": 2,
+      "CSS+Lasso": 1,
+      "HTML": 1,
+      "JSON": 2,
+      "YAML": 11,
+      "Bash": 3
+    }
+  }
+]
