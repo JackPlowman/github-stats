@@ -25,12 +25,14 @@ compose-down-prod-test:
     docker compose -f=docker/docker-compose-prod-test.yml down
 
 # ------------------------------------------------------------------------------
-# Prettier
+# Prettier - File Formatting
 # ------------------------------------------------------------------------------
 
+# Check for prettier issues
 prettier-check:
     prettier . --check
 
+# Fix prettier issues
 prettier-format:
     prettier . --check --write
 
@@ -38,11 +40,13 @@ prettier-format:
 # Justfile
 # ------------------------------------------------------------------------------
 
+# Format the Just code
 format:
     just --fmt --unstable
     just --fmt --unstable --justfile dashboard/dashboard.just
     just --fmt --unstable --justfile tests/tests.just
 
+# Check for Just format issues
 format-check:
     just --fmt --check --unstable
     just --fmt --check --unstable --justfile dashboard/dashboard.just
