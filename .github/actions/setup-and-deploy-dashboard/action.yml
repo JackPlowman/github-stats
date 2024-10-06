@@ -15,7 +15,7 @@ runs:
       uses: extractions/setup-just@v2
 
     - name: GitHub Stats Analyser
-      uses: JackPlowman/github-stats-analyser@v1.0.1
+      uses: JackPlowman/github-stats-analyser@v1.1.0
       with:
         repository_owner: ${{ github.repository_owner }}
 
