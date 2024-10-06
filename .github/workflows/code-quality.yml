@@ -93,7 +93,7 @@ jobs:
       - name: Install Python 3.12 with Poetry Cache
         uses: actions/setup-python@v5
         with:
-          python-version-file: ".python-version"
+          python-version-file: "tests/pyproject.toml"
           cache: "poetry"
 
       - name: Set up Just
