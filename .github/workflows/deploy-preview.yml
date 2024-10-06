@@ -65,20 +65,8 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Install Poetry
-        run: pipx install poetry
-
-      - name: Install Python 3.12 with Poetry Cache
-        uses: actions/setup-python@v5
-        with:
-          python-version-file: "tests/pyproject.toml"
-          cache: "poetry"
-
-      - name: Set up Just
-        uses: extractions/setup-just@v2
-
-      - name: Install Poetry Dependencies
-        run: just tests::install
+      - name: Setup Test Dependencies
+        uses: ./.github/actions/setup-test-dependencies
 
       - name: Run tests
         run: just tests::run
@@ -97,9 +85,6 @@ jobs:
 
       - name: Checkout main
         run: git checkout main
-
-      - name: Install Poetry
-        run: pipx install poetry
 
       - name: GitHub Stats Analyser
         uses: JackPlowman/github-stats-analyser@v1.0.1
