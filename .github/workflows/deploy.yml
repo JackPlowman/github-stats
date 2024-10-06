@@ -24,6 +24,8 @@ jobs:
 
       - name: Setup and Deploy Dashboard
         uses: ./.github/actions/setup-and-deploy-dashboard
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
 
   deploy:
     needs: build
