@@ -8,6 +8,10 @@ updates:
     schedule:
       interval: "daily"
     target-branch: "main"
+    groups:
+      github-actions:
+        patterns:
+          - "*"
 
   - package-ecosystem: "pip"
     directory: "tests"
@@ -40,3 +44,7 @@ updates:
     schedule:
       interval: "monthly"
     target-branch: "main"
+    groups:
+      docker:
+        patterns:
+          - "*"
