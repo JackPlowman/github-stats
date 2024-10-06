@@ -5,24 +5,17 @@ mod tests 'tests/tests.just'
 # Docker
 # ------------------------------------------------------------------------------
 
+# Build the dashboard docker image
 dashboard-docker-build:
     cd docker/dashboard && docker build -t github-stats-dashboard -f Dockerfile .
 
-end-to-end-tests-docker-build:
-    cp tests/poetry.lock tests/pyproject.toml docker/end_to_end_tests
-    cd docker/end_to_end_tests && docker build -t end-to-end-tests -f Dockerfile .
+# Run the dashboard docker image using docker compose
+dashboard-up:
+    docker compose -f=docker/docker-compose.yml up -d
 
-compose-up-local-test:
-    docker compose -f=docker/docker-compose-local-test.yml up
-
-compose-down-local-test:
-    docker compose -f=docker/docker-compose-local-test.yml down
-
-compose-up-prod-test:
-    docker compose -f=docker/docker-compose-prod-test.yml up
-
-compose-down-prod-test:
-    docker compose -f=docker/docker-compose-prod-test.yml down
+# Stop the dashboard docker image
+dashboard-down:
+    docker compose -f=docker/docker-compose.yml down
 
 # ------------------------------------------------------------------------------
 # Prettier - File Formatting

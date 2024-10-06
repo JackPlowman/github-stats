@@ -4,6 +4,22 @@ description: "Installs dependencies for the project"
 runs:
   using: "composite"
   steps:
+    - name: Set up Just
+      uses: extractions/setup-just@v2
+
+    - name: Set up Chrome
+      uses: browser-actions/setup-chrome@v1.7.2
+      with:
+        chrome-version: 129
+        install-chromedriver: true
+        install-dependencies: true
+
+    - run: chrome --version
+      shell: bash
+
+    - run: chromedriver --version
+      shell: bash
+
     - name: Install Poetry
       shell: bash
       run: pipx install poetry
@@ -13,9 +29,6 @@ runs:
       with:
         python-version-file: "tests/pyproject.toml"
         cache: "poetry"
-
-    - name: Set up Just
-      uses: extractions/setup-just@v2
 
     - name: Install Poetry Dependencies
       shell: bash

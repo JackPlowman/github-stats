@@ -12,7 +12,7 @@ permissions:
 
 jobs:
   build-and-deploy:
-    name: Build
+    name: Build and Deploy GitHub Pages
     runs-on: ubuntu-latest
 
     steps:
@@ -40,6 +40,8 @@ jobs:
 
       - name: Run tests
         run: just tests::run
+        env:
+          HEADLESS: true
 
   revert-to-main:
     name: Build Main
@@ -52,6 +54,11 @@ jobs:
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
+
+      - name: Delete Artifact
+        uses: geekyeggo/delete-artifact@v5
+        with:
+          name: github-pages
 
       - name: Checkout main
         run: git checkout main

@@ -10,6 +10,7 @@ requests = "^2.32.3"
 pytest = "^8.3.3"
 pytest-bdd = "^7.2.0"
 defusedxml = "^0.7.1"
+selenium = "^4.25.0"
 
 [tool.poetry.group.dev.dependencies]
 ruff = "^0.6.5"
@@ -35,6 +36,7 @@ ignore = [
   "T201",    # Ignore print statement (until we have a logger)
   "S101",    # Ignore asserts
   "F811",    # Ignore redefinition of function
+  "G004",    # Ignore logging format string
 ]
 
 # Allow autofix for all enabled rules (when `--fix`) is provided.

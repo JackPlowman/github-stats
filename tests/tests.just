@@ -8,11 +8,14 @@ install:
 
 # Run End-to-End Tests
 run:
+    PROJECT_URL=https://jackplowman.github.io/github-stats \
     poetry run pytest end_to_end --gherkin-terminal-reporter -vv
 
 # Run End-to-End Tests with dashboard running locally
 run-local:
-    PROJECT_URL=http://localhost:3000/github-stats poetry run pytest end_to_end --gherkin-terminal-reporter -vvvv
+    PROJECT_URL=http://localhost:8000 \
+    ENVIRONMENT=local \
+    poetry run pytest end_to_end --gherkin-terminal-reporter -vvvv
 
 # Remove all compiled Python files
 clean:
@@ -45,7 +48,7 @@ ruff-lint:
 
 # Fix Ruff lint issues
 ruff-lint-fix:
-    poetry run ruff check end_to_end --fix
+    poetry run ruff check end_to_end --fix --unsafe-fixes
 
 # Check for Ruff format issues
 ruff-format:

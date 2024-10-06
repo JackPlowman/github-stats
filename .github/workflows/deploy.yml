@@ -27,6 +27,7 @@ jobs:
 
   deploy:
     needs: build
+    name: Deploy to GitHub Pages
     runs-on: ubuntu-latest
     environment:
       name: github-pages
@@ -52,3 +53,5 @@ jobs:
 
       - name: Run tests
         run: just tests::run
+        env:
+          HEADLESS: true

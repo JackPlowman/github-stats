@@ -6,5 +6,5 @@ FROM nginx:1.27.1
 COPY nginx.conf /etc/nginx/conf.d/default.conf
 
 RUN mkdir -p /var/www/out
-
+RUN chown -R nginx:nginx /var/www/out
 
