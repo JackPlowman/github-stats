@@ -34,7 +34,9 @@ updates:
           - "*"
 
   - package-ecosystem: "docker"
-    directory: "docker/dashboard"
+    directories:
+      - "docker/dashboard"
+      - "docker/end_to_end_tests"
     commit-message:
       prefix: "deps(docker)"
     schedule:
