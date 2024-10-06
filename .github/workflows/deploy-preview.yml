@@ -21,38 +21,8 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Set up Node.js with Cache
-        uses: actions/setup-node@v4
-        with:
-          node-version-file: ".node-version"
-          cache: "npm"
-          cache-dependency-path: "dashboard/package-lock.json"
-
-      - name: Set up Just
-        uses: extractions/setup-just@v2
-
-      - name: GitHub Stats Analyser
-        uses: JackPlowman/github-stats-analyser@v1.0.1
-        with:
-          repository_owner: ${{ github.repository_owner }}
-
-      - name: Copy generated files to github pages folder
-        run: cp -r repository_statistics.json dashboard/data
-
-      - name: Install Dashboard Dependenciesg
-        run: just dashboard::install
-
-      - name: Build Site
-        run: just dashboard::build
-
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: dashboard/out
-
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
+      - name: Setup and Deploy Dashboard
+        uses: ./.github/actions/setup-and-deploy-dashboard
 
   test-deployment:
     name: Test GitHub Pages Deployment
@@ -86,25 +56,5 @@ jobs:
       - name: Checkout main
         run: git checkout main
 
-      - name: GitHub Stats Analyser
-        uses: JackPlowman/github-stats-analyser@v1.0.1
-        with:
-          repository_owner: ${{ github.repository_owner }}
-
-      - name: Copy generated files to github pages folder
-        run: cp -r repository_statistics.json dashboard/data
-
-      - name: Build Site
-        run: just dashboard::install
-
-      - name: Build Site
-        run: just dashboard::build
-
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: dashboard/out
-
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
+      - name: Setup and Deploy Dashboard
+        uses: ./.github/actions/setup-and-deploy-dashboard
