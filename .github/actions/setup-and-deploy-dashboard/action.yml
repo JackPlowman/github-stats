@@ -20,7 +20,7 @@ runs:
       uses: extractions/setup-just@v2
 
     - name: GitHub Stats Analyser
-      uses: JackPlowman/github-stats-analyser@v1.1.0
+      uses: JackPlowman/github-stats-analyser@v1.2.0
       with:
         GITHUB_TOKEN: ${{ inputs.token }}
         REPOSITORY_OWNER: ${{ github.repository_owner }}
