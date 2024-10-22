@@ -10,7 +10,7 @@ runs:
   using: "composite"
   steps:
     - name: Set up Node.js with Cache
-      uses: actions/setup-node@v4
+      uses: actions/setup-node@v4.0.4
       with:
         node-version-file: ".node-version"
         cache: "npm"
@@ -38,10 +38,10 @@ runs:
       run: just dashboard::build
 
     - name: Upload artifact
-      uses: actions/upload-pages-artifact@v3
+      uses: actions/upload-pages-artifact@v3.0.1
       with:
         path: dashboard/out
 
     - name: Deploy to GitHub Pages
       id: deployment
-      uses: actions/deploy-pages@v4
+      uses: actions/deploy-pages@v4.0.5
