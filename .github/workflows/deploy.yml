@@ -82,7 +82,7 @@ jobs:
           cache-dependency-path: "dashboard/package-lock.json"
 
       - name: Install Link Checker
-        run: npx install linkinator
+        run: npm install -g linkinator
 
       - name: Run Link Tests
         run: linkinator ${{ env.GITHUB_PAGES_URL }}" --recurse
