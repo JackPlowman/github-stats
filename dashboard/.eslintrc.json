@@ -1,6 +1,10 @@
 {
-  "extends": ["eslint:recommended", "next","next/core-web-vitals",
-    "next/typescript"],
+  "extends": [
+    "eslint:recommended",
+    "next",
+    "next/core-web-vitals",
+    "next/typescript"
+  ],
   "plugins": ["react-compiler"],
   "rules": {
     "@typescript-eslint/no-unused-vars": "off",
