@@ -82,4 +82,4 @@ jobs:
         run: npm install -g linkinator
 
       - name: Run Link Tests
-        run: linkinator ${{ steps.deployment.outputs.page_url }} --recurse
+        run: linkinator https://jackplowman.github.io/github-stats --recurse
