@@ -1,7 +1,9 @@
 {
   "extends": ["eslint:recommended", "next"],
+  "plugins": ["react-compiler"],
   "rules": {
     "@typescript-eslint/no-unused-vars": "off",
-    "no-unused-vars": "off"
+    "no-unused-vars": "off",
+    "react-compiler/react-compiler": "error"
   }
 }
