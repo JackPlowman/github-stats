@@ -1,4 +1,4 @@
-name: "Code Quality"
+name: "Code Checks"
 
 on:
   push:
@@ -10,6 +10,7 @@ permissions:
   contents: read
   packages: read
   statuses: write
+  security-events: write
 
 jobs:
   check-code-quality:
@@ -128,3 +129,76 @@ jobs:
 
       - name: Check Justfile Format
         run: just format-check
+
+  run-codeql-analysis:
+    name: CodeQL Analysis
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        language: [python, javascript]
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4.2.2
+      - name: Initialize CodeQL
+        uses: github/codeql-action/init@v3.27.3
+        with:
+          languages: ${{ matrix.language }}
+          queries: security-and-quality
+      - name: Perform CodeQL Analysis
+        uses: github/codeql-action/analyze@v3.27.3
+
+  typescript-unit-tests:
+    name: Test TypeScript Code
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4.2.2
+        with:
+          fetch-depth: 0
+
+      - name: Use Node.js
+        uses: actions/setup-node@v4.0.4
+        with:
+          node-version-file: ".node-version"
+          cache: "npm"
+          cache-dependency-path: "dashboard/package-lock.json"
+
+      - name: Set up Just
+        uses: extractions/setup-just@v2
+
+      - name: Install Node Dependencies
+        run: just dashboard::install
+
+      - name: Run Unit Tests
+        run: just dashboard::unit-test-coverage
+
+      - name: SonarCloud Scan
+        uses: SonarSource/sonarcloud-github-action@v3.1.0
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+
+  docker-build-test:
+    name: Docker Build Test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4.2.2
+        with:
+          fetch-depth: 0
+
+      - name: Set up Just
+        uses: extractions/setup-just@v2
+
+      - name: Set up Node.js with Cache
+        uses: actions/setup-node@v4.0.4
+        with:
+          node-version-file: ".node-version"
+          cache: "npm"
+          cache-dependency-path: "dashboard/package-lock.json"
+
+      - name: Copy example file to github pages folder
+        run: cp -r data/repository_statistics.json dashboard/data
+
+      - name: Run Build Test
+        run: just dashboard-docker-build
