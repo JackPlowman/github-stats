@@ -10,7 +10,7 @@ runs:
     - name: Set up Chrome
       uses: browser-actions/setup-chrome@v1.7.2
       with:
-        chrome-version: 129
+        chrome-version: 131
         install-chromedriver: true
         install-dependencies: true
 
