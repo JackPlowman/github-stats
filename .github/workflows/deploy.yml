@@ -41,9 +41,6 @@ jobs:
         id: deployment
         uses: actions/deploy-pages@v4.0.5
 
-      - name: Set Page URL
-        run: echo "GITHUB_PAGES_URL=${{ steps.deployment.outputs.page_url }}" >> $GITHUB_ENV
-
   ui-tests:
     name: UI Tests
     runs-on: ubuntu-latest
@@ -85,4 +82,4 @@ jobs:
         run: npm install -g linkinator
 
       - name: Run Link Tests
-        run: linkinator ${{ env.GITHUB_PAGES_URL }} --recurse
+        run: linkinator ${{ steps.deployment.outputs.page_url }} --recurse
