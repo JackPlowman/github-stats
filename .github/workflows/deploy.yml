@@ -79,6 +79,7 @@ jobs:
         with:
           node-version-file: ".node-version"
           cache: "npm"
+          cache-dependency-path: "dashboard/package-lock.json"
 
       - name: Install Link Checker
         run: npx install linkinator
