@@ -6,7 +6,7 @@ import Navbar from "@/components/NavBar";
 import "../globals.css";
 
 export const metadata: Metadata = {
-  title: "GitHub Stats Dashboard2",
+  title: "GitHub Stats Dashboard",
   description: "Dashboard to Display GitHub Statistics",
 };
 
