@@ -1,0 +1,17 @@
+{
+  "recommendations": [
+    "bradlc.vscode-tailwindcss",
+    "arahata.linter-actionlint",
+    "htmlhint.vscode-htmlhint",
+    "oderwat.indent-rainbow",
+    "orta.vscode-jest",
+    "chinchiheather.vscode-margin-colours",
+    "techer.open-in-browser",
+    "esbenp.prettier-vscode",
+    "yoavbls.pretty-ts-errors",
+    "stivo.tailwind-fold",
+    "ms-python.vscode-pylance",
+    "ms-python.python",
+    "charliermarsh.ruff"
+  ]
+}
