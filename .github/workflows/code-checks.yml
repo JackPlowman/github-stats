@@ -179,6 +179,8 @@ jobs:
   run-codeql-analysis:
     name: CodeQL Analysis
     runs-on: ubuntu-latest
+    permissions:
+      security-events: write
     strategy:
       matrix:
         language: [python, javascript]
