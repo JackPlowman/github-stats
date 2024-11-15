@@ -76,3 +76,4 @@ jobs:
         with:
           paths: https://jackplowman.github.io/github-stats
           recurse: true
+          timeout: 5
