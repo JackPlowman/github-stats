@@ -77,4 +77,3 @@ jobs:
           paths: https://jackplowman.github.io/github-stats
           recurse: true
           timeout: 5000
-          linksToSkip: "https://github.com/"
