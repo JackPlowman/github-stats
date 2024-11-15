@@ -21,6 +21,10 @@ build-local:
 lint:
     npm run lint
 
+# Lint typescript code with ESLint and generate a SARIF file
+eslint-with-sarif:
+    npx eslint . --config eslint.config.js --format @microsoft/eslint-formatter-sarif --output-file eslint-results.sarif
+
 # Run unit tests
 unit-test:
     npm run test

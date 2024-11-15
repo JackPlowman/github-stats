@@ -79,6 +79,40 @@ jobs:
       - name: Run ESLint
         run: just dashboard::lint
 
+  upload-eslint-analysis-results:
+    name: Upload ESLint Analysis Results
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4.2.2
+        with:
+          fetch-depth: 0
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version-file: ".node-version"
+          cache: "npm"
+          cache-dependency-path: "dashboard/package-lock.json"
+
+      - name: Set up Just
+        uses: extractions/setup-just@v2
+
+      - name: Install Node Dependencies
+        run: just dashboard::install
+
+      - name: Run ESLint
+        env:
+          SARIF_ESLINT_IGNORE_SUPPRESSED: "true"
+        run: just dashboard::eslint-with-sarif
+        continue-on-error: true
+
+      - name: Upload analysis results to GitHub
+        uses: github/codeql-action/upload-sarif@v3.27.4
+        with:
+          sarif_file: dashboard/eslint-results.sarif
+          wait-for-processing: true
+
   check-tests-code-format-and-quality:
     name: Check Tests Code Format and Quality
     runs-on: ubuntu-latest
