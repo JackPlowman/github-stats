@@ -1,5 +1,7 @@
-import { CommitsPieChart } from "@/components/PieChart";
 import Link from "next/link";
+
+import { CommitsPieChart } from "@/components/PieChart";
+
 import repositories from "../../../../data/repository_statistics.json";
 
 interface Repository {
@@ -35,9 +37,42 @@ export default function RepositoryPage({
           chartData={{ user: "Jack", total: repository.total_commits }}
         />
         <ul>
-          <li><Link href="#" style={{ color: "#0070f3", textDecoration: "underline", fontWeight: "bold" }}>Link 1</Link></li>
-          <li><Link href="#" style={{ color: "#0070f3", textDecoration: "underline", fontWeight: "bold" }}>Link 2</Link></li>
-          <li><Link href="#" style={{ color: "#0070f3", textDecoration: "underline", fontWeight: "bold" }}>Link 3</Link></li>
+          <li>
+            <Link
+              href="#"
+              style={{
+                color: "#0070f3",
+                textDecoration: "underline",
+                fontWeight: "bold",
+              }}
+            >
+              Link 1
+            </Link>
+          </li>
+          <li>
+            <Link
+              href="#"
+              style={{
+                color: "#0070f3",
+                textDecoration: "underline",
+                fontWeight: "bold",
+              }}
+            >
+              Link 2
+            </Link>
+          </li>
+          <li>
+            <Link
+              href="#"
+              style={{
+                color: "#0070f3",
+                textDecoration: "underline",
+                fontWeight: "bold",
+              }}
+            >
+              Link 3
+            </Link>
+          </li>
         </ul>
       </div>
     </div>
