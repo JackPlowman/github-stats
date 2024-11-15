@@ -14,11 +14,12 @@ export async function generateStaticParams() {
   }));
 }
 
-export default function RepositoryPage({
-  params,
-}: Readonly<{
-  params: { name: string };
-}>) {
+export default async function RepositoryPage(
+  props: Readonly<{
+    params: { name: string };
+  }>
+) {
+  const params = await props.params;
   const { name } = params;
   const repository = repositories.find(
     (repository: Repository) => repository.repository === name,
