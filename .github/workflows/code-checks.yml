@@ -242,8 +242,8 @@ jobs:
       - name: Run Build Test
         run: just dashboard-docker-build
 
-  analysis:
-    name: Scorecard analysis
+  run-scorecard-analysis:
+    name: Scorecard Analysis
     runs-on: ubuntu-latest
     permissions:
       security-events: write
