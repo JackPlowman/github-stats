@@ -10,7 +10,6 @@ permissions:
   contents: read
   packages: read
   statuses: write
-  security-events: write
 
 jobs:
   check-code-quality:
@@ -72,6 +71,8 @@ jobs:
   upload-eslint-analysis-results:
     name: Upload ESLint Analysis Results
     runs-on: ubuntu-latest
+    permissions:
+      security-events: write
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4.2.2
@@ -118,6 +119,8 @@ jobs:
   upload-ruff-analysis-results:
     name: Upload Ruff Analysis Results
     runs-on: ubuntu-latest
+    permissions:
+      security-events: write
     steps:
       - name: Checkout
         uses: actions/checkout@v4.2.2
@@ -238,3 +241,35 @@ jobs:
 
       - name: Run Build Test
         run: just dashboard-docker-build
+
+  analysis:
+    name: Scorecard analysis
+    runs-on: ubuntu-latest
+    permissions:
+      security-events: write
+      id-token: write
+
+    steps:
+      - name: "Checkout code"
+        uses: actions/checkout@v4.2.2
+        with:
+          persist-credentials: false
+
+      - name: "Run analysis"
+        uses: ossf/scorecard-action@v2.4.0
+        with:
+          results_file: results.sarif
+          results_format: sarif
+          publish_results: true
+
+      - name: "Upload artifact"
+        uses: actions/upload-artifact@v4.4.3
+        with:
+          name: SARIF file
+          path: results.sarif
+          retention-days: 5
+
+      - name: "Upload to code-scanning"
+        uses: github/codeql-action/upload-sarif@v3.27.4
+        with:
+          sarif_file: results.sarif
