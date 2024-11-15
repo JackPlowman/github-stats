@@ -1,5 +1,5 @@
-name: "Setup Dependencies"
-description: "Installs dependencies for the project"
+name: "Setup and Deploy Dashboard"
+description: "Runs the dashboard build and deploys it to GitHub Pages"
 
 inputs:
   token:
@@ -9,15 +9,8 @@ inputs:
 runs:
   using: "composite"
   steps:
-    - name: Set up Node.js with Cache
-      uses: actions/setup-node@v4.0.4
-      with:
-        node-version-file: ".node-version"
-        cache: "npm"
-        cache-dependency-path: "dashboard/package-lock.json"
-
-    - name: Set up Just
-      uses: extractions/setup-just@v2
+    - name: Setup Dashboard Dependencies
+      uses: ./.github/actions/setup-dashboard-dependencies
 
     - name: GitHub Stats Analyser
       uses: JackPlowman/github-stats-analyser@v1.2.0
@@ -28,10 +21,6 @@ runs:
     - name: Copy generated files to github pages folder
       shell: bash
       run: cp -r repository_statistics.json dashboard/data
-
-    - name: Install Dashboard Dependencies
-      shell: bash
-      run: just dashboard::install
 
     - name: Build Site
       shell: bash

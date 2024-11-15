@@ -60,18 +60,8 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Set up Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version-file: ".node-version"
-          cache: "npm"
-          cache-dependency-path: "dashboard/package-lock.json"
-
-      - name: Set up Just
-        uses: extractions/setup-just@v2
-
-      - name: Install Node Dependencies
-        run: just dashboard::install
+      - name: Setup Dashboard Dependencies
+        uses: ./.github/actions/setup-dashboard-dependencies
 
       - name: Run Prettier
         run: just dashboard::prettier-check
@@ -88,18 +78,8 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Set up Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version-file: ".node-version"
-          cache: "npm"
-          cache-dependency-path: "dashboard/package-lock.json"
-
-      - name: Set up Just
-        uses: extractions/setup-just@v2
-
-      - name: Install Node Dependencies
-        run: just dashboard::install
+      - name: Setup Dashboard Dependencies
+        uses: ./.github/actions/setup-dashboard-dependencies
 
       - name: Run ESLint
         env:
@@ -250,15 +230,8 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Set up Just
-        uses: extractions/setup-just@v2
-
-      - name: Set up Node.js with Cache
-        uses: actions/setup-node@v4.0.4
-        with:
-          node-version-file: ".node-version"
-          cache: "npm"
-          cache-dependency-path: "dashboard/package-lock.json"
+      - name: Setup Dashboard Dependencies
+        uses: ./.github/actions/setup-dashboard-dependencies
 
       - name: Copy example file to github pages folder
         run: cp -r data/repository_statistics.json dashboard/data

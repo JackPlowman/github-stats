@@ -5,6 +5,7 @@ updates:
     directories:
       - "/"
       - ".github/actions/setup-and-deploy-dashboard"
+      - ".github/actions/setup-dashboard-dependencies"
       - ".github/actions/setup-test-dependencies"
     commit-message:
       prefix: "deps(github-actions)"
