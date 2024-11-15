@@ -117,7 +117,7 @@ jobs:
         run: just tests::ruff-lint
         env:
           RUFF_OUTPUT_FORMAT: "sarif"
-          RUFF_OUTPUT_FILE: "ruff-results.sarif"
+          RUFF_OUTPUT_FILE: "tests/ruff-results.sarif"
         continue-on-error: true
 
       - name: Upload Ruff analysis results to GitHub
