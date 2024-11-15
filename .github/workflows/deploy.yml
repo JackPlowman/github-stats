@@ -78,3 +78,5 @@ jobs:
           recurse: true
           timeout: 5000
           verbosity: DEBUG
+        env:
+          ACTIONS_STEP_DEBUG: true
