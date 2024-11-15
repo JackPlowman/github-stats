@@ -71,15 +71,8 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Set up Node.js with Cache
-        uses: actions/setup-node@v4.0.4
-        with:
-          node-version-file: ".node-version"
-          cache: "npm"
-          cache-dependency-path: "dashboard/package-lock.json"
-
-      - name: Install Link Checker
-        run: npm install -g linkinator
-
       - name: Run Link Tests
-        run: linkinator https://jackplowman.github.io/github-stats --recurse
+        uses: JustinBeckwith/linkinator-action@v1.11.0
+        with:
+          paths: https://jackplowman.github.io/github-stats
+          recurse: true
