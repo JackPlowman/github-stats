@@ -114,7 +114,7 @@ jobs:
         uses: ./.github/actions/setup-test-dependencies
 
       - name: Check Python Code Quality (Ruff)
-        run: just ruff-lint
+        run: just tests::ruff-lint
         env:
           RUFF_OUTPUT_FORMAT: "sarif"
           RUFF_OUTPUT_FILE: "ruff-results.sarif"
