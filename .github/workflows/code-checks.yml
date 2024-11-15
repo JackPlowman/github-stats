@@ -110,8 +110,8 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Setup Python Dependencies
-        uses: ./.github/actions/setup-dependencies
+      - name: Setup Test Dependencies
+        uses: ./.github/actions/setup-test-dependencies
 
       - name: Check Python Code Quality (Ruff)
         run: just ruff-lint
