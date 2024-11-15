@@ -8,13 +8,13 @@ on:
 
 permissions:
   contents: read
-  packages: read
-  statuses: write
 
 jobs:
   check-code-quality:
     name: Check Code Quality
     runs-on: ubuntu-latest
+    permissions:
+      statuses: write
     steps:
       - name: Checkout
         uses: actions/checkout@v4.2.2
@@ -53,6 +53,8 @@ jobs:
   check-typescript-code-format-and-quality:
     name: Check TypeScript Code Format and Quality
     runs-on: ubuntu-latest
+    permissions:
+      statuses: write
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4.2.2
@@ -97,6 +99,8 @@ jobs:
   check-tests-code-format-and-quality:
     name: Check Tests Code Format and Quality
     runs-on: ubuntu-latest
+    permissions:
+      statuses: write
     steps:
       - name: Checkout
         uses: actions/checkout@v4.2.2
@@ -120,6 +124,7 @@ jobs:
     name: Upload Ruff Analysis Results
     runs-on: ubuntu-latest
     permissions:
+      statuses: write
       security-events: write
     steps:
       - name: Checkout
@@ -146,6 +151,8 @@ jobs:
   check-markdown-links:
     name: Check Markdown links
     runs-on: ubuntu-latest
+    permissions:
+      statuses: write
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4.2.2
@@ -164,6 +171,8 @@ jobs:
   check-justfile-format:
     name: Check Justfile Format
     runs-on: ubuntu-latest
+    permissions:
+      statuses: write
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4.2.2
@@ -180,6 +189,7 @@ jobs:
     name: CodeQL Analysis
     runs-on: ubuntu-latest
     permissions:
+      statuses: write
       security-events: write
     strategy:
       matrix:
@@ -198,6 +208,8 @@ jobs:
   typescript-unit-tests:
     name: Test TypeScript Code
     runs-on: ubuntu-latest
+    permissions:
+      statuses: write
     steps:
       - name: Checkout
         uses: actions/checkout@v4.2.2
@@ -229,6 +241,8 @@ jobs:
   docker-build-test:
     name: Docker Build Test
     runs-on: ubuntu-latest
+    permissions:
+      statuses: write
     steps:
       - name: Checkout
         uses: actions/checkout@v4.2.2
@@ -248,9 +262,9 @@ jobs:
     name: Scorecard Analysis
     runs-on: ubuntu-latest
     permissions:
+      statuses: write
       security-events: write
       id-token: write
-
     steps:
       - name: "Checkout code"
         uses: actions/checkout@v4.2.2
