@@ -1,7 +1,7 @@
 "use client";
 
 import * as React from "react";
-import { Label, Pie, PieChart } from "recharts";
+import { Label, Pie, PieChart, Cell } from "recharts";
 
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import {
@@ -12,11 +12,6 @@ import {
 } from "@/components/ui/chart";
 
 export const description = "A donut chart with text";
-
-const chartBuildData = [
-  { user: "user", total: 275, fill: "var(--color-chrome)" },
-  { user: "other", total: 200, fill: "var(--color-safari)" },
-];
 
 const chartConfig = {
   user: {
@@ -31,18 +26,19 @@ const chartConfig = {
 export interface Commits {
   user: string;
   total: number;
+  fill: string;
 }
 
-export function CommitsPieChart({ chartData }: { chartData: Commits }) {
+export function CommitsPieChart({ chartData }: Readonly<{ chartData: Commits[] }>) {
   return (
-    <Card className="flex flex-col">
+    <Card className="flex flex-col bg-transparent text-foreground">
       <CardHeader className="items-center pb-0">
         <CardTitle>Total Commits</CardTitle>
       </CardHeader>
       <CardContent className="flex-1 pb-0">
         <ChartContainer
           config={chartConfig}
-          className="mx-auto aspect-square max-h-[250px]"
+          className="mx-auto aspect-square max-h-[250px] bg-transparent"
         >
           <PieChart>
             <ChartTooltip
@@ -50,12 +46,15 @@ export function CommitsPieChart({ chartData }: { chartData: Commits }) {
               content={<ChartTooltipContent hideLabel />}
             />
             <Pie
-              data={chartBuildData}
+              data={chartData}
               dataKey="total"
               nameKey="user"
               innerRadius={60}
               strokeWidth={5}
             >
+              {chartData.map((entry, index) => (
+                <Cell key={entry.user} fill={entry.fill} />
+              ))}
               <Label
                 content={({ viewBox }) => {
                   if (viewBox && "cx" in viewBox && "cy" in viewBox) {
@@ -70,13 +69,15 @@ export function CommitsPieChart({ chartData }: { chartData: Commits }) {
                           x={viewBox.cx}
                           y={viewBox.cy}
                           className="fill-foreground text-3xl font-bold"
+                          style={{ fill: "var(--foreground)" }}
                         >
-                          {chartData.total}
+                          {chartData.reduce((acc, data) => acc + data.total, 0)}
                         </tspan>
                         <tspan
                           x={viewBox.cx}
-                          y={(viewBox.cy || 0) + 24}
+                          y={(viewBox.cy ?? 0) + 24}
                           className="fill-muted-foreground"
+                          style={{ fill: "var(--foreground)" }}
                         >
                           Commits
                         </tspan>
