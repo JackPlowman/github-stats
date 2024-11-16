@@ -7,7 +7,7 @@ runs:
     - name: Set up Node.js with Cache
       uses: actions/setup-node@v4.1.0
       with:
-        node-version-file: ".node-version"
+        node-version: '22.8.0'
         cache: "npm"
         cache-dependency-path: "dashboard/package-lock.json"
 

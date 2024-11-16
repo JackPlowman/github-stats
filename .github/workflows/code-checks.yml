@@ -198,12 +198,12 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4.2.2
       - name: Initialize CodeQL
-        uses: github/codeql-action/init@v3.27.3
+        uses: github/codeql-action/init@v3.27.4
         with:
           languages: ${{ matrix.language }}
           queries: security-and-quality
       - name: Perform CodeQL Analysis
-        uses: github/codeql-action/analyze@v3.27.3
+        uses: github/codeql-action/analyze@v3.27.4
 
   typescript-unit-tests:
     name: Test TypeScript Code
@@ -219,7 +219,7 @@ jobs:
       - name: Use Node.js
         uses: actions/setup-node@v4.0.4
         with:
-          node-version-file: ".node-version"
+          node-version: '22.8.0'
           cache: "npm"
           cache-dependency-path: "dashboard/package-lock.json"
 

@@ -6,6 +6,10 @@
   "version": "0.0.1",
   "license": "MIT",
   "private": true,
+  "engines": {
+    "npm": ">=10.0.0",
+    "node": ">=22.8.0"
+  },
   "scripts": {
     "dev": "NEXT_PUBLIC_SITE_URL=http://localhost:3000/github-stats next dev",
     "build": "next build",
