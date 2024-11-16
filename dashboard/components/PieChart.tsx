@@ -1,7 +1,7 @@
 "use client";
 
 import * as React from "react";
-import { Label, Pie, PieChart, Cell } from "recharts";
+import { Cell, Label, Pie, PieChart } from "recharts";
 
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import {
@@ -29,7 +29,9 @@ export interface Commits {
   fill: string;
 }
 
-export function CommitsPieChart({ chartData }: Readonly<{ chartData: Commits[] }>) {
+export function CommitsPieChart({
+  chartData,
+}: Readonly<{ chartData: Commits[] }>) {
   return (
     <Card className="flex flex-col bg-transparent text-foreground">
       <CardHeader className="items-center pb-0">
