@@ -5,6 +5,7 @@
 If you discover a security vulnerability within this project, please report it through GitHub's vulnerability reporting feature. This allows us to address the issue promptly and ensure the security of our users.
 
 To report a vulnerability:
+
 1. Go to the [Security tab](https://github.com/JackPlowman/github-stats/security) of the repository.
 2. Click on "Report a vulnerability".
 3. Follow the instructions to provide details about the vulnerability.
@@ -14,6 +15,7 @@ We appreciate your efforts to responsibly disclose your findings and will make e
 ## Supported Versions
 
 We release patches for security vulnerabilities in the following versions:
+
 - Latest release
 
 ## Security Updates
