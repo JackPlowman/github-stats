@@ -10,7 +10,7 @@ To report a vulnerability:
 2. Click on "Report a vulnerability".
 3. Follow the instructions to provide details about the vulnerability.
 
-We appreciate your efforts to responsibly disclose your findings and will make every effort to acknowledge your report promptly.
+We appreciate your efforts to responsibly disclose your findings, and will make every effort to acknowledge your report promptly.
 
 ## Supported Versions
 
