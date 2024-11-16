@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import React from "react";
 
-import Navbar from "@/components/NavBar";
+import Navbar from "@/components/NavigationMenu";
 
 import "../globals.css";
 

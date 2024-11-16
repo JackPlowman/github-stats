@@ -3,7 +3,7 @@ import React from "react";
 
 import { cn } from "@/lib/utils";
 
-export default function MainNav({
+export default function NavigationMenuItems({
   className,
   ...props
 }: Readonly<React.HTMLAttributes<HTMLElement>>) {
