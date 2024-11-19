@@ -5,7 +5,7 @@ export default function manifest(): MetadataRoute.Manifest {
     name: "GitHub Stats Dashboard",
     short_name: "GH Stats Dashboard",
     description: "A dashboard to view Jack's GitHub stats",
-    start_url: "/github-stats",
+    start_url: "/github-stats/",
     display: "standalone",
     background_color: "#fff",
     theme_color: "#fff",
