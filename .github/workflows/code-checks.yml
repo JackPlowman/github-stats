@@ -23,7 +23,7 @@ jobs:
 
       # Lint and Format everything but Python/JavaScript/TypeScript
       - name: Lint Code Base
-        uses: super-linter/super-linter/slim@v7.1.0
+        uses: super-linter/super-linter/slim@v7.2.0
         env:
           VALIDATE_ALL_CODEBASE: true
           DEFAULT_BRANCH: main
