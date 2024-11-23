@@ -19,6 +19,9 @@ updates:
       github-actions:
         patterns:
           - "*"
+        update-types:
+          - "patch"
+          - "minor"
 
   - package-ecosystem: "pip"
     directory: "tests"
