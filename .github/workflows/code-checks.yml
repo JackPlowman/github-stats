@@ -20,7 +20,6 @@ jobs:
         uses: actions/checkout@v4.2.2
         with:
           fetch-depth: 0
-
       # Lint and Format everything but Python/JavaScript/TypeScript
       - name: Lint Code Base
         uses: super-linter/super-linter/slim@v7.2.0
@@ -60,13 +59,10 @@ jobs:
         uses: actions/checkout@v4.2.2
         with:
           fetch-depth: 0
-
       - name: Setup Dashboard Dependencies
         uses: ./.github/actions/setup-dashboard-dependencies
-
       - name: Run Prettier
         run: just dashboard::prettier-check
-
       - name: Run ESLint
         run: just dashboard::lint
 
@@ -80,16 +76,13 @@ jobs:
         uses: actions/checkout@v4.2.2
         with:
           fetch-depth: 0
-
       - name: Setup Dashboard Dependencies
         uses: ./.github/actions/setup-dashboard-dependencies
-
       - name: Run ESLint
         env:
           SARIF_ESLINT_IGNORE_SUPPRESSED: "true"
         run: just dashboard::eslint-with-sarif
         continue-on-error: true
-
       - name: Upload analysis results to GitHub
         uses: github/codeql-action/upload-sarif@v3.27.4
         with:
@@ -106,15 +99,12 @@ jobs:
         uses: actions/checkout@v4.2.2
         with:
           fetch-depth: 0
-
       - name: Setup Test Dependencies
         uses: ./.github/actions/setup-test-dependencies
-
       - name: Check Python Code Quality (Ruff)
         run: just tests::ruff-lint
         env:
           RUFF_OUTPUT_FORMAT: "github"
-
       - name: Check Python Code Format (Ruff)
         run: just tests::ruff-format
         env:
@@ -131,17 +121,14 @@ jobs:
         uses: actions/checkout@v4.2.2
         with:
           fetch-depth: 0
-
       - name: Setup Test Dependencies
         uses: ./.github/actions/setup-test-dependencies
-
       - name: Check Python Code Quality (Ruff)
         run: just tests::ruff-lint
         env:
           RUFF_OUTPUT_FORMAT: "sarif"
           RUFF_OUTPUT_FILE: "ruff-results.sarif"
         continue-on-error: true
-
       - name: Upload Ruff analysis results to GitHub
         uses: github/codeql-action/upload-sarif@v3.27.4
         with:
@@ -158,7 +145,6 @@ jobs:
         uses: actions/checkout@v4.2.2
         with:
           fetch-depth: 0
-
       - name: Check Markdown links
         uses: UmbrellaDocs/action-linkspector@v1.2.4
         with:
@@ -178,10 +164,8 @@ jobs:
         uses: actions/checkout@v4.2.2
         with:
           fetch-depth: 0
-
       - name: Set up Just
         uses: extractions/setup-just@v2
-
       - name: Check Justfile Format
         run: just format-check
 
@@ -215,23 +199,18 @@ jobs:
         uses: actions/checkout@v4.2.2
         with:
           fetch-depth: 0
-
       - name: Use Node.js
         uses: actions/setup-node@v4.1.0
         with:
           node-version: "22.8.0"
           cache: "npm"
           cache-dependency-path: "dashboard/package-lock.json"
-
       - name: Set up Just
         uses: extractions/setup-just@v2
-
       - name: Install Node Dependencies
         run: just dashboard::install
-
       - name: Run Unit Tests
         run: just dashboard::unit-test-coverage
-
       - name: SonarCloud Scan
         uses: SonarSource/sonarcloud-github-action@v3.1.0
         env:
@@ -248,13 +227,10 @@ jobs:
         uses: actions/checkout@v4.2.2
         with:
           fetch-depth: 0
-
       - name: Setup Dashboard Dependencies
         uses: ./.github/actions/setup-dashboard-dependencies
-
       - name: Copy example file to github pages folder
         run: cp -r data/repository_statistics.json dashboard/data
-
       - name: Run Build Test
         run: just dashboard-docker-build
 
@@ -270,16 +246,14 @@ jobs:
         uses: actions/checkout@v4.2.2
         with:
           persist-credentials: false
-
       - name: "Run analysis"
         uses: ossf/scorecard-action@v2.4.0
         with:
           results_file: results.sarif
           results_format: sarif
           publish_results: true
-
       - name: "Upload to code-scanning"
-        uses: github/codeql-action/upload-sarif@v3.27.4
+        uses: github/codeql-action/upload-sarif@v3.27.5
         with:
           sarif_file: results.sarif
 
@@ -293,7 +267,6 @@ jobs:
         uses: actions/checkout@v4.2.2
         with:
           fetch-depth: 0
-
       - name: "Run Code Limit"
         uses: getcodelimit/codelimit-action@8ee70f8d3d5b984130e46fb8ccbe229f5e1d68d0
         with:
