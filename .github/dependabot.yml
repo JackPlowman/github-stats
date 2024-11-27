@@ -52,6 +52,9 @@ updates:
       typescript:
         patterns:
           - "*"
+        update-types:
+          - "patch"
+          - "minor"
 
   - package-ecosystem: "docker"
     directory: "docker/dashboard"
@@ -67,3 +70,6 @@ updates:
       docker:
         patterns:
           - "*"
+        update-types:
+          - "patch"
+          - "minor"
