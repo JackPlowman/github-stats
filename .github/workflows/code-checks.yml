@@ -234,31 +234,8 @@ jobs:
       - name: Run Build Test
         run: just dashboard-docker-build
 
-  run-scorecard-analysis:
-    name: Scorecard Analysis
-    runs-on: ubuntu-latest
-    permissions:
-      statuses: write
-      security-events: write
-      id-token: write
-    steps:
-      - name: "Checkout code"
-        uses: actions/checkout@v4.2.2
-        with:
-          persist-credentials: false
-      - name: "Run analysis"
-        uses: ossf/scorecard-action@v2.4.0
-        with:
-          results_file: results.sarif
-          results_format: sarif
-          publish_results: true
-      - name: "Upload to code-scanning"
-        uses: github/codeql-action/upload-sarif@v3.27.5
-        with:
-          sarif_file: results.sarif
-
   run-code-limit:
-    name: Run Code Limit
+    name: Run CodeLimit
     runs-on: ubuntu-latest
     permissions:
       contents: write
@@ -268,5 +245,5 @@ jobs:
         uses: actions/checkout@v4.2.2
         with:
           fetch-depth: 0
-      - name: "Run Code Limit"
+      - name: "Run CodeLimit"
         uses: getcodelimit/codelimit-action@v1
