@@ -1,5 +1,5 @@
 ## Codebase totals
-| **Language** | **Files** | **Lines of Code** | **Functions** | ⚠ | ✖ |
+| **Language** | **Files** | **Lines of Code** | **Functions** | ⚠ | ❌ |
 | --- | ---: | ---: | ---: | ---: | ---: |
 | TypeScript | 4 | 81 | 1 | 0 | 0 |
 | JavaScript | 3 | 24 | 0 | 0 | 0 |
