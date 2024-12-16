@@ -20,9 +20,10 @@ jobs:
         uses: actions/checkout@v4.2.2
         with:
           fetch-depth: 0
+          persist-credentials: false
       # Lint and Format everything but Python/JavaScript/TypeScript
       - name: Lint Code Base
-        uses: super-linter/super-linter/slim@v7.2.0
+        uses: super-linter/super-linter/slim@v7.2.1
         env:
           VALIDATE_ALL_CODEBASE: true
           DEFAULT_BRANCH: main
@@ -55,10 +56,11 @@ jobs:
     permissions:
       statuses: write
     steps:
-      - name: Checkout Repository
+      - name: Checkout
         uses: actions/checkout@v4.2.2
         with:
           fetch-depth: 0
+          persist-credentials: false
       - name: Setup Dashboard Dependencies
         uses: ./.github/actions/setup-dashboard-dependencies
       - name: Run Prettier
@@ -72,10 +74,11 @@ jobs:
     permissions:
       security-events: write
     steps:
-      - name: Checkout Repository
+      - name: Checkout
         uses: actions/checkout@v4.2.2
         with:
           fetch-depth: 0
+          persist-credentials: false
       - name: Setup Dashboard Dependencies
         uses: ./.github/actions/setup-dashboard-dependencies
       - name: Run ESLint
@@ -99,6 +102,7 @@ jobs:
         uses: actions/checkout@v4.2.2
         with:
           fetch-depth: 0
+          persist-credentials: false
       - name: Setup Test Dependencies
         uses: ./.github/actions/setup-test-dependencies
       - name: Check Python Code Quality (Ruff)
@@ -121,6 +125,7 @@ jobs:
         uses: actions/checkout@v4.2.2
         with:
           fetch-depth: 0
+          persist-credentials: false
       - name: Setup Test Dependencies
         uses: ./.github/actions/setup-test-dependencies
       - name: Check Python Code Quality (Ruff)
@@ -141,10 +146,11 @@ jobs:
     permissions:
       statuses: write
     steps:
-      - name: Checkout Repository
+      - name: Checkout
         uses: actions/checkout@v4.2.2
         with:
           fetch-depth: 0
+          persist-credentials: false
       - name: Check Markdown links
         uses: UmbrellaDocs/action-linkspector@v1.2.4
         with:
@@ -160,10 +166,11 @@ jobs:
     permissions:
       statuses: write
     steps:
-      - name: Checkout Repository
+      - name: Checkout
         uses: actions/checkout@v4.2.2
         with:
           fetch-depth: 0
+          persist-credentials: false
       - name: Set up Just
         uses: extractions/setup-just@v2
       - name: Check Justfile Format
@@ -179,8 +186,11 @@ jobs:
       matrix:
         language: [python, javascript]
     steps:
-      - name: Checkout repository
+      - name: Checkout
         uses: actions/checkout@v4.2.2
+        with:
+          fetch-depth: 0
+          persist-credentials: false
       - name: Initialize CodeQL
         uses: github/codeql-action/init@v3.27.5
         with:
@@ -199,6 +209,7 @@ jobs:
         uses: actions/checkout@v4.2.2
         with:
           fetch-depth: 0
+          persist-credentials: false
       - name: Use Node.js
         uses: actions/setup-node@v4.1.0
         with:
@@ -227,6 +238,7 @@ jobs:
         uses: actions/checkout@v4.2.2
         with:
           fetch-depth: 0
+          persist-credentials: false
       - name: Setup Dashboard Dependencies
         uses: ./.github/actions/setup-dashboard-dependencies
       - name: Copy example file to github pages folder
@@ -245,6 +257,7 @@ jobs:
         uses: actions/checkout@v4.2.2
         with:
           fetch-depth: 0
+          persist-credentials: false
       - name: "Run CodeLimit"
         uses: getcodelimit/codelimit-action@v1
 
@@ -254,7 +267,7 @@ jobs:
     permissions:
       security-events: write
     steps:
-      - name: Checkout Repository
+      - name: Checkout
         uses: actions/checkout@v4.2.2
         with:
           fetch-depth: 0
