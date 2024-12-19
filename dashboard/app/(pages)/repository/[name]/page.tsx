@@ -1,5 +1,3 @@
-import Link from "next/link";
-
 import { CommitsPieChart } from "@/components/PieChart";
 
 import repositories from "../../../../data/repository_statistics.json";
@@ -19,11 +17,10 @@ export async function generateStaticParams() {
 
 export default async function RepositoryPage(
   props: Readonly<{
-    params: { name: string };
+    params: Promise<{ name: string }>;
   }>,
 ) {
-  const { params } = props;
-  const { name } = params;
+  const { name } = await props.params;
   const repository = repositories.find(
     (repository: Repository) => repository.repository === name,
   ) as Repository;
