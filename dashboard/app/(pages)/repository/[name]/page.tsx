@@ -22,7 +22,7 @@ export default async function RepositoryPage(
     params: { name: string };
   }>,
 ) {
-  const params = await props.params;
+  const { params } = props;
   const { name } = params;
   const repository = repositories.find(
     (repository: Repository) => repository.repository === name,
