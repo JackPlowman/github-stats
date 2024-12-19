@@ -20,7 +20,7 @@ export async function generateStaticParams() {
 export default async function RepositoryPage(
   props: Readonly<{
     params: { name: string };
-  }>
+  }>,
 ) {
   const params = await props.params;
   const { name } = params;
