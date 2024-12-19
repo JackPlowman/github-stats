@@ -1,7 +1,12 @@
 {
-  "version": "0.13.0",
-  "uuid": "7f066ff3-4290-49e9-9bad-d8393cf38735",
+  "version": "0.15.1",
+  "uuid": "a940b728-02c9-439e-8492-551505c96fa3",
   "root": "/github/workspace",
+  "repository": {
+    "owner": "JackPlowman",
+    "name": "github-stats",
+    "branch": "HEAD"
+  },
   "codebase": {
     "totals": {
       "TypeScript": {
