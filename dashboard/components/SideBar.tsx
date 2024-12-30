@@ -68,9 +68,13 @@ interface Repository {
   languages: Record<string, number | undefined>;
 }
 function RepositoriesSubMenuItems() {
+  const sortedRepositories = [...repositories].sort((a, b) =>
+    a.repository.localeCompare(b.repository),
+  );
+
   return (
     <>
-      {repositories.map((repository: Repository) => (
+      {sortedRepositories.map((repository: Repository) => (
         <SidebarMenuSubItem key={repository.repository}>
           <SidebarMenuSubButton asChild>
             <a href={`/github-stats/repository/${repository.repository}`}>
