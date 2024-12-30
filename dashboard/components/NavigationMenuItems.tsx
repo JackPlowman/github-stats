@@ -1,4 +1,4 @@
-import { HomeIcon, PersonIcon, RowsIcon } from "@radix-ui/react-icons";
+import { HomeIcon, PersonIcon } from "@radix-ui/react-icons";
 import Link from "next/link";
 import React from "react";
 
