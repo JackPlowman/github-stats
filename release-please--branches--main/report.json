@@ -1,7 +1,7 @@
 {
   "version": "0.17.0",
-  "uuid": "8cf30c52-4c62-4898-9196-0cdb11c4f9f2",
-  "timestamp": "2024-12-30T19:10:04+00:00",
+  "uuid": "7adfefa3-7b23-4b08-bce2-53beb7e95dd8",
+  "timestamp": "2024-12-30T20:43:02+00:00",
   "root": "/github/workspace",
   "repository": {
     "owner": "JackPlowman",
@@ -11,7 +11,7 @@
   "codebase": {
     "totals": {
       "TypeScript": {
-        "files": 4,
+        "files": 5,
         "lines_of_code": 3,
         "functions": 1,
         "hard_to_maintain": 0,
@@ -46,6 +46,7 @@
       },
       "dashboard/lib/": {
         "entries": [
+          "repository_statistics.ts",
           "utils.ts"
         ],
         "profile": [3, 0, 0, 0]
@@ -94,6 +95,14 @@
       },
       "dashboard/tailwind.config.ts": {
         "checksum": "ab75945587658fb6bc5f09f60a6ed692",
+        "language": "TypeScript",
+        "loc": 0,
+        "profile": [0, 0, 0, 0],
+        "measurements": [
+        ]
+      },
+      "dashboard/lib/repository_statistics.ts": {
+        "checksum": "bf5ccfc49e74fcbe58c36f9d27bc6951",
         "language": "TypeScript",
         "loc": 0,
         "profile": [0, 0, 0, 0],
