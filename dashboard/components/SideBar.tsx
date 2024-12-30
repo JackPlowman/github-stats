@@ -69,7 +69,7 @@ interface Repository {
 }
 function RepositoriesSubMenuItems() {
   const sortedRepositories = [...repositories].sort((a, b) =>
-    a.repository.localeCompare(b.repository)
+    a.repository.localeCompare(b.repository),
   );
 
   return (
