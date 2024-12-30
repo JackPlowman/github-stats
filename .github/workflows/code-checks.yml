@@ -220,6 +220,8 @@ jobs:
         uses: extractions/setup-just@v2
       - name: Install Node Dependencies
         run: just dashboard::install
+      - name: Add Test Data
+        run: cp -r test_data/repository_statistics.json dashboard/data
       - name: Run Unit Tests
         run: just dashboard::unit-test-coverage
       - name: SonarCloud Scan
