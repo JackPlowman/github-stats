@@ -2,7 +2,8 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 import React from "react";
 
-import Navbar from "@/components/NavigationMenu";
+import SideBar from "@/components/SideBar";
+import { SidebarInset, SidebarProvider } from "@/components/ui/sidebar";
 
 import "./globals.css";
 
@@ -32,8 +33,10 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <Navbar />
-        {children}
+        <SidebarProvider>
+          <SideBar />
+          <SidebarInset>{children}</SidebarInset>
+        </SidebarProvider>
       </body>
     </html>
   );

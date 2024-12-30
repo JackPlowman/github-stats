@@ -39,7 +39,6 @@ export default function UserPage() {
           /!\[Metrics\]\(\.\/github-metrics\.svg\)/g,
           "![Metrics](https://raw.githubusercontent.com/JackPlowman/JackPlowman/refs/heads/main/github-metrics.svg)",
         );
-        console.log(readmeContent);
         const htmlContent = marked(readmeContent) as string;
         setReadme(htmlContent);
       });
@@ -50,8 +49,12 @@ export default function UserPage() {
   }
 
   return (
-    <div style={{ textAlign: "center" }}>
-      <h1>{profile.name}</h1>
+    <div
+      style={{
+        display: "flex",
+        justifyContent: "center",
+      }}
+    >
       {profile.bio && <Bio bio={profile.bio} />}
       <div
         dangerouslySetInnerHTML={{ __html: readme }}
