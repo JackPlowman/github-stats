@@ -1,4 +1,4 @@
-import { Circle, Home, User, List } from "lucide-react";
+import { Circle, Home, List, User } from "lucide-react";
 
 import {
   Sidebar,
