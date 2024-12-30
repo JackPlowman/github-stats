@@ -1,10 +1,5 @@
-import { Circle, Home, User } from "lucide-react";
+import { Circle, Home, User, List } from "lucide-react";
 
-import {
-  Collapsible,
-  CollapsibleContent,
-  CollapsibleTrigger,
-} from "@/components/ui/collapsible";
 import {
   Sidebar,
   SidebarContent,
@@ -17,7 +12,6 @@ import {
   SidebarMenuSub,
   SidebarMenuSubButton,
   SidebarMenuSubItem,
-  SidebarProvider,
 } from "@/components/ui/sidebar";
 
 import repositories from "../data/repository_statistics.json";
@@ -50,7 +44,7 @@ export default function AppSidebar() {
               <SidebarMenuItem key="Repositories">
                 <SidebarMenuButton asChild>
                   <a>
-                    <User />
+                    <List />
                     <span>Repositories</span>
                   </a>
                 </SidebarMenuButton>
