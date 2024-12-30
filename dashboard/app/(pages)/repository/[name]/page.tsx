@@ -1,13 +1,5 @@
 import { CommitsPieChart } from "@/components/PieChart";
-
-import repositories from "../../../../data/repository_statistics.json";
-
-interface Repository {
-  repository: string;
-  total_files: number;
-  total_commits: number;
-  commits: Record<string, number | undefined>;
-}
+import repositories, { Repository } from "@/lib/repository_statistics";
 
 export async function generateStaticParams() {
   return repositories.map((repository: Repository) => ({

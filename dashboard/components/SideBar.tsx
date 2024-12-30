@@ -13,8 +13,7 @@ import {
   SidebarMenuSubButton,
   SidebarMenuSubItem,
 } from "@/components/ui/sidebar";
-
-import repositories from "../data/repository_statistics.json";
+import repositories, { Repository } from "@/lib/repository_statistics";
 
 export default function AppSidebar() {
   return (
@@ -60,13 +59,6 @@ export default function AppSidebar() {
   );
 }
 
-interface Repository {
-  repository: string;
-  total_files: number;
-  total_commits: number;
-  commits: Record<string, number | undefined>;
-  languages: Record<string, number | undefined>;
-}
 function RepositoriesSubMenuItems() {
   const sortedRepositories = [...repositories].sort((a, b) =>
     a.repository.localeCompare(b.repository),
