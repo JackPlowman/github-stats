@@ -1,10 +1,31 @@
-import HomePageCards from "@/components/ui/HomePageCards";
+import Link from "next/link";
 
-export default function IndexPage() {
+import repositories from "../data/repository_statistics.json";
+
+export default function RepositoriesPage() {
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <h1 className="text-4xl font-bold">GitHub Stats</h1>
-      <HomePageCards />
+    <div style={{ display: "flex", justifyContent: "center" }}>
+      <div style={{ width: "33%", textAlign: "left" }}>
+        <h1 style={{ fontSize: "2em", fontWeight: "bold", color: "#0070f3" }}>
+          Repositories
+        </h1>
+        <ul style={{ listStyleType: "disc" }}>
+          {repositories.map((repository) => (
+            <li key={repository.repository}>
+              <Link
+                href={`/repository/${repository.repository}`}
+                style={{
+                  color: "#0070f3",
+                  textDecoration: "underline",
+                  fontWeight: "bold",
+                }}
+              >
+                {repository.repository}
+              </Link>
+            </li>
+          ))}
+        </ul>
+      </div>
     </div>
   );
 }
