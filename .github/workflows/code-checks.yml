@@ -50,29 +50,11 @@ jobs:
           VALIDATE_TSX: false
           VALIDATE_TSX_PRETTIER: false
 
-  check-typescript-code-format-and-quality:
+  run-typescript-code-checks:
     name: Check TypeScript Code Format and Quality
     runs-on: ubuntu-latest
     permissions:
       statuses: write
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4.2.2
-        with:
-          fetch-depth: 0
-          persist-credentials: false
-      - name: Setup Dashboard Dependencies
-        uses: ./.github/actions/setup-dashboard-dependencies
-      - name: Run Prettier
-        run: just dashboard::prettier-check
-      - name: Run ESLint
-        run: just dashboard::lint
-
-  upload-eslint-analysis-results:
-    name: Upload ESLint Analysis Results
-    runs-on: ubuntu-latest
-    permissions:
-      security-events: write
     steps:
       - name: Checkout
         uses: actions/checkout@v4.2.2
@@ -91,31 +73,13 @@ jobs:
         with:
           sarif_file: dashboard/eslint-results.sarif
           wait-for-processing: true
+      - name: Run Prettier
+        run: just dashboard::prettier-check
+      - name: Run ESLint
+        run: just dashboard::lint
 
-  check-tests-code-format-and-quality:
-    name: Check Tests Code Format and Quality
-    runs-on: ubuntu-latest
-    permissions:
-      statuses: write
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4.2.2
-        with:
-          fetch-depth: 0
-          persist-credentials: false
-      - name: Setup Test Dependencies
-        uses: ./.github/actions/setup-test-dependencies
-      - name: Check Python Code Quality (Ruff)
-        run: just tests::ruff-lint
-        env:
-          RUFF_OUTPUT_FORMAT: "github"
-      - name: Check Python Code Format (Ruff)
-        run: just tests::ruff-format
-        env:
-          RUFF_OUTPUT_FORMAT: "github"
-
-  upload-ruff-analysis-results:
-    name: Upload Ruff Analysis Results
+  run-python-code-checks:
+    name: Run Python Code Checks
     runs-on: ubuntu-latest
     permissions:
       statuses: write
@@ -126,10 +90,10 @@ jobs:
         with:
           fetch-depth: 0
           persist-credentials: false
-      - name: Setup Test Dependencies
+      - name: Set up dependencies
         uses: ./.github/actions/setup-test-dependencies
-      - name: Check Python Code Quality (Ruff)
-        run: just tests::ruff-lint
+      - name: Generate Ruff Sarif
+        run: just tests::ruff-lint-check
         env:
           RUFF_OUTPUT_FORMAT: "sarif"
           RUFF_OUTPUT_FILE: "ruff-results.sarif"
@@ -139,6 +103,14 @@ jobs:
         with:
           sarif_file: tests/ruff-results.sarif
           wait-for-processing: true
+      - name: Check Python Code Format (Ruff)
+        run: just tests::ruff-format-check
+        env:
+          RUFF_OUTPUT_FORMAT: "github"
+      - name: Check Python Code Linting (Ruff)
+        run: just tests::ruff-lint-check
+        env:
+          RUFF_OUTPUT_FORMAT: "github"
 
   check-markdown-links:
     name: Check Markdown links
