@@ -43,7 +43,7 @@ ruff-fix:
     just tests::ruff-format-fix
 
 # Check for Ruff issues
-ruff-lint:
+ruff-lint-check:
     poetry run ruff check end_to_end
 
 # Fix Ruff lint issues
@@ -51,7 +51,7 @@ ruff-lint-fix:
     poetry run ruff check end_to_end --fix --unsafe-fixes
 
 # Check for Ruff format issues
-ruff-format:
+ruff-format-check:
     poetry run ruff format --check end_to_end
 
 # Fix Ruff format issues
