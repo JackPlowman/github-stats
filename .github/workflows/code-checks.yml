@@ -51,7 +51,7 @@ jobs:
           VALIDATE_TSX_PRETTIER: false
 
   run-typescript-code-checks:
-    name: Check TypeScript Code Format and Quality
+    name: Run TypeScript Code Checks
     runs-on: ubuntu-latest
     permissions:
       statuses: write
