@@ -1,12 +1,12 @@
 {
-  "version": "0.17.0",
-  "uuid": "69bc6ec2-bcba-49cf-a7ea-79099e585dda",
-  "timestamp": "2025-01-01T13:41:19+00:00",
+  "version": "0.18.1",
+  "uuid": "9ed33c63-10f0-4421-9625-cc16ec4560a4",
+  "timestamp": "2025-01-09T04:58:27+00:00",
   "root": "/github/workspace",
   "repository": {
     "owner": "JackPlowman",
     "name": "github-stats",
-    "branch": "HEAD"
+    "branch": "release-please--branches--main"
   },
   "codebase": {
     "totals": {
