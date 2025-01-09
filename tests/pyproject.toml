@@ -1,3 +1,8 @@
+[project]
+name = "tests"
+version = "1.0.0"
+requires-python = ">=3.13"
+
 [tool.poetry]
 name = "tests"
 package-mode = false
@@ -11,10 +16,10 @@ defusedxml = "0.7.1"
 selenium = "4.27.1"
 
 [tool.poetry.group.dev.dependencies]
-ruff = "0.8.4"
+ruff = "0.8.6"
 
 [build-system]
-requires = ["poetry-core"]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
 build-backend = "poetry.core.masonry.api"
 
 [tool.ruff]

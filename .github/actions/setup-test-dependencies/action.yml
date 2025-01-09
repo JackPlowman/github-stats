@@ -22,7 +22,7 @@ runs:
 
     - name: Install Poetry
       shell: bash
-      run: pipx install poetry
+      run: pipx install poetry==2.0.0
 
     - name: Install Python 3.13 with Poetry Cache
       uses: actions/setup-python@v5.3.0
