@@ -16,7 +16,7 @@ defusedxml = "0.7.1"
 selenium = "4.27.1"
 
 [tool.poetry.group.dev.dependencies]
-ruff = "0.8.6"
+ruff = "0.9.1"
 
 [build-system]
 requires = ["poetry-core>=2.0.0,<3.0.0"]
