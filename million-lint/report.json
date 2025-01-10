@@ -1,0 +1,123 @@
+{
+  "version": "0.18.1",
+  "uuid": "ad971460-9552-4e7e-bc5a-5a849c8fa242",
+  "timestamp": "2025-01-10T21:50:24+00:00",
+  "root": "/github/workspace",
+  "repository": {
+    "owner": "JackPlowman",
+    "name": "github-stats",
+    "branch": "million-lint"
+  },
+  "codebase": {
+    "totals": {
+      "TypeScript": {
+        "files": 5,
+        "lines_of_code": 3,
+        "functions": 1,
+        "hard_to_maintain": 0,
+        "unmaintainable": 0
+      },
+      "JavaScript": {
+        "files": 3,
+        "lines_of_code": 0,
+        "functions": 0,
+        "hard_to_maintain": 0,
+        "unmaintainable": 0
+      }
+    },
+    "tree": {
+      "./": {
+        "entries": [
+          "dashboard/"
+        ],
+        "profile": [3, 0, 0, 0]
+      },
+      "dashboard/": {
+        "entries": [
+          "jest.setup.ts",
+          "next-sitemap.config.mjs",
+          "jest.config.ts",
+          "postcss.config.mjs",
+          "next.config.mjs",
+          "tailwind.config.ts",
+          "lib/"
+        ],
+        "profile": [3, 0, 0, 0]
+      },
+      "dashboard/lib/": {
+        "entries": [
+          "repository_statistics.ts",
+          "utils.ts"
+        ],
+        "profile": [3, 0, 0, 0]
+      }
+    },
+    "files": {
+      "dashboard/jest.setup.ts": {
+        "checksum": "d7c0f56515d82ff38e71198bf901ee7d",
+        "language": "TypeScript",
+        "loc": 0,
+        "profile": [0, 0, 0, 0],
+        "measurements": [
+        ]
+      },
+      "dashboard/next-sitemap.config.mjs": {
+        "checksum": "f32f6708c68fe734fda1ed5bb38909b3",
+        "language": "JavaScript",
+        "loc": 0,
+        "profile": [0, 0, 0, 0],
+        "measurements": [
+        ]
+      },
+      "dashboard/jest.config.ts": {
+        "checksum": "0509bf9a3ffc1878b02d5a880f793f8c",
+        "language": "TypeScript",
+        "loc": 0,
+        "profile": [0, 0, 0, 0],
+        "measurements": [
+        ]
+      },
+      "dashboard/postcss.config.mjs": {
+        "checksum": "b7941c02b947e17ae32f67ae7e664ec8",
+        "language": "JavaScript",
+        "loc": 0,
+        "profile": [0, 0, 0, 0],
+        "measurements": [
+        ]
+      },
+      "dashboard/next.config.mjs": {
+        "checksum": "3f58e1a495c4540df1c932ad77380b40",
+        "language": "JavaScript",
+        "loc": 0,
+        "profile": [0, 0, 0, 0],
+        "measurements": [
+        ]
+      },
+      "dashboard/tailwind.config.ts": {
+        "checksum": "ab75945587658fb6bc5f09f60a6ed692",
+        "language": "TypeScript",
+        "loc": 0,
+        "profile": [0, 0, 0, 0],
+        "measurements": [
+        ]
+      },
+      "dashboard/lib/repository_statistics.ts": {
+        "checksum": "bf5ccfc49e74fcbe58c36f9d27bc6951",
+        "language": "TypeScript",
+        "loc": 0,
+        "profile": [0, 0, 0, 0],
+        "measurements": [
+        ]
+      },
+      "dashboard/lib/utils.ts": {
+        "checksum": "618d00bf4537ce84f9ba62c5b215fb30",
+        "language": "TypeScript",
+        "loc": 3,
+        "profile": [3, 0, 0, 0],
+        "measurements": [
+          {"unit_name": "cn", "start": {"line": 4, "column": 17}, "end": {"line": 6, "column": 2}, "value": 3}
+        ]
+      }
+    }
+  }
+}
