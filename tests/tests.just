@@ -6,7 +6,7 @@
 install:
     poetry install -E dev
 
-# 
+# Install Only Root Dependencies
 install-only-root:
     poetry install --only-root
 
