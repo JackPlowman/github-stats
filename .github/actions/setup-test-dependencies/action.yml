@@ -6,30 +6,24 @@ runs:
   steps:
     - name: Set up Just
       uses: extractions/setup-just@v2
-
     - name: Set up Chrome
       uses: browser-actions/setup-chrome@v1.7.2
       with:
         chrome-version: 130
         install-chromedriver: true
         install-dependencies: true
-
     - run: chrome --version
       shell: bash
-
     - run: chromedriver --version
       shell: bash
-
     - name: Install Poetry
       shell: bash
       run: pipx install poetry==2.0.0
-
     - name: Install Python 3.13 with Poetry Cache
       uses: actions/setup-python@v5.3.0
       with:
         python-version-file: "tests/pyproject.toml"
         cache: "poetry"
-
     - name: Install Poetry Dependencies
       shell: bash
       run: just tests::install
