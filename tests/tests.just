@@ -2,9 +2,13 @@
 # General Commands
 # ------------------------------------------------------------------------------
 
-# Install Python Dependencies
+# Install All Python Dependencies
 install:
-    poetry install
+    poetry install -E dev
+
+# 
+install-only-root:
+    poetry install --only-root
 
 # Run End-to-End Tests
 run:
@@ -39,8 +43,8 @@ clean:
 
 # Fix all Ruff issues
 ruff-fix:
-    just tests::ruff-lint-fix
     just tests::ruff-format-fix
+    just tests::ruff-lint-fix
 
 # Check for Ruff issues
 ruff-lint-check:
