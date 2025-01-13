@@ -1,12 +1,12 @@
 {
-  "version": "0.17.1",
-  "uuid": "606e6a1f-971e-470a-8fac-ddc370ff269d",
-  "timestamp": "2025-01-04T02:03:07+00:00",
+  "version": "0.18.1",
+  "uuid": "ff995c99-074a-4a8d-98a2-94d1b5cf5639",
+  "timestamp": "2025-01-13T21:56:23+00:00",
   "root": "/github/workspace",
   "repository": {
     "owner": "JackPlowman",
     "name": "github-stats",
-    "branch": "HEAD"
+    "branch": "dependabot/npm_and_yarn/dashboard/main/trivago/prettier-plugin-sort-imports-5.2.1"
   },
   "codebase": {
     "totals": {
