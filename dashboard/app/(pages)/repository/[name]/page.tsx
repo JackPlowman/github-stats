@@ -1,4 +1,5 @@
-import { CommitsPieChart } from "@/components/PieChart";
+import { CommitsPieChart } from "@/components/CommitsPieChart";
+import { LanguagesBarChart } from "@/components/LanguagesBarChart";
 import repositories, { Repository } from "@/lib/repository_statistics";
 
 export async function generateStaticParams() {
@@ -25,10 +26,17 @@ export default async function RepositoryPage(
     "#a4de6c",
     "#d0ed57",
   ];
-  const chartData = Object.entries(repository.commits).map(
+  const pieChartData = Object.entries(repository.commits).map(
     ([user, total], index) => ({
       user,
       total: total ?? 0,
+      fill: colors[index % colors.length],
+    }),
+  );
+  const languageChartData = Object.entries(repository.languages).map(
+    ([language, count], index) => ({
+      language,
+      count: count ?? 0,
       fill: colors[index % colors.length],
     }),
   );
@@ -52,7 +60,8 @@ export default async function RepositoryPage(
         </h1>
         <h2>Total Files {repository.total_files}</h2>
         <h2>Total Commits {repository.total_commits}</h2>
-        <CommitsPieChart chartData={chartData} />
+        <CommitsPieChart chartData={pieChartData} />
+        <LanguagesBarChart chartData={languageChartData} />
       </div>
     </div>
   );
