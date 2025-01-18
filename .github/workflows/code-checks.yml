@@ -81,7 +81,7 @@ jobs:
 
   run-python-code-checks:
     name: Run Python Code Checks
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     permissions:
       statuses: write
       security-events: write
@@ -115,7 +115,7 @@ jobs:
 
   check-markdown-links:
     name: Check Markdown links
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     permissions:
       statuses: write
     steps:
