@@ -36,6 +36,10 @@ clean:
       -name 'db.sqlite3' \
     \) -print | xargs rm -rfv
 
+# Validates Pyproject
+pyproject-check:
+    poetry check
+
 # ------------------------------------------------------------------------------
 # Ruff - Python Linting and Formating
 # Set up ruff red-knot when it's ready
