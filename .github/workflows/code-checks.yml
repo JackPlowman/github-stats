@@ -249,12 +249,10 @@ jobs:
         with:
           fetch-depth: 0
           persist-credentials: false
-      - name: Install the latest version of uv
-        uses: astral-sh/setup-uv@v5.1.0
-        with:
-          version: "latest"
+      - name: Set up dependencies
+        uses: ./.github/actions/setup-test-dependencies
       - name: Run zizmor 🌈
-        run: uvx zizmor --format sarif . > results.sarif
+        run: poetry run zizmor --format sarif . > results.sarif
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: Upload SARIF file
