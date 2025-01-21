@@ -6,10 +6,6 @@
 install:
     poetry install -E dev
 
-# Install Only Root Dependencies
-install-only-root:
-    poetry install --only-root
-
 # Run End-to-End Tests
 run:
     PROJECT_URL=https://jackplowman.github.io/github-stats \
@@ -41,7 +37,7 @@ pyproject-check:
     poetry check
 
 # ------------------------------------------------------------------------------
-# Ruff - Python Linting and Formating
+# Ruff - Python Linting and Formatting
 # Set up ruff red-knot when it's ready
 # ------------------------------------------------------------------------------
 
