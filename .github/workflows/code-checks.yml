@@ -72,7 +72,7 @@ jobs:
         run: just dashboard::eslint-with-sarif
         continue-on-error: true
       - name: Upload analysis results to GitHub
-        uses: github/codeql-action/upload-sarif@v3.28.1
+        uses: github/codeql-action/upload-sarif@v3.28.6
         with:
           sarif_file: dashboard/eslint-results.sarif
           wait-for-processing: true
@@ -102,7 +102,7 @@ jobs:
           RUFF_OUTPUT_FILE: "ruff-results.sarif"
         continue-on-error: true
       - name: Upload Ruff analysis results to GitHub
-        uses: github/codeql-action/upload-sarif@v3.28.1
+        uses: github/codeql-action/upload-sarif@v3.28.6
         with:
           sarif_file: tests/ruff-results.sarif
           wait-for-processing: true
@@ -169,12 +169,12 @@ jobs:
           fetch-depth: 0
           persist-credentials: false
       - name: Initialize CodeQL
-        uses: github/codeql-action/init@v3.28.1
+        uses: github/codeql-action/init@v3.28.6
         with:
           languages: ${{ matrix.language }}
           queries: security-and-quality
       - name: Perform CodeQL Analysis
-        uses: github/codeql-action/analyze@v3.28.1
+        uses: github/codeql-action/analyze@v3.28.6
 
   typescript-unit-tests:
     name: Test TypeScript Code
@@ -187,16 +187,8 @@ jobs:
         with:
           fetch-depth: 0
           persist-credentials: false
-      - name: Use Node.js
-        uses: actions/setup-node@v4.1.0
-        with:
-          node-version: "22.8.0"
-          cache: "npm"
-          cache-dependency-path: "dashboard/package-lock.json"
-      - name: Set up Just
-        uses: extractions/setup-just@v2
-      - name: Install Node Dependencies
-        run: just dashboard::install
+      - name: Setup Dashboard Dependencies
+        uses: ./.github/actions/setup-dashboard-dependencies
       - name: Add Test Data
         run: cp -r test_data/repository_statistics.json dashboard/data
       - name: Run Unit Tests
@@ -258,7 +250,7 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: Upload SARIF file
-        uses: github/codeql-action/upload-sarif@v3.28.1
+        uses: github/codeql-action/upload-sarif@v3.28.6
         with:
           sarif_file: results.sarif
           category: zizmor
