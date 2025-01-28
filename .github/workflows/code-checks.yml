@@ -234,7 +234,7 @@ jobs:
 
   run-zizmor:
     name: Check GitHub Actions with zizmor
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-latest
     permissions:
       security-events: write
     steps:
