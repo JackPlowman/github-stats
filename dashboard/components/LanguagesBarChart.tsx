@@ -44,8 +44,7 @@ export function LanguagesBarChart({
   return (
     <Card className="flex flex-col bg-slate-100 text-black dark:bg-slate-800">
       <CardHeader>
-        <CardTitle>{"Repository Languages"}</CardTitle>
-        <CardDescription>{"Language Distribution"}</CardDescription>
+        <CardTitle>{"File Count Per Type"}</CardTitle>
       </CardHeader>
       <CardContent>
         <ChartContainer config={chartConfig}>
