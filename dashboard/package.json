@@ -62,11 +62,13 @@
     "jest-environment-jsdom": "29.7.0",
     "postcss": "8",
     "prettier": "3.4.2",
+    "prettier-plugin-tailwindcss": "0.6.11",
     "resize-observer-polyfill": "1.5.1"
   },
   "prettier": {
     "plugins": [
-      "@trivago/prettier-plugin-sort-imports"
+      "@trivago/prettier-plugin-sort-imports",
+      "prettier-plugin-tailwindcss"
     ],
     "importOrder": [
       "^@/(.*)$",

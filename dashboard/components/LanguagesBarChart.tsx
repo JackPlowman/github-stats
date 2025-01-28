@@ -74,7 +74,7 @@ export function LanguagesBarChart({
         </ChartContainer>
       </CardContent>
       <CardFooter className="flex-col items-start gap-2 text-sm">
-        <div className="leading-none text-muted-foreground">
+        <div className="text-muted-foreground leading-none">
           Showing language distribution across repository
         </div>
       </CardFooter>
