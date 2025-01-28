@@ -33,7 +33,7 @@ export function CommitsPieChart({
   chartData,
 }: Readonly<{ chartData: Commits[] }>) {
   return (
-    <Card className="text-black flex flex-col bg-slate-100 dark:bg-slate-800">
+    <Card className="flex flex-col bg-slate-100 text-black dark:bg-slate-800">
       <CardHeader className="items-center pb-0">
         <CardTitle>Total Commits</CardTitle>
       </CardHeader>
