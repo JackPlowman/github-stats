@@ -1,7 +1,7 @@
 {
   "version": "0.18.1",
-  "uuid": "6e6db502-f2da-47dd-b1ad-91d2a09f7475",
-  "timestamp": "2025-01-26T16:34:30+00:00",
+  "uuid": "e93569f8-01f3-4e07-9e19-0ee25fc5c848",
+  "timestamp": "2025-01-28T08:34:42+00:00",
   "root": "/github/workspace",
   "repository": {
     "owner": "JackPlowman",
@@ -11,7 +11,7 @@
   "codebase": {
     "totals": {
       "TypeScript": {
-        "files": 5,
+        "files": 4,
         "lines_of_code": 3,
         "functions": 1,
         "hard_to_maintain": 0,
@@ -39,7 +39,6 @@
           "jest.setup.ts",
           "postcss.config.mjs",
           "next-sitemap.config.mjs",
-          "tailwind.config.ts",
           "lib/"
         ],
         "profile": [3, 0, 0, 0]
@@ -78,7 +77,7 @@
         ]
       },
       "dashboard/postcss.config.mjs": {
-        "checksum": "b7941c02b947e17ae32f67ae7e664ec8",
+        "checksum": "4ae674cb9a5e6dc8c6afe2598c150776",
         "language": "JavaScript",
         "loc": 0,
         "profile": [0, 0, 0, 0],
@@ -88,14 +87,6 @@
       "dashboard/next-sitemap.config.mjs": {
         "checksum": "f32f6708c68fe734fda1ed5bb38909b3",
         "language": "JavaScript",
-        "loc": 0,
-        "profile": [0, 0, 0, 0],
-        "measurements": [
-        ]
-      },
-      "dashboard/tailwind.config.ts": {
-        "checksum": "ab75945587658fb6bc5f09f60a6ed692",
-        "language": "TypeScript",
         "loc": 0,
         "profile": [0, 0, 0, 0],
         "measurements": [
