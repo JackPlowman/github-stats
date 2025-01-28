@@ -52,24 +52,24 @@ export function LanguagesBarChart({
           <BarChart
             accessibilityLayer
             data={chartData}
-            layout="vertical"
+            layout="horizontal"
             margin={{
               left: 0,
             }}
           >
-            <YAxis
+            <XAxis
               dataKey="language"
               type="category"
               tickLine={false}
               tickMargin={10}
               axisLine={false}
             />
-            <XAxis dataKey="count" type="number" hide />
+            <YAxis dataKey="count" type="number" hide />
             <ChartTooltip
               cursor={false}
               content={<ChartTooltipContent hideLabel />}
             />
-            <Bar dataKey="count" layout="vertical" radius={5} />
+            <Bar dataKey="count" layout="horizontal" radius={5} />
           </BarChart>
         </ChartContainer>
       </CardContent>
