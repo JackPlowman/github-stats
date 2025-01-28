@@ -43,23 +43,29 @@ export default async function RepositoryPage(
   return (
     <div
       style={{
-        display: "flex",
-        justifyContent: "center",
+        width: "80%",
+        margin: "0 auto",
         color: "var(--color-foreground)",
       }}
     >
-      <div style={{ width: "33%", textAlign: "left" }}>
-        <h1
-          style={{
-            fontSize: "2em",
-            fontWeight: "bold",
-            color: "var(--color-primary)",
-          }}
-        >
-          Repository Name {repository.repository}
-        </h1>
-        <h2>Total Files {repository.total_files}</h2>
-        <h2>Total Commits {repository.total_commits}</h2>
+      <h1
+        style={{
+          fontSize: "2em",
+          fontWeight: "bold",
+          color: "var(--color-secondary)",
+        }}
+      >
+        {repository.repository}
+      </h1>
+      <div
+        style={{
+          display: "grid",
+          gridTemplateColumns: "repeat(2, 1fr)",
+          gap: "1rem",
+        }}
+      >
+        <CommitsPieChart chartData={pieChartData} />
+        <LanguagesBarChart chartData={languageChartData} />
         <CommitsPieChart chartData={pieChartData} />
         <LanguagesBarChart chartData={languageChartData} />
       </div>
