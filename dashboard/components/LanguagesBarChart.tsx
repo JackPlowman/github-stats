@@ -42,7 +42,7 @@ export function LanguagesBarChart({
   );
 
   return (
-    <Card>
+    <Card className="flex flex-col bg-slate-100 text-black dark:bg-slate-800">
       <CardHeader>
         <CardTitle>{"Repository Languages"}</CardTitle>
         <CardDescription>{"Language Distribution"}</CardDescription>

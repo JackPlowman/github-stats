@@ -33,14 +33,14 @@ export function CommitsPieChart({
   chartData,
 }: Readonly<{ chartData: Commits[] }>) {
   return (
-    <Card className="text-foreground flex flex-col bg-transparent">
+    <Card className="flex flex-col bg-slate-100 text-black dark:bg-slate-800">
       <CardHeader className="items-center pb-0">
         <CardTitle>Total Commits</CardTitle>
       </CardHeader>
       <CardContent className="flex-1 pb-0">
         <ChartContainer
           config={chartConfig}
-          className="mx-auto aspect-square max-h-[250px] bg-transparent"
+          className="mx-auto aspect-square max-h-[250px]"
         >
           <PieChart>
             <ChartTooltip
@@ -71,7 +71,7 @@ export function CommitsPieChart({
                           x={viewBox.cx}
                           y={viewBox.cy}
                           className="fill-foreground text-3xl font-bold"
-                          style={{ fill: "var(--foreground)" }}
+                          style={{ fill: "var(--background)" }}
                         >
                           {chartData.reduce((acc, data) => acc + data.total, 0)}
                         </tspan>
