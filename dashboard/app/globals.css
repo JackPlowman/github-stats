@@ -75,14 +75,14 @@
 
 @layer utilities {
   :root {
-    --background: #ffffff;
-    --foreground: #171717;
+    --background: #0a0a0a;
+    --foreground: #ededed;
   }
 
-  @media (prefers-color-scheme: dark) {
+  @media (prefers-color-scheme: light) {
     :root {
-      --background: #0a0a0a;
-      --foreground: #ededed;
+      --background: #fdf6e3; /* Solarized base3 */
+      --foreground: #002b36; /* Solarized base03 */
     }
   }
 
@@ -130,8 +130,8 @@
     --sidebar-ring: 217.2 91.2% 59.8%;
   }
   .dark {
-    --background: 240 10% 3.9%;
-    --foreground: 0 0% 98%;
+    --background: #0a0a0a;
+    --foreground: #ededed;
     --card: 240 10% 3.9%;
     --card-foreground: 0 0% 98%;
     --popover: 240 10% 3.9%;
