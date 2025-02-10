@@ -16,7 +16,7 @@ runs:
       shell: bash
     - run: chromedriver --version
       shell: bash
-    - name: astral-sh/setup-uv
+    - name: Setup UV and Python
       uses: astral-sh/setup-uv@v5.2.2
     - name: Install Test Python Dependencies
       shell: bash
