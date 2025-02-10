@@ -246,7 +246,7 @@ jobs:
       - name: Set up dependencies
         uses: ./.github/actions/setup-test-dependencies
       - name: Run zizmor 🌈
-        run: uv -C tests run zizmor --format sarif .. > results.sarif
+        run: uv --project tests run zizmor --format sarif .. > results.sarif
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: Upload SARIF file
