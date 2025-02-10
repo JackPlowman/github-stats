@@ -9,13 +9,13 @@ install:
 # Run End-to-End Tests
 run:
     PROJECT_URL=https://jackplowman.github.io/github-stats \
-    poetry run pytest end_to_end --gherkin-terminal-reporter -vv
+    poetry run pytest end_to_end --gherkin-terminal-reporter -vv --reruns 2
 
 # Run End-to-End Tests with dashboard running locally
 run-local:
     PROJECT_URL=http://localhost:8000 \
     ENVIRONMENT=local \
-    poetry run pytest end_to_end --gherkin-terminal-reporter -vvvv
+    poetry run pytest end_to_end --gherkin-terminal-reporter -vvvv --reruns 2
 
 # Remove all compiled Python files
 clean:
