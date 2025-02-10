@@ -8,6 +8,7 @@ dependencies = [
   "pytest-bdd==8.1.0",
   "defusedxml==0.7.1",
   "selenium==4.27.1",
+  "pytest-rerunfailures==15.0"
 ]
 
 [project.optional-dependencies]
