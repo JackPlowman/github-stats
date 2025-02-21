@@ -4,18 +4,18 @@
 
 # Install All Python Dependencies
 install:
-    poetry install -E dev
+    uv sync --extra dev
 
 # Run End-to-End Tests
 run:
     PROJECT_URL=https://jackplowman.github.io/github-stats \
-    poetry run pytest end_to_end --gherkin-terminal-reporter -vv --reruns 2
+    uv run pytest end_to_end --gherkin-terminal-reporter -vv --reruns 2
 
 # Run End-to-End Tests with dashboard running locally
 run-local:
     PROJECT_URL=http://localhost:8000 \
     ENVIRONMENT=local \
-    poetry run pytest end_to_end --gherkin-terminal-reporter -vvvv --reruns 2
+    uv run pytest end_to_end --gherkin-terminal-reporter -vvvv --reruns 2
 
 # Remove all compiled Python files
 clean:
@@ -34,7 +34,7 @@ clean:
 
 # Validates Pyproject
 pyproject-check:
-    poetry check
+    uv lock --check
 
 # ------------------------------------------------------------------------------
 # Ruff - Python Linting and Formatting
@@ -48,16 +48,16 @@ ruff-fix:
 
 # Check for Ruff issues
 ruff-lint-check:
-    poetry run ruff check end_to_end
+    uv run ruff check end_to_end
 
 # Fix Ruff lint issues
 ruff-lint-fix:
-    poetry run ruff check end_to_end --fix --unsafe-fixes
+    uv run ruff check end_to_end --fix --unsafe-fixes
 
 # Check for Ruff format issues
 ruff-format-check:
-    poetry run ruff format --check end_to_end
+    uv run ruff format --check end_to_end
 
 # Fix Ruff format issues
 ruff-format-fix:
-    poetry run ruff format end_to_end
+    uv run ruff format end_to_end
