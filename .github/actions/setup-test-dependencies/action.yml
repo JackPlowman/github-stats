@@ -16,14 +16,14 @@ runs:
       shell: bash
     - run: chromedriver --version
       shell: bash
-    - name: Install Poetry
-      shell: bash
-      run: pipx install poetry==2.0.0
     - name: Install Python 3.13 with Poetry Cache
       uses: actions/setup-python@v5.4.0
       with:
         python-version-file: "tests/pyproject.toml"
-        cache: "poetry"
+    - name: Install required-version defined in pyproject.toml
+      uses: astral-sh/setup-uv@v5.2.2
+      with:
+        pyproject-file: "tests/pyproject.toml"
     - name: Install Poetry Dependencies
       shell: bash
       run: just tests::install

@@ -4,7 +4,7 @@
 
 # Install All Python Dependencies
 install:
-    poetry install -E dev
+    uv sync
 
 # Run End-to-End Tests
 run:
@@ -34,7 +34,7 @@ clean:
 
 # Validates Pyproject
 pyproject-check:
-    poetry check
+    uv lock --check
 
 # ------------------------------------------------------------------------------
 # Ruff - Python Linting and Formatting
