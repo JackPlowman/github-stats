@@ -4,7 +4,7 @@
 
 # Install All Python Dependencies
 install:
-    uv sync
+    uv sync --extra dev
 
 # Run End-to-End Tests
 run:
