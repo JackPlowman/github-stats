@@ -12,7 +12,7 @@ runs:
         chrome-version: 132
         install-chromedriver: true
         install-dependencies: true
-    - name: Install required-version defined in pyproject.toml
+    - name: Install Python and UV
       uses: astral-sh/setup-uv@v5.2.2
       with:
         pyproject-file: "tests/pyproject.toml"
