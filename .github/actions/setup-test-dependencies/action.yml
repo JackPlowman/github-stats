@@ -17,6 +17,6 @@ runs:
       with:
         pyproject-file: "tests/pyproject.toml"
         enable-cache: true
-    - name: Install Poetry Dependencies
+    - name: Install Python Dependencies
       shell: bash
       run: just tests::install
