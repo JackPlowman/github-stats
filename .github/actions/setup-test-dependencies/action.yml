@@ -13,7 +13,7 @@ runs:
         install-chromedriver: true
         install-dependencies: true
     - name: Install Python and UV
-      uses: astral-sh/setup-uv@v5.2.2
+      uses: astral-sh/setup-uv@v5.3.0
       with:
         pyproject-file: "tests/pyproject.toml"
         enable-cache: true
