@@ -46,6 +46,11 @@ ruff-fix:
     just tests::ruff-format-fix
     just tests::ruff-lint-fix
 
+# Check for all Ruff issues
+ruff-checks:
+    just tests::ruff-format-check
+    just tests::ruff-lint-check
+
 # Check for Ruff issues
 ruff-lint-check:
     uv run ruff check end_to_end
