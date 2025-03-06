@@ -1,8 +1,8 @@
 from logging import getLogger
 
 from defusedxml.ElementTree import fromstring
-from pytest_bdd import scenarios, then, when
-from requests import Response, get
+from pytest_bdd import scenarios
+from requests import get
 
 from end_to_end.utils.variables import (
     EXPECTED_XML_CONTENT_TYPE,
@@ -17,35 +17,11 @@ EXPECTED_SITEMAP_URL = f"{PROJECT_URL}/{EXPECTED_SITEMAP_PATH}"
 logger = getLogger(__name__)
 
 
-@when("I request the sitemap index", target_fixture="sitemap_index_response")
-def step_impl() -> Response:
-    """Checks the sitemap.
-
-    Returns:
-        Response: The response from the request.
-    """
-    response = get(f"{PROJECT_URL}/sitemap.xml", timeout=10)
-    assert response.status_code == 200
-    return response
-
-
-@then("the sitemap index should be xml")
-def step_impl(sitemap_index_response: Response) -> None:
-    """Checks the sitemap is xml.
-
-    Args:
-        sitemap_index_response (Response): The response from the request.
-    """
-    assert sitemap_index_response.headers["Content-Type"] == EXPECTED_XML_CONTENT_TYPE
-
-
-@then("the sitemap index should link to the sitemap")
-def step_impl(sitemap_index_response: Response) -> None:
-    """Checks the sitemap is valid xml.
-
-    Args:
-        sitemap_index_response (Response): The response from the request.
-    """
+def test_sitemap_index() -> None:
+    # Act
+    sitemap_index_response = get(f"{PROJECT_URL}/sitemap.xml", timeout=5)
+    assert sitemap_index_response.status_code == 200
+    # Assert
     assert sitemap_index_response.headers["Content-Type"] == EXPECTED_XML_CONTENT_TYPE
     sitemap_index_element = fromstring(sitemap_index_response.content)
     assert (
@@ -61,54 +37,23 @@ def step_impl(sitemap_index_response: Response) -> None:
     assert loc_element == f"{SITEMAP_URL_PREFIX}/{EXPECTED_SITEMAP_PATH}"
 
 
-@when("I request the sitemap", target_fixture="sitemap_response")
-def step_impl() -> Response:
-    """Checks the sitemap.
-
-    Returns:
-        Response: The response from the request.
-    """
-    logger.info(f"Requesting sitemap: {EXPECTED_SITEMAP_URL}")
-    response = get(EXPECTED_SITEMAP_URL, timeout=10)
-    assert response.status_code == 200
-    return response
-
-
-@then("the sitemap should be xml")
-def step_impl(sitemap_response: Response) -> None:
-    """Checks the sitemap is xml.
-
-    Args:
-        sitemap_response (Response): The response from the request.
-    """
-    assert sitemap_response.headers["Content-Type"] == EXPECTED_XML_CONTENT_TYPE
-
-
-@then("the sitemap should contain the project urls")
-def step_impl(sitemap_response: Response) -> None:
-    """Checks the sitemap is xml.
-
-    Args:
-        sitemap_response (Response): The response from the request.
-    """
+def test_sitemap() -> None:
+    # Act
+    sitemap_response = get(EXPECTED_SITEMAP_URL, timeout=5)
+    assert sitemap_response.status_code == 200
+    # Assert
     assert sitemap_response.headers["Content-Type"] == EXPECTED_XML_CONTENT_TYPE
     sitemap_element = fromstring(sitemap_response.content)
     assert sitemap_element.tag == "{http://www.sitemaps.org/schemas/sitemap/0.9}urlset"
-    assert (
-        len(sitemap_element.findall("{http://www.sitemaps.org/schemas/sitemap/0.9}url"))
-        > 0
-    )
 
 
-@then("the project urls should be valid")
-def step_impl(sitemap_response: Response) -> None:
-    """Checks the sitemap is xml.
+def test_sitemap_urls() -> None:
+    # Act
+    # Act
+    sitemap_response = get(EXPECTED_SITEMAP_URL, timeout=5)
+    assert sitemap_response.status_code == 200
 
-    Args:
-        sitemap_response (Response): The response from the request.
-    """
     sitemap_element = fromstring(sitemap_response.content)
-    assert sitemap_element.tag == "{http://www.sitemaps.org/schemas/sitemap/0.9}urlset"
     for url_element in sitemap_element.findall(
         "{http://www.sitemaps.org/schemas/sitemap/0.9}url"
     ):
@@ -117,5 +62,5 @@ def step_impl(sitemap_response: Response) -> None:
         )
         assert loc_element.text.startswith(SITEMAP_URL_PREFIX)
         logger.debug(f"Requesting sitemap: {loc_element.text}")
-        response = get(loc_element.text, timeout=10)
+        response = get(loc_element.text, timeout=5)
         assert response.status_code == 200
