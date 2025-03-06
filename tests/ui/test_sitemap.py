@@ -1,16 +1,13 @@
 from logging import getLogger
 
 from defusedxml.ElementTree import fromstring
-from pytest_bdd import scenarios
 from requests import get
 
-from end_to_end.utils.variables import (
+from ui.utils.variables import (
     EXPECTED_XML_CONTENT_TYPE,
     PROJECT_URL,
     SITEMAP_URL_PREFIX,
 )
-
-scenarios("../features/sitemap.feature")
 
 EXPECTED_SITEMAP_PATH = "sitemap-0.xml"
 EXPECTED_SITEMAP_URL = f"{PROJECT_URL}/{EXPECTED_SITEMAP_PATH}"
