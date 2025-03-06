@@ -54,10 +54,10 @@ github_actions:
   - any:
       - changed-files:
           - any-glob-to-any-file: [".github/workflows/*", ".github/actions/*"]
-end_to_end_tests:
+tests:
   - any:
       - changed-files:
-          - any-glob-to-any-file: ["tests/end_to_end/**/*"]
+          - any-glob-to-any-file: ["tests/*"]
 dashboard:
   - any:
       - changed-files:

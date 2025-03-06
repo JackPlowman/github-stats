@@ -9,13 +9,13 @@ install:
 # Run End-to-End Tests
 run:
     PROJECT_URL=https://jackplowman.github.io/github-stats \
-    uv run pytest end_to_end --gherkin-terminal-reporter -vv --reruns 2
+    uv run pytest ui -vv --reruns 2
 
 # Run End-to-End Tests with dashboard running locally
 run-local:
     PROJECT_URL=http://localhost:8000 \
     ENVIRONMENT=local \
-    uv run pytest end_to_end --gherkin-terminal-reporter -vvvv --reruns 2
+    uv run pytest ui -vvvv --reruns 2
 
 # Remove all compiled Python files
 clean:
@@ -53,16 +53,16 @@ ruff-checks:
 
 # Check for Ruff issues
 ruff-lint-check:
-    uv run ruff check end_to_end
+    uv run ruff check ui
 
 # Fix Ruff lint issues
 ruff-lint-fix:
-    uv run ruff check end_to_end --fix --unsafe-fixes
+    uv run ruff check ui --fix --unsafe-fixes
 
 # Check for Ruff format issues
 ruff-format-check:
-    uv run ruff format --check end_to_end
+    uv run ruff format --check ui
 
 # Fix Ruff format issues
 ruff-format-fix:
-    uv run ruff format end_to_end
+    uv run ruff format ui

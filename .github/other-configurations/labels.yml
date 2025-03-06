@@ -69,7 +69,7 @@
   description:
 # Components
 - color: 00f2de
-  name: end_to_end_tests
+  name: tests
   description: Pull requests that update end to end tests
 - color: f27100
   name: dashboard
