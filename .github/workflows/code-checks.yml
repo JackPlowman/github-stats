@@ -72,7 +72,7 @@ jobs:
         run: just dashboard::eslint-with-sarif
         continue-on-error: true
       - name: Upload analysis results to GitHub
-        uses: github/codeql-action/upload-sarif@v3.28.9
+        uses: github/codeql-action/upload-sarif@v3.28.10
         with:
           sarif_file: dashboard/eslint-results.sarif
           wait-for-processing: true
@@ -102,7 +102,7 @@ jobs:
           RUFF_OUTPUT_FILE: "ruff-results.sarif"
         continue-on-error: true
       - name: Upload Ruff analysis results to GitHub
-        uses: github/codeql-action/upload-sarif@v3.28.9
+        uses: github/codeql-action/upload-sarif@v3.28.10
         with:
           sarif_file: tests/ruff-results.sarif
           wait-for-processing: true
@@ -153,6 +153,22 @@ jobs:
       - name: Check Justfile Format
         run: just format-check
 
+  lefthook-validate:
+    name: Lefthook Validate
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4.2.2
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - name: Install the latest version of uv
+        uses: astral-sh/setup-uv@v5.3.1
+        with:
+          version: "latest"
+      - name: Run Lefthook Validate
+        run: uvx lefthook validate
+
   run-codeql-analysis:
     name: CodeQL Analysis
     runs-on: ubuntu-latest
@@ -169,13 +185,13 @@ jobs:
           fetch-depth: 0
           persist-credentials: false
       - name: Initialize CodeQL
-        uses: github/codeql-action/init@v3.28.9
+        uses: github/codeql-action/init@v3.28.10
         with:
           languages: ${{ matrix.language }}
           queries: security-and-quality
           config-file: .github/other-configurations/codeql-config.yml
       - name: Perform CodeQL Analysis
-        uses: github/codeql-action/analyze@v3.28.9
+        uses: github/codeql-action/analyze@v3.28.10
 
   typescript-unit-tests:
     name: Test TypeScript Code
@@ -251,7 +267,7 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: Upload SARIF file
-        uses: github/codeql-action/upload-sarif@v3.28.9
+        uses: github/codeql-action/upload-sarif@v3.28.10
         with:
           sarif_file: results.sarif
           category: zizmor
