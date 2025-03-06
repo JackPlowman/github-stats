@@ -17,6 +17,14 @@ run-local:
     ENVIRONMENT=local \
     uv run pytest ui -vvvv --reruns 2
 
+# Install playwright dependencies
+playwright-install:
+    uv run playwright install
+
+# Install playwright minimum dependencies
+playwright-install-minimum:
+    uv run playwright install --with-deps --only-shell chromium
+
 # Remove all compiled Python files
 clean:
     find . \( \
