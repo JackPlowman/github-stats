@@ -18,3 +18,7 @@ pre-commit:
       run: just lefthook-validate
     Zizmor Checks:
       run: just zizmor-check
+    Dashboard Checks:
+      run: just dashboard::lint
+    Python Ruff Checks:
+      run: just tests::ruff-checks

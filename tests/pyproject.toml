@@ -4,7 +4,7 @@ dynamic = ["version"]
 requires-python = ">=3.13"
 dependencies = [
   "requests==2.32.3",
-  "pytest==8.3.4",
+  "pytest==8.3.5",
   "pytest-bdd==8.1.0",
   "defusedxml==0.7.1",
   "selenium==4.29.0",
@@ -15,7 +15,7 @@ dependencies = [
 dev = ["ruff==0.9.9", "zizmor==1.4.1"]
 
 [tool.uv]
-required-version = "0.6.3"
+required-version = "0.6.4"
 package=false
 
 [tool.ruff]
