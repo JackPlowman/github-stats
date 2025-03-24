@@ -15,7 +15,7 @@ dependencies = [
 dev = ["ruff==0.9.9", "zizmor==1.4.1"]
 
 [tool.uv]
-required-version = "0.6.4"
+required-version = "0.6.9"
 package = false
 
 [tool.ruff]
