@@ -18,6 +18,12 @@ runs:
         GITHUB_TOKEN: ${{ inputs.token }}
         REPOSITORY_OWNER: ${{ github.repository_owner }}
 
+    - name: Upload Analyser Output
+      uses: actions/upload-artifact@v4.6.2
+      with:
+        name: repository_statistics
+        path: repository_statistics.json
+
     - name: Copy generated files to github pages folder
       shell: bash
       run: cp -r repository_statistics.json dashboard/data
