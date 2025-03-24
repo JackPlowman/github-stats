@@ -5,9 +5,9 @@ runs:
   using: "composite"
   steps:
     - name: Set up Just
-      uses: extractions/setup-just@v2
+      uses: extractions/setup-just@v3
     - name: Install Python and UV
-      uses: astral-sh/setup-uv@v5.3.1
+      uses: astral-sh/setup-uv@v5.4.0
       with:
         pyproject-file: "tests/pyproject.toml"
         enable-cache: true
