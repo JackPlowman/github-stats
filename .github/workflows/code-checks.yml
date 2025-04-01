@@ -84,7 +84,7 @@ jobs:
 
   run-python-code-checks:
     name: Run Python Code Checks
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-latest
     permissions:
       statuses: write
       security-events: write
