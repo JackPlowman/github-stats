@@ -1,5 +1,5 @@
 # https://github.com/evilmartians/lefthook
-min_version: 1.11.6
+min_version: 1.11.10
 colors: true
 
 output:
