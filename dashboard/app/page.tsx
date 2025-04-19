@@ -2,7 +2,6 @@ import Link from "next/link";
 
 import repositories from "../lib/repository_statistics";
 
-
 export default function RepositoriesPage() {
   const sortedRepositories = repositories.toSorted((a, b) =>
     a.repository.localeCompare(b.repository),
