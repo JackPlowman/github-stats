@@ -232,7 +232,7 @@ jobs:
       - name: Setup Dashboard Dependencies
         uses: ./.github/actions/setup-dashboard-dependencies
       - name: Copy example file to github pages folder
-        run: cp -r data/repository_statistics.json dashboard/data
+        run: cp -r test_data/repository_statistics.json dashboard/data
       - name: Run Build Test
         run: just dashboard-docker-build
 
