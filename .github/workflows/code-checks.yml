@@ -130,7 +130,7 @@ jobs:
           fetch-depth: 0
           persist-credentials: false
       - name: Check Markdown links
-        uses: UmbrellaDocs/action-linkspector@v1.3.4
+        uses: UmbrellaDocs/action-linkspector@a0567ce1c7c13de4a2358587492ed43cab5d0102 # v1.3.4
         with:
           github_token: ${{ secrets.GH_TOKEN }}
           config_file: .github/other-configurations/.linkspector.yml
@@ -249,7 +249,7 @@ jobs:
           fetch-depth: 0
           persist-credentials: false
       - name: "Run CodeLimit"
-        uses: getcodelimit/codelimit-action@v1
+        uses: getcodelimit/codelimit-action@a036c6897be9ccf69cde9dfe50eafa8cd79c98f8 # v1
 
   run-zizmor:
     name: Check GitHub Actions with zizmor
