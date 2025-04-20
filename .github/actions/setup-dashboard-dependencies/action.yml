@@ -10,10 +10,8 @@ runs:
         node-version: "22.8.0"
         cache: "npm"
         cache-dependency-path: "dashboard/package-lock.json"
-
     - name: Set up Just
-      uses: extractions/setup-just@v3
-
+      uses: extractions/setup-just@e33e0265a09d6d736e2ee1e0eb685ef1de4669ff # v3
     - name: Install Dashboard Dependencies
       shell: bash
       run: just dashboard::install
