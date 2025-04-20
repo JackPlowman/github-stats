@@ -12,7 +12,7 @@ dependencies = [
 ]
 
 [project.optional-dependencies]
-dev = ["ruff==0.11.6", "zizmor==1.5.2"]
+dev = ["ruff==0.11.6", "zizmor==1.6.0"]
 
 [tool.uv]
 required-version = "0.6.14"
