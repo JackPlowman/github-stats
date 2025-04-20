@@ -73,7 +73,7 @@ jobs:
         run: just dashboard::eslint-with-sarif
         continue-on-error: true
       - name: Upload analysis results to GitHub
-        uses: github/codeql-action/upload-sarif@v3.28.13
+        uses: github/codeql-action/upload-sarif@v3.28.15
         with:
           sarif_file: dashboard/eslint-results.sarif
           wait-for-processing: true
@@ -103,7 +103,7 @@ jobs:
           RUFF_OUTPUT_FILE: "ruff-results.sarif"
         continue-on-error: true
       - name: Upload Ruff analysis results to GitHub
-        uses: github/codeql-action/upload-sarif@v3.28.13
+        uses: github/codeql-action/upload-sarif@v3.28.15
         with:
           sarif_file: tests/ruff-results.sarif
           wait-for-processing: true
@@ -130,7 +130,7 @@ jobs:
           fetch-depth: 0
           persist-credentials: false
       - name: Check Markdown links
-        uses: UmbrellaDocs/action-linkspector@v1.3.2
+        uses: UmbrellaDocs/action-linkspector@v1.3.4
         with:
           github_token: ${{ secrets.GH_TOKEN }}
           config_file: .github/other-configurations/.linkspector.yml
@@ -165,7 +165,7 @@ jobs:
           fetch-depth: 0
           persist-credentials: false
       - name: Install the latest version of uv
-        uses: astral-sh/setup-uv@v5.4.0
+        uses: astral-sh/setup-uv@v5.4.2
         with:
           version: "latest"
       - name: Run Lefthook Validate
@@ -187,13 +187,13 @@ jobs:
           fetch-depth: 0
           persist-credentials: false
       - name: Initialize CodeQL
-        uses: github/codeql-action/init@v3.28.13
+        uses: github/codeql-action/init@v3.28.15
         with:
           languages: ${{ matrix.language }}
           queries: security-and-quality
           config-file: .github/other-configurations/codeql-config.yml
       - name: Perform CodeQL Analysis
-        uses: github/codeql-action/analyze@v3.28.13
+        uses: github/codeql-action/analyze@v3.28.15
 
   typescript-unit-tests:
     name: Test TypeScript Code
@@ -269,7 +269,7 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: Upload SARIF file
-        uses: github/codeql-action/upload-sarif@v3.28.13
+        uses: github/codeql-action/upload-sarif@v3.28.15
         with:
           sarif_file: results.sarif
           category: zizmor
