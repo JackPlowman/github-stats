@@ -13,7 +13,7 @@ runs:
       uses: ./.github/actions/setup-dashboard-dependencies
 
     - name: GitHub Stats Analyser
-      uses: JackPlowman/github-stats-analyser@v1.3.0
+      uses: JackPlowman/github-stats-analyser@733f0168dbb590c0898b22a7bd0f7e70ccf63295 # v1.3.0
       with:
         GITHUB_TOKEN: ${{ inputs.token }}
         REPOSITORY_OWNER: ${{ github.repository_owner }}
