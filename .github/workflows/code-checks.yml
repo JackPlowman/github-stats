@@ -151,7 +151,7 @@ jobs:
           fetch-depth: 0
           persist-credentials: false
       - name: Set up Just
-        uses: extractions/setup-just@e33e0265a09d6d736e2ee1e0eb685ef1de4669ff # v3
+        uses: extractions/setup-just@e33e0265a09d6d736e2ee1e0eb685ef1de4669ff # v3.0.0
       - name: Check Justfile Format
         run: just format-check
 
@@ -248,7 +248,7 @@ jobs:
           fetch-depth: 0
           persist-credentials: false
       - name: "Run CodeLimit"
-        uses: getcodelimit/codelimit-action@a036c6897be9ccf69cde9dfe50eafa8cd79c98f8 # v1
+        uses: getcodelimit/codelimit-action@a036c6897be9ccf69cde9dfe50eafa8cd79c98f8 # v1.0.0 
 
   run-zizmor:
     name: Check GitHub Actions with zizmor

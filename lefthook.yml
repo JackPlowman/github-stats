@@ -1,5 +1,5 @@
 # https://github.com/evilmartians/lefthook
-min_version: 1.11.10
+min_version: 1.11.11
 colors: true
 
 output:
@@ -18,6 +18,8 @@ pre-commit:
       run: just lefthook-validate
     Zizmor Checks:
       run: just zizmor-check
+    Pinact Checks:
+      run: just pinact-check
     Dashboard Checks:
       run: just dashboard::lint
     Python Ruff Checks:
