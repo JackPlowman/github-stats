@@ -40,8 +40,8 @@ clean:
       -name 'db.sqlite3' \
     \) -print | xargs rm -rfv
 
-# Validates Pyproject
-pyproject-check:
+# Validate uv locked
+uv-lock-check:
     uv lock --check
 
 # ------------------------------------------------------------------------------
