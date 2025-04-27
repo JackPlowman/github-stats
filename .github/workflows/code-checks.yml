@@ -248,7 +248,7 @@ jobs:
           fetch-depth: 0
           persist-credentials: false
       - name: "Run CodeLimit"
-        uses: getcodelimit/codelimit-action@a036c6897be9ccf69cde9dfe50eafa8cd79c98f8 # v1.0.0 
+        uses: getcodelimit/codelimit-action@a036c6897be9ccf69cde9dfe50eafa8cd79c98f8 # v1.0.0
 
   run-zizmor:
     name: Check GitHub Actions with zizmor
