@@ -69,9 +69,7 @@ jobs:
         shell: bash
         run: just tests::playwright-install
       - name: Run UI Tests
-        run: just tests::run-in-browser
-        env:
-          BROWSER: ${{ matrix.browser }}
+        run: just tests::run-ci ${{ matrix.browser }}
 
   link-tests:
     name: Link Tests
