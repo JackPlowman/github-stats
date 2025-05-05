@@ -1,6 +1,12 @@
 name: "Setup Dependencies"
 description: "Installs dependencies for the project"
 
+inputs:
+  setup-browsers:
+    description: "Whether to set up browsers for Playwright"
+    required: false
+    default: "false"
+
 runs:
   using: "composite"
   steps:
@@ -11,8 +17,9 @@ runs:
       with:
         working-directory: tests
     - name: Install Playwright Dependencies
+      if: ${{ inputs.setup-browsers == 'true' }}
       shell: bash
-      run: just tests::playwright-install-minimum
+      run: just tests::playwright-install
     - name: Install Python Dependencies
       shell: bash
       run: just tests::install

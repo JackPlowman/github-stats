@@ -17,13 +17,14 @@ run-local:
     ENVIRONMENT=local \
     uv run pytest ui -vvvv --reruns 2
 
+# Run End-to-End Tests in browser
+run-in-browser:
+    PROJECT_URL=https://jackplowman.github.io/github-stats \
+    uv run pytest ui -vv --reruns 2 --browser ${BROWSER}
+
 # Install playwright dependencies
 playwright-install:
-    uv run playwright install
-
-# Install playwright minimum dependencies
-playwright-install-minimum:
-    uv run playwright install --with-deps --only-shell chromium
+    uv run playwright install --with-deps
 
 # Remove all compiled Python files
 clean:
