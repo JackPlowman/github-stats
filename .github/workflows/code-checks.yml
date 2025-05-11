@@ -217,24 +217,6 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
 
-  docker-build-test:
-    name: Docker Build Test
-    runs-on: ubuntu-latest
-    permissions:
-      statuses: write
-    steps:
-      - name: Checkout Repository
-        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
-        with:
-          fetch-depth: 0
-          persist-credentials: false
-      - name: Setup Dashboard Dependencies
-        uses: ./.github/actions/setup-dashboard-dependencies
-      - name: Copy example file to github pages folder
-        run: cp -r test_data/repository_statistics.json dashboard/data
-      - name: Run Build Test
-        run: just dashboard-docker-build
-
   run-code-limit:
     name: Run CodeLimit
     runs-on: ubuntu-latest

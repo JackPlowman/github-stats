@@ -2,22 +2,6 @@ mod dashboard 'dashboard/dashboard.just'
 mod tests 'tests/tests.just'
 
 # ------------------------------------------------------------------------------
-# Docker
-# ------------------------------------------------------------------------------
-
-# Build the dashboard docker image
-dashboard-docker-build:
-    cd docker/dashboard && docker build -t github-stats-dashboard -f Dockerfile .
-
-# Run the dashboard docker image using docker compose
-dashboard-up:
-    docker compose -f=docker/docker-compose.yml up -d
-
-# Stop the dashboard docker image
-dashboard-down:
-    docker compose -f=docker/docker-compose.yml down
-
-# ------------------------------------------------------------------------------
 # Prettier
 # ------------------------------------------------------------------------------
 
