@@ -8,6 +8,7 @@ install:
 
 # Start the development server
 dev:
+    export NEXT_PUBLIC_SITE_URL=http://localhost:3000/github-stats
     npm run dev
 
 # Build an optimized production version of the app

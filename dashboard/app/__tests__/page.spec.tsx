@@ -1,7 +1,7 @@
 import { expect, test } from "@jest/globals";
 import { render } from "@testing-library/react";
 
-import Home from "../page";
+import Home from "../repositories/page";
 
 test("renders home page", async () => {
   // Act

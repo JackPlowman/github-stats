@@ -11,7 +11,7 @@
     "node": "23.11.0"
   },
   "scripts": {
-    "dev": "NEXT_PUBLIC_SITE_URL=http://localhost:3000/github-stats next dev --turbopack",
+    "dev": "next dev --turbopack",
     "build": "next build",
     "postbuild": "next-sitemap --config next-sitemap.config.mjs",
     "postbuild:local": "NEXT_PUBLIC_SITE_URL=http://localhost:8000 next-sitemap --config next-sitemap.config.mjs",
