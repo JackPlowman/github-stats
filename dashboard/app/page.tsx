@@ -1,5 +1,4 @@
 export default function RepositoriesPage() {
-
   return (
     <div style={{ display: "flex", justifyContent: "center" }}>
       <div style={{ width: "33%", textAlign: "left" }}>
