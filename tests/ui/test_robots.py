@@ -1,5 +1,7 @@
-from requests import get
 from pathlib import Path
+
+from requests import get
+
 from ui.utils.variables import (
     PROJECT_URL,
 )
