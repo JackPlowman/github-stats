@@ -1,5 +1,5 @@
 from requests import get
-
+from pathlib import Path
 from ui.utils.variables import (
     PROJECT_URL,
 )
@@ -12,6 +12,6 @@ def test_robots_txt() -> None:
     assert robots_response.status_code == 200
     # Assert
     assert robots_response.headers["Content-Type"] == "text/plain; charset=utf-8"
-    with open("ui/data/expected_robots.txt") as file:
+    with Path("ui/data/expected_robots.txt").open() as file:
         expected_robots = file.read()
     assert robots_response.text == expected_robots
