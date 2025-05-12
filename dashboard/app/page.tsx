@@ -22,6 +22,7 @@ export default function RepositoriesPage() {
                   textDecoration: "underline",
                   fontWeight: "bold",
                 }}
+                data-testid="repository-link"
               >
                 {repository.repository}
               </Link>

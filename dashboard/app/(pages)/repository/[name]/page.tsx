@@ -54,6 +54,7 @@ export default async function RepositoryPage(
           fontWeight: "bold",
           color: "var(--color-secondary)",
         }}
+        data-testid="repository-name-title"
       >
         {repository.repository}
       </h1>
