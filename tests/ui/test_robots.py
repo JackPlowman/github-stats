@@ -12,6 +12,6 @@ def test_robots_txt() -> None:
     assert robots_response.status_code == 200
     # Assert
     assert robots_response.headers["Content-Type"] == "text/plain; charset=utf-8"
-    assert "User-agent: *" in robots_response.text
-    assert "Disallow: /admin/" in robots_response.text
-    assert "Allow: /admin/admin-ajax.php" in robots_response.text
+    with open("tests/ui/data/expected_robots.txt") as file:
+        expected_robots = file.read()
+    assert robots_response.text == expected_robots
