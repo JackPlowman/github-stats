@@ -2,23 +2,23 @@ from logging import getLogger
 
 from playwright.sync_api import Page
 
-from ui.utils.variables import PROJECT_URL
+from ui.utils.variables import REPOSITORIES_URL
 
 logger = getLogger(__name__)
 
 
 def test_title(page: Page) -> None:
-    """Test the homepage title."""
+    """Test the repositories title."""
     # Act
-    page.goto(PROJECT_URL)
+    page.goto(REPOSITORIES_URL)
     # Assert
     assert page.title() == "GitHub Stats Dashboard"
 
 
-def test_homepage_content(page: Page) -> None:
-    """Test the homepage content."""
+def test_repositories_content(page: Page) -> None:
+    """Test the repositories content."""
     # Act
-    page.goto(PROJECT_URL)
+    page.goto(REPOSITORIES_URL)
     # Assert
     assert page.locator("h1").text_content() == "Repositories"
     repository_links = page.locator("[data-testid='repository-link']")
