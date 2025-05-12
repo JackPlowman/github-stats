@@ -60,6 +60,5 @@ def test_sitemap_urls() -> None:
             "{http://www.sitemaps.org/schemas/sitemap/0.9}loc"
         )
         assert loc_element.text.startswith(SITEMAP_URL_PREFIX)
-        logger.debug(f"Requesting sitemap: {loc_element.text}")
         response = get(loc_element.text, timeout=5)
         assert response.status_code == 200
