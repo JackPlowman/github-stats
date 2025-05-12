@@ -3,7 +3,8 @@ from playwright.sync_api import Page
 from ui.utils.variables import PROJECT_URL
 
 
-def test_homepage(page: Page) -> None:
+def test_title(page: Page) -> None:
+    """Test the homepage title."""
     # Act
     page.goto(PROJECT_URL)
     # Assert
