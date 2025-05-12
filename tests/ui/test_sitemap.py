@@ -15,6 +15,7 @@ logger = getLogger(__name__)
 
 
 def test_sitemap_index() -> None:
+    """Test the sitemap index XML file."""
     # Act
     sitemap_index_response = get(f"{PROJECT_URL}/sitemap.xml", timeout=5)
     assert sitemap_index_response.status_code == 200
@@ -35,6 +36,7 @@ def test_sitemap_index() -> None:
 
 
 def test_sitemap() -> None:
+    """Test the sitemap XML file."""
     # Act
     sitemap_response = get(EXPECTED_SITEMAP_URL, timeout=5)
     assert sitemap_response.status_code == 200
@@ -45,7 +47,7 @@ def test_sitemap() -> None:
 
 
 def test_sitemap_urls() -> None:
-    # Act
+    """Test the URLs in the sitemap XML file."""
     # Act
     sitemap_response = get(EXPECTED_SITEMAP_URL, timeout=5)
     assert sitemap_response.status_code == 200
