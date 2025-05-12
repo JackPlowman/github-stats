@@ -1,6 +1,10 @@
+from logging import getLogger
+
 from playwright.sync_api import Page
 
 from ui.utils.variables import PROJECT_URL
+
+logger = getLogger(__name__)
 
 
 def test_title(page: Page) -> None:
@@ -9,3 +13,49 @@ def test_title(page: Page) -> None:
     page.goto(PROJECT_URL)
     # Assert
     assert page.title() == "GitHub Stats Dashboard"
+
+
+def test_homepage_content(page: Page) -> None:
+    """Test the homepage content."""
+    # Act
+    page.goto(PROJECT_URL)
+    # Assert
+    assert page.locator("h1").text_content() == "Repositories"
+    repository_links = page.locator("[data-testid='repository-link']")
+    assert repository_links.count() == 30
+    assert (
+        repository_links.first.get_attribute("href")
+        == "/github-stats/repository/actions-status"
+    )
+    assert [link.text_content() for link in repository_links.element_handles()] == [
+        "actions-status",
+        "aws-timing-scripts",
+        "create-repository-tasks",
+        "DependabotTrigger",
+        "development-environment",
+        "development-ideas",
+        "github-pr-analyser",
+        "github-stats",
+        "github-stats-analyser",
+        "GitHubPulse",
+        "JackPlowman",
+        "project-links",
+        "project-status-checker",
+        "python-practise",
+        "repo_standards_validator",
+        "repo-overseer",
+        "RepoOrchestrator",
+        "repository-template",
+        "repository-visualiser",
+        "RepoSync",
+        "screenshot_mailinator_email",
+        "SlocCount",
+        "source_scan",
+        "status-sentinel",
+        "tech-radar",
+        "TechInsight",
+        "TechScanner",
+        "test-project-status-checker",
+        "useful-commands",
+        "windows-development-environment",
+    ]
