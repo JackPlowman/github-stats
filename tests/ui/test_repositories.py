@@ -37,7 +37,6 @@ def test_repositories_content(page: Page) -> None:
         "github-pr-analyser",
         "github-stats",
         "github-stats-analyser",
-        "GitHubPulse",
         "JackPlowman",
         "project-links",
         "project-status-checker",
