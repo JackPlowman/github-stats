@@ -48,6 +48,7 @@ def test_repositories_content(page: Page) -> None:
         "repository-template",
         "repository-visualiser",
         "RepoSync",
+        "reusable-workflows",
         "screenshot_mailinator_email",
         "SlocCount",
         "source_scan",
