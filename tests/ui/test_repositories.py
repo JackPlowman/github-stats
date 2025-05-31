@@ -40,6 +40,7 @@ def test_repositories_content(page: Page) -> None:
         "JackPlowman",
         "project-links",
         "project-status-checker",
+        "projects",
         "python-practise",
         "repo_standards_validator",
         "repo-overseer",
