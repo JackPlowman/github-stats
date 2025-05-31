@@ -69,7 +69,7 @@ jobs:
         shell: bash
         run: just tests::playwright-install
       - name: Run UI Tests
-        run: just tests::run-ci $BROWSER
+        run: just tests::run-ci "$BROWSER"
         env:
           BROWSER: ${{ matrix.browser }}
 
