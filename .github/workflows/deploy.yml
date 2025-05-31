@@ -72,7 +72,7 @@ jobs:
         run: just tests::run-ci $BROWSER
         env:
           BROWSER: ${{ matrix.browser }}
-          
+
   link-tests:
     name: Link Tests
     runs-on: ubuntu-latest
