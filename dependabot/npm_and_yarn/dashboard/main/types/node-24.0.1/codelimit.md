@@ -4,8 +4,8 @@
 | **Language** | **Files** | **Functions** | **Lines of Code** | **⚠** | **⛌** |
 | --- | ---: | ---: | ---: | ---: | ---: |
 | TypeScript | 4 | 1 | 3 | 0 | 0 |
-| JavaScript | 3 | 0 | 0 | 0 | 0 |
-| **Totals** | **7** | **1** | **3** | **0** | **0** |
+| JavaScript | 4 | 0 | 0 | 0 | 0 |
+| **Totals** | **8** | **1** | **3** | **0** | **0** |
 
 ### Summary
 | **Easy / Verbose** | **Hard-to-maintain ⚠** | **Unmaintainable ⛌** |
