@@ -56,7 +56,7 @@ updates:
         patterns:
           - "*"
         exclude-patterns:
-          - "nextjs"
+          - "next"
           - "react"
           - "typescript"
         update-types:
