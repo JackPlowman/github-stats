@@ -1,7 +1,7 @@
 {
   "version": "0.18.1",
-  "uuid": "afd0dadf-b3fd-4d78-9a06-39e24a2ffc4d",
-  "timestamp": "2025-06-11T21:37:53+00:00",
+  "uuid": "5fed8af3-1781-45c2-8a9f-4ef8de9b9128",
+  "timestamp": "2025-06-11T21:44:15+00:00",
   "root": "/github/workspace",
   "repository": {
     "owner": "JackPlowman",
@@ -11,7 +11,7 @@
   "codebase": {
     "totals": {
       "JavaScript": {
-        "files": 3,
+        "files": 4,
         "lines_of_code": 0,
         "functions": 0,
         "hard_to_maintain": 0,
@@ -35,6 +35,7 @@
       "dashboard/": {
         "entries": [
           "next.config.mjs",
+          "eslint.config.js",
           "postcss.config.mjs",
           "next-sitemap.config.mjs",
           "jest.config.ts",
@@ -54,6 +55,14 @@
     "files": {
       "dashboard/next.config.mjs": {
         "checksum": "6fa67edfb1212712573d209f8b5b9c55",
+        "language": "JavaScript",
+        "loc": 0,
+        "profile": [0, 0, 0, 0],
+        "measurements": [
+        ]
+      },
+      "dashboard/eslint.config.js": {
+        "checksum": "037fcb1e894e509c228654d035632f17",
         "language": "JavaScript",
         "loc": 0,
         "profile": [0, 0, 0, 0],
