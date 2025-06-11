@@ -24,7 +24,7 @@ lint:
 
 # Lint typescript code with ESLint and generate a SARIF file
 eslint-with-sarif:
-    npx eslint . --config .eslintrc.json --format @microsoft/eslint-formatter-sarif --output-file eslint-results.sarif
+    npx eslint . --format @microsoft/eslint-formatter-sarif --output-file eslint-results.sarif
 
 # Run unit tests
 unit-test:
