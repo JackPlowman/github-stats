@@ -55,6 +55,10 @@ updates:
         applies-to: "version-updates"
         patterns:
           - "*"
+        exclude-patterns:
+          - "nextjs"
+          - "react"
+          - "typescript"
         update-types:
           - "patch"
           - "minor"
