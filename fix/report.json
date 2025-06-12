@@ -1,7 +1,7 @@
 {
   "version": "0.18.1",
-  "uuid": "e0403244-95db-4f83-a2de-83043b1eefee",
-  "timestamp": "2025-05-17T21:20:22+00:00",
+  "uuid": "667453c9-925a-4ab0-bbbd-091dc3154091",
+  "timestamp": "2025-06-12T07:00:33+00:00",
   "root": "/github/workspace",
   "repository": {
     "owner": "JackPlowman",
@@ -11,7 +11,7 @@
   "codebase": {
     "totals": {
       "JavaScript": {
-        "files": 3,
+        "files": 4,
         "lines_of_code": 0,
         "functions": 0,
         "hard_to_maintain": 0,
@@ -34,11 +34,12 @@
       },
       "dashboard/": {
         "entries": [
-          "next-sitemap.config.mjs",
-          "jest.setup.ts",
-          "jest.config.ts",
           "next.config.mjs",
+          "eslint.config.js",
           "postcss.config.mjs",
+          "next-sitemap.config.mjs",
+          "jest.config.ts",
+          "jest.setup.ts",
           "lib/"
         ],
         "profile": [3, 0, 0, 0]
@@ -52,17 +53,33 @@
       }
     },
     "files": {
-      "dashboard/next-sitemap.config.mjs": {
-        "checksum": "f32f6708c68fe734fda1ed5bb38909b3",
+      "dashboard/next.config.mjs": {
+        "checksum": "6fa67edfb1212712573d209f8b5b9c55",
         "language": "JavaScript",
         "loc": 0,
         "profile": [0, 0, 0, 0],
         "measurements": [
         ]
       },
-      "dashboard/jest.setup.ts": {
-        "checksum": "d7c0f56515d82ff38e71198bf901ee7d",
-        "language": "TypeScript",
+      "dashboard/eslint.config.js": {
+        "checksum": "037fcb1e894e509c228654d035632f17",
+        "language": "JavaScript",
+        "loc": 0,
+        "profile": [0, 0, 0, 0],
+        "measurements": [
+        ]
+      },
+      "dashboard/postcss.config.mjs": {
+        "checksum": "4ae674cb9a5e6dc8c6afe2598c150776",
+        "language": "JavaScript",
+        "loc": 0,
+        "profile": [0, 0, 0, 0],
+        "measurements": [
+        ]
+      },
+      "dashboard/next-sitemap.config.mjs": {
+        "checksum": "b518785c0adb4e2ec6c53e77ff6a86e4",
+        "language": "JavaScript",
         "loc": 0,
         "profile": [0, 0, 0, 0],
         "measurements": [
@@ -76,17 +93,9 @@
         "measurements": [
         ]
       },
-      "dashboard/next.config.mjs": {
-        "checksum": "6fa67edfb1212712573d209f8b5b9c55",
-        "language": "JavaScript",
-        "loc": 0,
-        "profile": [0, 0, 0, 0],
-        "measurements": [
-        ]
-      },
-      "dashboard/postcss.config.mjs": {
-        "checksum": "4ae674cb9a5e6dc8c6afe2598c150776",
-        "language": "JavaScript",
+      "dashboard/jest.setup.ts": {
+        "checksum": "d7c0f56515d82ff38e71198bf901ee7d",
+        "language": "TypeScript",
         "loc": 0,
         "profile": [0, 0, 0, 0],
         "measurements": [
