@@ -43,13 +43,8 @@ clean:
       -name 'db.sqlite3' \
     \) -print | xargs rm -rfv
 
-# Validate uv locked
-uv-lock-check:
-    uv lock --check
-
 # ------------------------------------------------------------------------------
 # Ruff - Python Linting and Formatting
-# Set up ruff red-knot when it's ready
 # ------------------------------------------------------------------------------
 
 # Fix all Ruff issues
@@ -77,3 +72,19 @@ ruff-format-check:
 # Fix Ruff format issues
 ruff-format-fix:
     uv run ruff format ui
+
+# ------------------------------------------------------------------------------
+# Ty - Python Type Checking
+# ------------------------------------------------------------------------------
+
+# Check for type issues with Ty
+ty-check:
+    uv run ty check .
+
+# ------------------------------------------------------------------------------
+# Other Python Tools
+# ------------------------------------------------------------------------------
+
+# Check uv lockfile
+uv-lock-check:
+    uv lock --check

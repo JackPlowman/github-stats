@@ -80,8 +80,8 @@ jobs:
       - name: Run ESLint
         run: just dashboard::lint
 
-  run-python-code-checks:
-    name: Run Python Code Checks
+  run-python-tests-lint-checks:
+    name: Run Python Tests Lint Checks
     runs-on: ubuntu-latest
     permissions:
       statuses: write
@@ -93,7 +93,7 @@ jobs:
           fetch-depth: 0
           persist-credentials: false
       - name: Set up dependencies
-        uses: ./.github/actions/setup-test-dependencies
+        uses: ./.github/actions/setup-tests-dependencies
       - name: Generate Ruff Sarif
         run: just tests::ruff-lint-check
         env:
@@ -105,16 +105,57 @@ jobs:
         with:
           sarif_file: tests/ruff-results.sarif
           wait-for-processing: true
-      - name: Validate UV Lock
-        run: just tests::uv-lock-check
-      - name: Check Python Code Format (Ruff)
-        run: just tests::ruff-format-check
-        env:
-          RUFF_OUTPUT_FORMAT: "github"
       - name: Check Python Code Linting (Ruff)
         run: just tests::ruff-lint-check
         env:
           RUFF_OUTPUT_FORMAT: "github"
+
+  run-python-tests-format-checks:
+    name: Run Python Tests Format Checks
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - name: Set up dependencies
+        uses: ./.github/actions/setup-tests-dependencies
+      - name: Check Python Code Format (Ruff)
+        run: just tests::ruff-format-check
+        env:
+          RUFF_OUTPUT_FORMAT: "github"
+
+  run-python-tests-type-checks:
+    name: Run Python Tests Type Checks
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - name: Set up dependencies
+        uses: ./.github/actions/setup-tests-dependencies
+      - name: Check Python Code Types (ty) Checks
+        run: just tests::ty-check
+
+  run-python-tests-lockfile-check:
+    name: Run Python Tests Lockfile Check
+    runs-on: ubuntu-latest
+    permissions:
+      statuses: write
+      security-events: write
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - name: Set up dependencies
+        uses: ./.github/actions/setup-tests-dependencies
+      - name: Check UV Lockfile
+        run: just tests::uv-lock-check
 
   common-code-checks:
     name: Common Code Checks
