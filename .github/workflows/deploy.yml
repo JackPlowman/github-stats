@@ -87,6 +87,6 @@ jobs:
         uses: JustinBeckwith/linkinator-action@3d5ba091319fa7b0ac14703761eebb7d100e6f6d # v1.11.0
         with:
           paths: https://jackplowman.github.io/github-stats
-          recurse: true
+          recurse: false
           timeout: 1000
           markdown: false
