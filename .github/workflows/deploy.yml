@@ -90,3 +90,4 @@ jobs:
           recurse: false
           timeout: 1000
           markdown: false
+          verbosity: DEBUG
