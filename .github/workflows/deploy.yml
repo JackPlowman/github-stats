@@ -84,9 +84,6 @@ jobs:
           fetch-depth: 0
           persist-credentials: false
       - name: Run Link Tests
-        uses: JustinBeckwith/linkinator-action@3d5ba091319fa7b0ac14703761eebb7d100e6f6d # v1.11.0
+        uses: filiph/linkcheck@f2c15a0be0d9c83def5df3edcc0f2d6582845f2d # 3.0.0
         with:
-          paths: https://jackplowman.github.io/github-stats
-          recurse: false
-          timeout: 1000
-          markdown: false
+          arguments: https://jackplowman.github.io/github-stats
