@@ -22,7 +22,7 @@ def test_repositories_content(page: Page) -> None:
     # Assert
     assert page.locator("h1").text_content() == "Repositories"
     repository_links = page.locator("[data-testid='repository-link']")
-    assert repository_links.count() == 32
+    assert repository_links.count() == 33
     assert (
         repository_links.first.get_attribute("href")
         == "/github-stats/repository/actions-status"
@@ -34,6 +34,7 @@ def test_repositories_content(page: Page) -> None:
         "DependabotTrigger",
         "development-environment",
         "development-ideas",
+        "gitdash",
         "github-pr-analyser",
         "github-stats",
         "github-stats-analyser",
