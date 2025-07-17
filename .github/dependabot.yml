@@ -6,7 +6,7 @@ updates:
       - "/"
       - ".github/actions/setup-and-deploy-dashboard"
       - ".github/actions/setup-dashboard-dependencies"
-      - ".github/actions/setup-test-dependencies"
+      - ".github/actions/setup-tests-dependencies"
     commit-message:
       prefix: "deps(github-actions)"
     schedule:
