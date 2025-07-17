@@ -70,8 +70,8 @@
       "prettier-plugin-tailwindcss"
     ],
     "importOrder": [
-      "^@/(.*)$",
-      "^[./]"
+      "@/(.*)$",
+      "[./]"
     ],
     "importOrderSeparation": true,
     "importOrderSortSpecifiers": true
