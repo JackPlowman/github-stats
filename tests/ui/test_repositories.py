@@ -39,6 +39,7 @@ def test_repositories_content(page: Page) -> None:
         "github-stats",
         "github-stats-analyser",
         "JackPlowman",
+        "one-time-scripts",
         "project-links",
         "project-status-checker",
         "projects",
