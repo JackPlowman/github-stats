@@ -1,6 +1,5 @@
-import Link from "next/link";
-
 import repositories from "../../lib/repository_statistics";
+import Link from "next/link";
 
 export default function RepositoriesPage() {
   const sortedRepositories = repositories.toSorted((a, b) =>
