@@ -34,25 +34,26 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           LINTER_RULES_PATH: .github/super-linter-configurations
           YAML_ERROR_ON_WARNING: true
+          VALIDATE_CSS: false
+          VALIDATE_EDITORCONFIG: false
+          VALIDATE_GIT_COMMITLINT: false
+          VALIDATE_JAVASCRIPT_ES: false
+          VALIDATE_JAVASCRIPT_PRETTIER: false
+          VALIDATE_JAVASCRIPT_STANDARD: false
+          VALIDATE_JSON: false
+          VALIDATE_JSX: false
+          VALIDATE_JSX_PRETTIER: false
           VALIDATE_PYTHON_BLACK: false
           VALIDATE_PYTHON_FLAKE8: false
           VALIDATE_PYTHON_ISORT: false
           VALIDATE_PYTHON_MYPY: false
           VALIDATE_PYTHON_PYLINT: false
           VALIDATE_PYTHON_RUFF: false
-          VALIDATE_PYTHON_PYINK: false
-          VALIDATE_CSS: false
-          VALIDATE_JSON: false
-          VALIDATE_JAVASCRIPT_ES: false
-          VALIDATE_JAVASCRIPT_PRETTIER: false
-          VALIDATE_JAVASCRIPT_STANDARD: false
-          VALIDATE_JSX: false
-          VALIDATE_JSX_PRETTIER: false
+          VALIDATE_TSX: false
+          VALIDATE_TSX_PRETTIER: false
           VALIDATE_TYPESCRIPT_ES: false
           VALIDATE_TYPESCRIPT_PRETTIER: false
           VALIDATE_TYPESCRIPT_STANDARD: false
-          VALIDATE_TSX: false
-          VALIDATE_TSX_PRETTIER: false
 
   run-typescript-code-checks:
     name: Run TypeScript Code Checks
