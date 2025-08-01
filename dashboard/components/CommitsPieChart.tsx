@@ -35,7 +35,17 @@ export function CommitsPieChart({
   return (
     <Card className="flex flex-col">
       <CardHeader className="items-center pb-0">
-        <CardTitle>Total Commits</CardTitle>
+        <CardTitle
+          style={{
+            fontSize: "2.7rem",
+            fontWeight: 900,
+            color: "#fff",
+            marginBottom: "0.5rem",
+            letterSpacing: "-1px",
+          }}
+        >
+          Total Commits
+        </CardTitle>
       </CardHeader>
       <CardContent className="flex-1 pb-0">
         <ChartContainer
@@ -70,14 +80,14 @@ export function CommitsPieChart({
                         <tspan
                           x={viewBox.cx}
                           y={viewBox.cy}
-                          className="fill-foreground text-3xl font-bold"
+                          className="fill-white text-4xl font-extrabold drop-shadow-[0_2px_8px_rgba(0,0,0,0.7)]"
                         >
                           {chartData.reduce((acc, data) => acc + data.total, 0)}
                         </tspan>
                         <tspan
                           x={viewBox.cx}
-                          y={(viewBox.cy ?? 0) + 24}
-                          className="fill-muted-foreground"
+                          y={(viewBox.cy ?? 0) + 28}
+                          className="fill-white text-lg font-bold drop-shadow-[0_2px_8px_rgba(0,0,0,0.7)]"
                         >
                           Commits
                         </tspan>
