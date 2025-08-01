@@ -44,10 +44,10 @@ export default function AppSidebar() {
 
               <SidebarMenuItem key="Repositories">
                 <SidebarMenuButton asChild>
-                  <a href="/github-stats/repositories">
+                  <div>
                     <List />
                     <span>Repositories</span>
-                  </a>
+                  </div>
                 </SidebarMenuButton>
                 <SidebarMenuSub>
                   <RepositoriesSubMenuItems />
