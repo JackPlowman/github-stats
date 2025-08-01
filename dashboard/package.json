@@ -31,7 +31,7 @@
     "clsx": "2.1.1",
     "lucide-react": "0.483.0",
     "marked": "15.0.7",
-    "next": "15.3.2",
+    "next": "15.4.5",
     "next-sitemap": "4.2.3",
     "octokit": "5.0.3",
     "react": "19.0.0",
@@ -63,6 +63,9 @@
     "prettier": "3.5.3",
     "prettier-plugin-tailwindcss": "0.6.11",
     "resize-observer-polyfill": "1.5.1"
+  },
+  "overrides": {
+    "form-data": "4.0.4"
   },
   "prettier": {
     "plugins": [
