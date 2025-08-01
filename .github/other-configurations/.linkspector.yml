@@ -4,6 +4,6 @@ dirs:
 excludedFiles:
   - ./CHANGELOG.md
 ignorePatterns:
-  - http://localhost:3000
+  - pattern: http://localhost:3000
 aliveStatusCodes:
   - 200
