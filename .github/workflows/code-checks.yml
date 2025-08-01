@@ -79,10 +79,25 @@ jobs:
         with:
           sarif_file: dashboard/eslint-results.sarif
           wait-for-processing: true
-      - name: Run Prettier
-        run: just dashboard::prettier-check
       - name: Run ESLint
         run: just dashboard::lint
+
+  run-typescript-format-checks:
+    name: Run TypeScript Format Checks
+    runs-on: ubuntu-latest
+    permissions:
+      statuses: write
+      security-events: write
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - name: Setup Dashboard Dependencies
+        uses: ./.github/actions/setup-dashboard-dependencies
+      - name: Run Prettier
+        run: just dashboard::prettier-check
 
   run-python-tests-lint-checks:
     name: Run Python Tests Lint Checks
