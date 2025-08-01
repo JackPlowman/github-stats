@@ -33,7 +33,7 @@ export function CommitsPieChart({
   chartData,
 }: Readonly<{ chartData: Commits[] }>) {
   return (
-    <Card className="flex flex-col bg-slate-100 text-black dark:bg-slate-800">
+    <Card className="flex flex-col">
       <CardHeader className="items-center pb-0">
         <CardTitle>Total Commits</CardTitle>
       </CardHeader>
@@ -71,7 +71,6 @@ export function CommitsPieChart({
                           x={viewBox.cx}
                           y={viewBox.cy}
                           className="fill-foreground text-3xl font-bold"
-                          style={{ fill: "var(--background)" }}
                         >
                           {chartData.reduce((acc, data) => acc + data.total, 0)}
                         </tspan>
@@ -79,7 +78,6 @@ export function CommitsPieChart({
                           x={viewBox.cx}
                           y={(viewBox.cy ?? 0) + 24}
                           className="fill-muted-foreground"
-                          style={{ fill: "var(--foreground)" }}
                         >
                           Commits
                         </tspan>
