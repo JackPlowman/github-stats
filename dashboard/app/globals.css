@@ -41,6 +41,11 @@
   --color-chart-8: hsl(var(--chart-8));
   --color-chart-9: hsl(var(--chart-9));
   --color-chart-10: hsl(var(--chart-10));
+  --color-chart-6: hsl(var(--chart-6));
+  --color-chart-7: hsl(var(--chart-7));
+  --color-chart-8: hsl(var(--chart-8));
+  --color-chart-9: hsl(var(--chart-9));
+  --color-chart-10: hsl(var(--chart-10));
 
   --color-sidebar: hsl(var(--sidebar-background));
   --color-sidebar-foreground: hsl(var(--sidebar-foreground));

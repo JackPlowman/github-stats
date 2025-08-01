@@ -37,7 +37,7 @@ export default async function RepositoryPage(
       fill: colors[index % colors.length],
     }),
   );
-  const languageChartData = Object.entries(repository.languages).map(
+  const languageChartData = Object.entries(repository.languages.count).map(
     ([language, count], index) => ({
       language,
       count: count ?? 0,
