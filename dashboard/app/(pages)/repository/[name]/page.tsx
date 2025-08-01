@@ -24,8 +24,11 @@ export default async function RepositoryPage(
     "hsl(var(--chart-3))",
     "hsl(var(--chart-4))",
     "hsl(var(--chart-5))",
-    "hsl(var(--color-primary))",
-    "hsl(var(--color-secondary))",
+    "hsl(var(--chart-6))",
+    "hsl(var(--chart-7))",
+    "hsl(var(--chart-8))",
+    "hsl(var(--chart-9))",
+    "hsl(var(--chart-10))",
   ];
   const pieChartData = Object.entries(repository.commits).map(
     ([user, total], index) => ({
