@@ -3,5 +3,7 @@ dirs:
   - ./docs
 excludedFiles:
   - ./CHANGELOG.md
+ignorePatterns:
+  - http://localhost:3000
 aliveStatusCodes:
   - 200
