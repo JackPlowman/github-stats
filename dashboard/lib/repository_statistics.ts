@@ -20,7 +20,7 @@ export interface RepositoryStatistics {
   repositories: Repository[];
 }
 
-const repositories = repositoryData as RepositoryStatistics;
+const repositoryStatistics = repositoryData as RepositoryStatistics;
 
-export default repositories.repositories;
-export { repositories as repositoryStatistics };
+export default repositoryStatistics.repositories;
+export { repositoryStatistics };
