@@ -1,5 +1,6 @@
 import { CommitsPieChart } from "@/components/CommitsPieChart";
 import { LanguagesBarChart } from "@/components/LanguagesBarChart";
+import { RepositoryKeyFacts } from "@/components/RepositoryKeyFacts";
 import repositories, { Repository } from "@/lib/repository_statistics";
 
 export async function generateStaticParams() {
@@ -18,13 +19,13 @@ export default async function RepositoryPage(
     (repository: Repository) => repository.repository === name,
   ) as Repository;
   const colors = [
-    "#8884d8",
-    "#82ca9d",
-    "#ffc658",
-    "#ff8042",
-    "#8dd1e1",
-    "#a4de6c",
-    "#d0ed57",
+    "hsl(var(--chart-1))",
+    "hsl(var(--chart-2))",
+    "hsl(var(--chart-3))",
+    "hsl(var(--chart-4))",
+    "hsl(var(--chart-5))",
+    "hsl(var(--color-primary))",
+    "hsl(var(--color-secondary))",
   ];
   const pieChartData = Object.entries(repository.commits).map(
     ([user, total], index) => ({
@@ -58,6 +59,9 @@ export default async function RepositoryPage(
       >
         {repository.repository}
       </h1>
+
+      <RepositoryKeyFacts repository={repository} />
+
       <div
         style={{
           display: "grid",
@@ -65,8 +69,6 @@ export default async function RepositoryPage(
           gap: "1rem",
         }}
       >
-        <CommitsPieChart chartData={pieChartData} />
-        <LanguagesBarChart chartData={languageChartData} />
         <CommitsPieChart chartData={pieChartData} />
         <LanguagesBarChart chartData={languageChartData} />
       </div>

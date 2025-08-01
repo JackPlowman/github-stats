@@ -1,8 +1,10 @@
 import { Circle, Home, List, User } from "lucide-react";
 
+import { ModeToggle } from "@/components/ThemeToggle";
 import {
   Sidebar,
   SidebarContent,
+  SidebarFooter,
   SidebarGroup,
   SidebarGroupContent,
   SidebarGroupLabel,
@@ -55,6 +57,13 @@ export default function AppSidebar() {
           </SidebarGroupContent>
         </SidebarGroup>
       </SidebarContent>
+      <SidebarFooter>
+        <div
+          style={{ padding: "1rem", display: "flex", justifyContent: "center" }}
+        >
+          <ModeToggle />
+        </div>
+      </SidebarFooter>
     </Sidebar>
   );
 }

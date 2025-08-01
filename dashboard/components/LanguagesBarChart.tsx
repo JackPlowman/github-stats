@@ -41,7 +41,7 @@ export function LanguagesBarChart({
   );
 
   return (
-    <Card className="flex flex-col bg-slate-100 text-black dark:bg-slate-800">
+    <Card className="flex flex-col">
       <CardHeader>
         <CardTitle>{"File Count Per Type"}</CardTitle>
       </CardHeader>
