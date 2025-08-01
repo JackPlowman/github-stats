@@ -20,6 +20,8 @@ pre-commit:
       run: just zizmor-check
     Pinact Checks:
       run: just pinact-check
+    Actionlint Checks:
+      run: just actionlint-check
     Dashboard Checks:
       run: just dashboard::lint
     Python Ruff Checks:
