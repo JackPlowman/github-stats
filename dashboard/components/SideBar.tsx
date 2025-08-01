@@ -58,7 +58,9 @@ export default function AppSidebar() {
         </SidebarGroup>
       </SidebarContent>
       <SidebarFooter>
-        <div style={{ padding: "1rem", display: "flex", justifyContent: "center" }}>
+        <div
+          style={{ padding: "1rem", display: "flex", justifyContent: "center" }}
+        >
           <ModeToggle />
         </div>
       </SidebarFooter>

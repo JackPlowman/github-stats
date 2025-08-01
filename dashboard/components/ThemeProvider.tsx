@@ -20,7 +20,8 @@ const initialState: ThemeProviderState = {
   setTheme: () => null,
 };
 
-const ThemeProviderContext = React.createContext<ThemeProviderState>(initialState);
+const ThemeProviderContext =
+  React.createContext<ThemeProviderState>(initialState);
 
 export function ThemeProvider({
   children,
@@ -67,7 +68,7 @@ export function ThemeProvider({
         setTheme(theme);
       },
     }),
-    [theme, storageKey, mounted]
+    [theme, storageKey, mounted],
   );
 
   return (

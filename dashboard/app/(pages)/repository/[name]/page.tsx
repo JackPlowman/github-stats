@@ -1,8 +1,7 @@
-
 import { CommitsPieChart } from "@/components/CommitsPieChart";
 import { LanguagesBarChart } from "@/components/LanguagesBarChart";
-import repositories, { Repository } from "@/lib/repository_statistics";
 import { RepositoryKeyFacts } from "@/components/RepositoryKeyFacts";
+import repositories, { Repository } from "@/lib/repository_statistics";
 
 export async function generateStaticParams() {
   return repositories.map((repository: Repository) => ({
@@ -60,7 +59,6 @@ export default async function RepositoryPage(
       >
         {repository.repository}
       </h1>
-
 
       <RepositoryKeyFacts repository={repository} />
 

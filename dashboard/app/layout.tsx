@@ -34,10 +34,7 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <ThemeProvider
-          defaultTheme="system"
-          storageKey="github-stats-theme"
-        >
+        <ThemeProvider defaultTheme="system" storageKey="github-stats-theme">
           <SidebarProvider>
             <SideBar />
             <SidebarInset>{children}</SidebarInset>

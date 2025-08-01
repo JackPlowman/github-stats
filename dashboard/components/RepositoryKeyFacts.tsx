@@ -1,7 +1,10 @@
 import React from "react";
+
 import { Repository } from "@/lib/repository_statistics";
 
-export function RepositoryKeyFacts({ repository }: Readonly<{ repository: Repository }>) {
+export function RepositoryKeyFacts({
+  repository,
+}: Readonly<{ repository: Repository }>) {
   return (
     <div
       style={{
@@ -19,7 +22,8 @@ export function RepositoryKeyFacts({ repository }: Readonly<{ repository: Reposi
           borderRadius: "0.75rem",
           padding: "1.5rem",
           textAlign: "center",
-          boxShadow: "0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1)",
+          boxShadow:
+            "0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1)",
         }}
       >
         <div
@@ -51,7 +55,8 @@ export function RepositoryKeyFacts({ repository }: Readonly<{ repository: Reposi
           borderRadius: "0.75rem",
           padding: "1.5rem",
           textAlign: "center",
-          boxShadow: "0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1)",
+          boxShadow:
+            "0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1)",
         }}
       >
         <div
@@ -83,7 +88,8 @@ export function RepositoryKeyFacts({ repository }: Readonly<{ repository: Reposi
           borderRadius: "0.75rem",
           padding: "1.5rem",
           textAlign: "center",
-          boxShadow: "0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1)",
+          boxShadow:
+            "0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1)",
         }}
       >
         <div
@@ -115,7 +121,8 @@ export function RepositoryKeyFacts({ repository }: Readonly<{ repository: Reposi
           borderRadius: "0.75rem",
           padding: "1.5rem",
           textAlign: "center",
-          boxShadow: "0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1)",
+          boxShadow:
+            "0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1)",
         }}
       >
         <div
