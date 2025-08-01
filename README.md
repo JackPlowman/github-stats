@@ -1,30 +1,98 @@
-# GitHub Stats
+# GitHub Stats Dashboard
 
-Dashboard to Display GitHub Statistics for user repositories.
+An interactive dashboard to visualize statistics and insights for your GitHub repositories.
 
 ## Table of Contents
 
-- [GitHub Stats](#github-stats)
+- [GitHub Stats Dashboard](#github-stats-dashboard)
   - [Table of Contents](#table-of-contents)
-  - [Description](#description)
+  - [Overview](#overview)
+  - [Features](#features)
+  - [Getting Started](#getting-started)
+    - [Prerequisites](#prerequisites)
+    - [Installation](#installation)
+  - [Usage](#usage)
+  - [Tech Stack](#tech-stack)
   - [Contributing](#contributing)
   - [Code of Conduct](#code-of-conduct)
   - [License](#license)
 
-## Description
+## Overview
 
-This project is a web application that provides a dashboard to visualize various statistics related to GitHub repositories. It allows users to view and analyse their GitHub activity, including commit history, pull requests, issues, and more.
+**GitHub Stats Dashboard** is a web application that provides a modern, responsive dashboard for visualizing statistics across your GitHub repositories. It helps you analyze your activity, contributions, and codebase trends with beautiful charts and summaries.
+
+## Features
+
+- 📊 Visualize commit history, contributors, and language usage per repository
+- 🗂️ Browse all repositories in a sidebar with quick navigation
+- 🥧 Pie and bar charts for commits and file types
+- 🌗 Light/dark mode toggle
+- ⚡ Fast, modern UI built with Next.js and React
+- 🧪 Automated tests and code quality checks
+
+## Getting Started
+
+### Prerequisites
+
+- [Node.js](https://nodejs.org/) (v20+ recommended)
+- [npm](https://www.npmjs.com/)
+- [uv](https://github.com/astral-sh/uv)
+
+### Installation
+
+1. Clone the repository:
+
+   ```sh
+   git clone https://github.com/JackPlowman/github-stats.git
+   cd github-stats/dashboard
+   ```
+
+2. Install dependencies:
+
+   ```sh
+   pnpm install
+   # or
+   npm install
+   # or
+   yarn install
+   ```
+
+3. Start the development server:
+
+   ```sh
+   pnpm dev
+   # or
+   npm run dev
+   # or
+   yarn dev
+   ```
+
+4. Open [http://localhost:3000](http://localhost:3000) in your browser.
+
+## Usage
+
+- Use the sidebar to navigate between summary, user, and repositories views.
+- Click on a repository to see detailed stats: total commits, files, contributors, and language breakdowns.
+- Toggle between light and dark mode using the button in the sidebar footer.
+
+## Tech Stack
+
+- **Frontend:** [Next.js](https://nextjs.org/), [React](https://react.dev/), [TypeScript](https://www.typescriptlang.org/)
+- **Charts:** [Recharts](https://recharts.org/)
+- **Styling:** CSS Modules, custom themes
+- **Testing:** Playwright (Python), Jest
+- **Linting/Formatting:** ESLint, Prettier, Ruff (Python)
 
 ## Contributing
 
-Contributions are welcome! Please read the [Contributing Guidelines](./docs/CONTRIBUTING.md) for more details on how to submit pull requests or report issues.
+Contributions are welcome! Please read the [Contributing Guidelines](./docs/CONTRIBUTING.md) for details on submitting pull requests or reporting issues.
 
 We adhere to the [Conventional Commits](docs/CONVENTIONAL_COMMITS.md) specification for commit messages.
 
 ## Code of Conduct
 
-Please note that this project is released with a [Contributor Code of Conduct](./docs/CODE_OF_CONDUCT.md). By participating in this project you agree to abide by its terms.
+This project is released with a [Contributor Code of Conduct](./docs/CODE_OF_CONDUCT.md). By participating, you agree to abide by its terms.
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE](./LICENSE) file for details.
+This project is licensed under the MIT License. See the [LICENSE](./LICENSE) file for details.
