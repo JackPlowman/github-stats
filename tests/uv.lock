@@ -3,10 +3,7 @@ revision = 2
 requires-python = "==3.13.*"
 
 [manifest]
-overrides = [
-    { name = "requests", specifier = "==2.32.4" },
-    { name = "urllib3", specifier = "==2.5.0" },
-]
+overrides = [{ name = "urllib3", specifier = "==2.5.0" }]
 
 [[package]]
 name = "certifi"
