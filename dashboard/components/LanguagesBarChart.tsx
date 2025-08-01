@@ -43,7 +43,17 @@ export function LanguagesBarChart({
   return (
     <Card className="flex flex-col">
       <CardHeader>
-        <CardTitle>{"File Count Per Type"}</CardTitle>
+        <CardTitle
+          style={{
+            fontSize: "2.7rem",
+            fontWeight: 900,
+            color: "#fff",
+            marginBottom: "0.5rem",
+            letterSpacing: "-1px",
+          }}
+        >
+          {"File Count Per Type"}
+        </CardTitle>
       </CardHeader>
       <CardContent>
         <ChartContainer config={chartConfig}>

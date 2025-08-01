@@ -28,19 +28,21 @@ export function RepositoryKeyFacts({
       >
         <div
           style={{
-            fontSize: "2.5rem",
-            fontWeight: "bold",
-            color: "hsl(var(--chart-1))",
+            fontSize: "2.7rem",
+            fontWeight: 900,
+            color: "#fff",
             marginBottom: "0.5rem",
+            letterSpacing: "-1px",
           }}
         >
           {repository.total_commits}
         </div>
         <div
           style={{
-            fontSize: "0.875rem",
-            color: "var(--color-muted-foreground)",
-            fontWeight: "500",
+            fontSize: "1rem",
+            color: "#fff",
+            fontWeight: 700,
+            letterSpacing: "0.5px",
           }}
         >
           Total Commits
@@ -61,19 +63,21 @@ export function RepositoryKeyFacts({
       >
         <div
           style={{
-            fontSize: "2.5rem",
-            fontWeight: "bold",
-            color: "hsl(var(--chart-2))",
+            fontSize: "2.7rem",
+            fontWeight: 900,
+            color: "#fff",
             marginBottom: "0.5rem",
+            letterSpacing: "-1px",
           }}
         >
           {repository.total_files}
         </div>
         <div
           style={{
-            fontSize: "0.875rem",
-            color: "var(--color-muted-foreground)",
-            fontWeight: "500",
+            fontSize: "1rem",
+            color: "#fff",
+            fontWeight: 700,
+            letterSpacing: "0.5px",
           }}
         >
           Total Files
@@ -94,19 +98,21 @@ export function RepositoryKeyFacts({
       >
         <div
           style={{
-            fontSize: "2.5rem",
-            fontWeight: "bold",
-            color: "hsl(var(--chart-3))",
+            fontSize: "2.7rem",
+            fontWeight: 900,
+            color: "#fff",
             marginBottom: "0.5rem",
+            letterSpacing: "-1px",
           }}
         >
           {Object.keys(repository.commits).length}
         </div>
         <div
           style={{
-            fontSize: "0.875rem",
-            color: "var(--color-muted-foreground)",
-            fontWeight: "500",
+            fontSize: "1rem",
+            color: "#fff",
+            fontWeight: 700,
+            letterSpacing: "0.5px",
           }}
         >
           Contributors
@@ -127,19 +133,21 @@ export function RepositoryKeyFacts({
       >
         <div
           style={{
-            fontSize: "2.5rem",
-            fontWeight: "bold",
-            color: "hsl(var(--chart-4))",
+            fontSize: "2.7rem",
+            fontWeight: 900,
+            color: "#fff",
             marginBottom: "0.5rem",
+            letterSpacing: "-1px",
           }}
         >
           {Object.keys(repository.languages).length}
         </div>
         <div
           style={{
-            fontSize: "0.875rem",
-            color: "var(--color-muted-foreground)",
-            fontWeight: "500",
+            fontSize: "1rem",
+            color: "#fff",
+            fontWeight: 700,
+            letterSpacing: "0.5px",
           }}
         >
           Languages Used
