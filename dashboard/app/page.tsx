@@ -1,11 +1,11 @@
 import { CommitsPieChart } from "@/components/CommitsPieChart";
 import { LanguagesBarChart } from "@/components/LanguagesBarChart";
-import { OverviewKeyFacts } from "@/components/OverviewKeyFacts";
+import { OverviewKeyFacts as SummaryKeyFacts } from "@/components/OverviewKeyFacts";
 import { TopRepositoriesChart } from "@/components/TopRepositoriesChart";
-import { getOverviewData } from "@/lib/overview_data";
+import { getOverviewData as getSummaryData } from "@/lib/overview_data";
 
-export default function OverviewPage() {
-  const overviewData = getOverviewData();
+export default function SummaryPage() {
+  const summaryData = getSummaryData();
 
   const colors = [
     "hsl(var(--chart-1))",
@@ -21,7 +21,7 @@ export default function OverviewPage() {
   ];
 
   // Prepare chart data
-  const commitsPieChartData = Object.entries(overviewData.commitsByUser).map(
+  const commitsPieChartData = Object.entries(summaryData.commitsByUser).map(
     ([user, total], index) => ({
       user,
       total,
@@ -29,7 +29,7 @@ export default function OverviewPage() {
     }),
   );
 
-  const languagesBarChartData = Object.entries(overviewData.languagesByCount)
+  const languagesBarChartData = Object.entries(summaryData.languagesByCount)
     .sort(([, a], [, b]) => b - a)
     .slice(0, 10)
     .map(([language, count], index) => ({
@@ -38,7 +38,7 @@ export default function OverviewPage() {
       fill: colors[index % colors.length],
     }));
 
-  const topRepositoriesByCommitsData = overviewData.topRepositoriesByCommits
+  const topRepositoriesByCommitsData = summaryData.topRepositoriesByCommits
     .slice(0, 8)
     .map((repo, index) => ({
       repository: repo.repository,
@@ -46,7 +46,7 @@ export default function OverviewPage() {
       fill: colors[index % colors.length],
     }));
 
-  const topRepositoriesByFilesData = overviewData.topRepositoriesByFiles
+  const topRepositoriesByFilesData = summaryData.topRepositoriesByFiles
     .slice(0, 8)
     .map((repo, index) => ({
       repository: repo.repository,
@@ -76,12 +76,12 @@ export default function OverviewPage() {
         GitHub Stats Overview
       </h1>
 
-      <OverviewKeyFacts
-        totalRepositories={overviewData.totalRepositories}
-        totalFiles={overviewData.totalFiles}
-        totalCommits={overviewData.totalCommits}
-        totalContributors={overviewData.totalContributors}
-        totalLanguages={overviewData.totalLanguages}
+      <SummaryKeyFacts
+        totalRepositories={summaryData.totalRepositories}
+        totalFiles={summaryData.totalFiles}
+        totalCommits={summaryData.totalCommits}
+        totalContributors={summaryData.totalContributors}
+        totalLanguages={summaryData.totalLanguages}
       />
 
       <div
