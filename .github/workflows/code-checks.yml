@@ -33,6 +33,7 @@ jobs:
           DEFAULT_BRANCH: main
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           LINTER_RULES_PATH: .github/super-linter-configurations
+          FILTER_REGEX_EXCLUDE: "TEST_PLAN.md"
           YAML_ERROR_ON_WARNING: true
           VALIDATE_CSS: false
           VALIDATE_EDITORCONFIG: false
