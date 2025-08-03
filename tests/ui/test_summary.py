@@ -23,10 +23,10 @@ def test_summary_page_layout(page: Page) -> None:
 
     # Graphs
     for graph in [
-        "Commits Over Time",
-        "Files Over Time",
-        "Top Contributors by Commits",
-        "Top Contributors by Files",
+        "Total Commits",
+        "File Count Per Type",
+        "Top Repositories by Commits",
+        "Top Repositories by Files",
     ]:
         expect(
             page.locator('div[data-slot="card-header"]', has_text=graph)
