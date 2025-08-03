@@ -1,4 +1,4 @@
-import { Repository, repositoryStatistics } from "./repository_statistics";
+import { repositoryStatistics } from "./repository_statistics";
 
 export interface OverviewData {
   totalRepositories: number;
