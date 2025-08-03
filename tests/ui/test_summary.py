@@ -19,7 +19,19 @@ def test_summary_page_layout(page: Page) -> None:
     expect(page.locator("p", has_text="Languages Used")).to_be_visible()
 
     # Graphs
-    expect(page.locator('div[data-slot="card-header"]', has_text="Total Commits")).to_be_visible()
-    expect(page.locator('div[data-slot="card-header"]', has_text="File Count Per Type")).to_be_visible()
-    expect(page.locator('div[data-slot="card-header"]', has_text="Top Repositories by Commits")).to_be_visible()
-    expect(page.locator('div[data-slot="card-header"]', has_text="Top Repositories by Files")).to_be_visible()
+    expect(
+        page.locator('div[data-slot="card-header"]', has_text="Total Commits")
+    ).to_be_visible()
+    expect(
+        page.locator('div[data-slot="card-header"]', has_text="File Count Per Type")
+    ).to_be_visible()
+    expect(
+        page.locator(
+            'div[data-slot="card-header"]', has_text="Top Repositories by Commits"
+        )
+    ).to_be_visible()
+    expect(
+        page.locator(
+            'div[data-slot="card-header"]', has_text="Top Repositories by Files"
+        )
+    ).to_be_visible()
