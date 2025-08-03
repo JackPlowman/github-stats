@@ -2,9 +2,7 @@ from pathlib import Path
 
 from requests import get
 
-from ui.utils.variables import (
-    PROJECT_URL,
-)
+from ui.utils.variables import PROJECT_URL
 
 
 def test_robots_txt() -> None:
