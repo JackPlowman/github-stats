@@ -53,7 +53,7 @@ export default async function RepositoryPage(
       }}
     >
       <h1
-          style={{
+        style={{
           fontSize: "3rem",
           fontWeight: "bold",
           color: "#fff",
