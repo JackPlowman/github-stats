@@ -53,10 +53,13 @@ export default async function RepositoryPage(
       }}
     >
       <h1
-        style={{
-          fontSize: "2em",
+          style={{
+          fontSize: "3rem",
           fontWeight: "bold",
-          color: "var(--color-secondary)",
+          color: "#fff",
+          textAlign: "center",
+          marginBottom: "2rem",
+          letterSpacing: "-1px",
         }}
         data-testid="repository-name-title"
       >
