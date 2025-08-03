@@ -10,13 +10,14 @@ def test_sidebar_navigation_links(page: Page) -> None:
     # Assert
     for section in ["Application", "Summary", "User", "Repositories"]:
         # Sidebar main sections
-        expect(page.get_by_text(section)).to_be_visible()
+        expect(page.get_by_text(section, exact=True)).to_be_visible()
 
 
 def test_sidebar_repositories_list(page: Page) -> None:
     """Test that the sidebar lists repositories and they are clickable."""
     # Act
     page.goto(PROJECT_URL)
+    # Assert
     for repo in [
         "actions-status",
         "aws-timing-scripts",
@@ -53,4 +54,4 @@ def test_sidebar_repositories_list(page: Page) -> None:
         "useful-commands",
         "windows-development-environment",
     ]:
-        expect(page.get_by_text(repo)).to_be_visible()
+        expect(page.get_by_role("link", name=repo, exact=True)).to_be_visible()
