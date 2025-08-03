@@ -1,4 +1,4 @@
-import { repositoryStatistics, Repository } from "./repository_statistics";
+import { Repository, repositoryStatistics } from "./repository_statistics";
 
 export interface OverviewData {
   totalRepositories: number;
@@ -22,7 +22,7 @@ export function getOverviewData(): OverviewData {
 
   // Aggregate commits by user across all repositories (still needed for user breakdown)
   const commitsByUser: Record<string, number> = {};
-  repositories.forEach(repo => {
+  repositories.forEach((repo) => {
     Object.entries(repo.commits).forEach(([user, commits]) => {
       if (commits) {
         commitsByUser[user] = (commitsByUser[user] || 0) + commits;
@@ -32,7 +32,7 @@ export function getOverviewData(): OverviewData {
 
   // Aggregate languages by count across all repositories (still needed for language breakdown)
   const languagesByCount: Record<string, number> = {};
-  repositories.forEach(repo => {
+  repositories.forEach((repo) => {
     Object.entries(repo.languages.count).forEach(([language, count]) => {
       if (count) {
         languagesByCount[language] = (languagesByCount[language] || 0) + count;
@@ -42,7 +42,7 @@ export function getOverviewData(): OverviewData {
 
   // Aggregate languages by SLOC across all repositories (still needed for SLOC breakdown)
   const languagesBySloc: Record<string, number> = {};
-  repositories.forEach(repo => {
+  repositories.forEach((repo) => {
     Object.entries(repo.languages.sloc).forEach(([language, sloc]) => {
       if (sloc) {
         languagesBySloc[language] = (languagesBySloc[language] || 0) + sloc;
@@ -52,13 +52,16 @@ export function getOverviewData(): OverviewData {
 
   // Get top repositories by commits
   const topRepositoriesByCommits = repositories
-    .map(repo => ({ repository: repo.repository, commits: repo.total_commits }))
+    .map((repo) => ({
+      repository: repo.repository,
+      commits: repo.total_commits,
+    }))
     .sort((a, b) => b.commits - a.commits)
     .slice(0, 10);
 
   // Get top repositories by files
   const topRepositoriesByFiles = repositories
-    .map(repo => ({ repository: repo.repository, files: repo.total_files }))
+    .map((repo) => ({ repository: repo.repository, files: repo.total_files }))
     .sort((a, b) => b.files - a.files)
     .slice(0, 10);
 

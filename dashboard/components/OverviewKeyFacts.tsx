@@ -41,7 +41,7 @@ export function OverviewKeyFacts({
             </CardTitle>
           </CardHeader>
           <CardContent>
-            <p className="text-sm text-muted-foreground">{stat.label}</p>
+            <p className="text-muted-foreground text-sm">{stat.label}</p>
           </CardContent>
         </Card>
       ))}
