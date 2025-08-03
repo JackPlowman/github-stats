@@ -1,8 +1,8 @@
 import { CommitsPieChart } from "@/components/CommitsPieChart";
 import { LanguagesBarChart } from "@/components/LanguagesBarChart";
-import { OverviewKeyFacts as SummaryKeyFacts } from "@/components/OverviewKeyFacts";
+import { SummaryKeyFacts } from "@/components/SummaryKeyFacts";
 import { TopRepositoriesChart } from "@/components/TopRepositoriesChart";
-import { getOverviewData as getSummaryData } from "@/lib/overview_data";
+import { getSummaryData } from "@/lib/summary_data";
 
 export default function SummaryPage() {
   const summaryData = getSummaryData();
@@ -71,9 +71,9 @@ export default function SummaryPage() {
           marginBottom: "2rem",
           letterSpacing: "-1px",
         }}
-        data-testid="overview-title"
+        data-testid="summary-title"
       >
-        GitHub Stats Overview
+        GitHub Stats Summary
       </h1>
 
       <SummaryKeyFacts
