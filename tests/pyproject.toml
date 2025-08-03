@@ -6,7 +6,7 @@ dependencies = [
   "requests==2.32.4",
   "pytest==8.4.1",
   "defusedxml==0.7.1",
-  "playwright==1.53.0",
+  "playwright==1.54.0",
   "pytest-playwright==0.7.0",
   "pytest-rerunfailures==15.1",
 ]
