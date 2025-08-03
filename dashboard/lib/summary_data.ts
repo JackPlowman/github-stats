@@ -1,6 +1,6 @@
 import { repositoryStatistics } from "./repository_statistics";
 
-export interface OverviewData {
+export interface SummaryData {
   totalRepositories: number;
   totalFiles: number;
   totalCommits: number;
@@ -13,7 +13,7 @@ export interface OverviewData {
   topRepositoriesByFiles: Array<{ repository: string; files: number }>;
 }
 
-export function getOverviewData(): OverviewData {
+export function getSummaryData(): SummaryData {
   const repositories = repositoryStatistics.repositories;
 
   // Use pre-aggregated data from v2 format

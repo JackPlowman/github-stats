@@ -2,7 +2,7 @@
 
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
-interface OverviewKeyFactsProps {
+interface SummaryKeyFactsProps {
   totalRepositories: number;
   totalFiles: number;
   totalCommits: number;
@@ -10,13 +10,13 @@ interface OverviewKeyFactsProps {
   totalLanguages: number;
 }
 
-export function OverviewKeyFacts({
+export function SummaryKeyFacts({
   totalRepositories,
   totalFiles,
   totalCommits,
   totalContributors,
   totalLanguages,
-}: Readonly<OverviewKeyFactsProps>) {
+}: Readonly<SummaryKeyFactsProps>) {
   const stats = [
     { label: "Total Commits", value: totalCommits.toLocaleString() },
     { label: "Total Files", value: totalFiles.toLocaleString() },
