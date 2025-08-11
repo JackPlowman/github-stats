@@ -95,4 +95,4 @@ This project is released with a [Contributor Code of Conduct](./docs/CODE_OF_CON
 
 ## License
 
-This project is licensed under the MIT License. See the [LICENSE](./LICENSE) file for details.
+This project is licensed under the MIT Licence. See the [LICENCE](./LICENCE) file for details.
