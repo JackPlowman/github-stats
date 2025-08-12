@@ -12,7 +12,7 @@ dependencies = [
 ]
 
 [project.optional-dependencies]
-dev = ["ruff==0.12.7", "ty==0.0.1a16"]
+dev = ["ruff==0.12.8", "ty==0.0.1a16"]
 
 [tool.uv]
 required-version = "~=0.8.0"
