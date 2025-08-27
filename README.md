@@ -34,7 +34,7 @@ An interactive dashboard to visualize statistics and insights for your GitHub re
 
 ### Prerequisites
 
-- [Node.js](https://nodejs.org/) (v20+ recommended)
+- [Node.js](https://nodejs.org/) (v22+ recommended)
 - [npm](https://www.npmjs.com/)
 - [uv](https://github.com/astral-sh/uv)
 
