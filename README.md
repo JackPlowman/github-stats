@@ -15,7 +15,7 @@ An interactive dashboard to visualize statistics and insights for your GitHub re
   - [Tech Stack](#tech-stack)
   - [Contributing](#contributing)
   - [Code of Conduct](#code-of-conduct)
-  - [License](#license)
+  - [Licence](#licence)
 
 ## Overview
 
@@ -93,6 +93,6 @@ We adhere to the [Conventional Commits](docs/CONVENTIONAL_COMMITS.md) specificat
 
 This project is released with a [Contributor Code of Conduct](./docs/CODE_OF_CONDUCT.md). By participating, you agree to abide by its terms.
 
-## License
+## Licence
 
 This project is licensed under the MIT Licence. See the [LICENCE](./LICENCE) file for details.
