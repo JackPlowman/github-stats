@@ -35,7 +35,7 @@ jobs:
         run: just dashboard::eslint-with-sarif
         continue-on-error: true
       - name: Upload analysis results to GitHub
-        uses: github/codeql-action/upload-sarif@3c3833e0f8c1c83d449a7478aa59c036a9165498 # v3.29.11
+        uses: github/codeql-action/upload-sarif@f1f6e5f6af878fb37288ce1c627459e94dbf7d01 # v3.30.1
         with:
           sarif_file: dashboard/eslint-results.sarif
           wait-for-processing: true
@@ -80,7 +80,7 @@ jobs:
           RUFF_OUTPUT_FILE: "ruff-results.sarif"
         continue-on-error: true
       - name: Upload Ruff analysis results to GitHub
-        uses: github/codeql-action/upload-sarif@3c3833e0f8c1c83d449a7478aa59c036a9165498 # v3.29.11
+        uses: github/codeql-action/upload-sarif@f1f6e5f6af878fb37288ce1c627459e94dbf7d01 # v3.30.1
         with:
           sarif_file: tests/ruff-results.sarif
           wait-for-processing: true
@@ -143,7 +143,7 @@ jobs:
       actions: read
       pull-requests: write
       security-events: write
-    uses: JackPlowman/reusable-workflows/.github/workflows/common-code-checks.yml@69995069a0036cef69ac3cc2abf89f1376053a52 # v2025.08.26.01
+    uses: JackPlowman/reusable-workflows/.github/workflows/common-code-checks.yml@3ddc61ad19cda4cdf8a593646d90bbd48f788dfd # v2025.09.04.03
     secrets:
       workflow_github_token: ${{ secrets.GITHUB_TOKEN }}
 
@@ -155,6 +155,6 @@ jobs:
     strategy:
       matrix:
         language: [actions, typescript, python]
-    uses: JackPlowman/reusable-workflows/.github/workflows/codeql-analysis.yml@69995069a0036cef69ac3cc2abf89f1376053a52 # v2025.08.26.01
+    uses: JackPlowman/reusable-workflows/.github/workflows/codeql-analysis.yml@3ddc61ad19cda4cdf8a593646d90bbd48f788dfd # v2025.09.04.03
     with:
       language: ${{ matrix.language }}
