@@ -62,7 +62,6 @@ export function TopRepositoriesChart({
           <BarChart
             accessibilityLayer
             data={chartData}
-            layout="horizontal"
             margin={{
               left: 0,
             }}
@@ -79,7 +78,7 @@ export function TopRepositoriesChart({
               cursor={false}
               content={<ChartTooltipContent hideLabel />}
             />
-            <Bar dataKey="value" layout="horizontal" radius={5} />
+            <Bar dataKey="value" radius={5} />
           </BarChart>
         </ChartContainer>
       </CardContent>

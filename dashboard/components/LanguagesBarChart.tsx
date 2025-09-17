@@ -60,7 +60,6 @@ export function LanguagesBarChart({
           <BarChart
             accessibilityLayer
             data={chartData}
-            layout="horizontal"
             margin={{
               left: 0,
             }}
@@ -77,7 +76,7 @@ export function LanguagesBarChart({
               cursor={false}
               content={<ChartTooltipContent hideLabel />}
             />
-            <Bar dataKey="count" layout="horizontal" radius={5} />
+            <Bar dataKey="count" radius={5} />
           </BarChart>
         </ChartContainer>
       </CardContent>
