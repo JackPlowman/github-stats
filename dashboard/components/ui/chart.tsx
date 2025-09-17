@@ -18,6 +18,20 @@ export type ChartConfig = {
   );
 };
 
+interface ChartTooltipPayload {
+  name?: string;
+  dataKey?: string;
+  value?: string | number | React.ReactNode;
+  color?: string;
+  payload?: Record<string, unknown>;
+}
+
+interface ChartLegendPayload {
+  value?: string;
+  dataKey?: string;
+  color?: string;
+}
+
 type ChartContextProps = {
   config: ChartConfig;
 };
@@ -106,16 +120,16 @@ const ChartTooltipContent = React.forwardRef<
   HTMLDivElement,
   React.ComponentProps<"div"> & {
     active?: boolean;
-    payload?: any[];
+    payload?: ChartTooltipPayload[];
     label?: string;
     hideLabel?: boolean;
     hideIndicator?: boolean;
     indicator?: "line" | "dot" | "dashed";
     nameKey?: string;
     labelKey?: string;
-    labelFormatter?: (label: any, payload: any[]) => React.ReactNode;
+    labelFormatter?: (label: React.ReactNode, payload: ChartTooltipPayload[]) => React.ReactNode;
     labelClassName?: string;
-    formatter?: (value: any, name: any, item: any, index: number) => React.ReactNode;
+    formatter?: (value: unknown, name: string, item: ChartTooltipPayload, index: number) => React.ReactNode;
     color?: string;
   }
 >(
@@ -191,10 +205,10 @@ const ChartTooltipContent = React.forwardRef<
       >
         {!nestLabel ? tooltipLabel : null}
         <div className="grid gap-1.5">
-          {payload?.map((item: any, index: number) => {
+          {payload?.map((item: ChartTooltipPayload, index: number) => {
             const key = `${nameKey || item.name || item.dataKey || "value"}`;
             const itemConfig = getPayloadConfigFromPayload(config, item, key);
-            const indicatorColor = color || item.payload.fill || item.color;
+            const indicatorColor = color || (item.payload?.fill as string) || item.color;
 
             return (
               <div
@@ -267,7 +281,7 @@ const ChartLegend = RechartsPrimitive.Legend;
 const ChartLegendContent = React.forwardRef<
   HTMLDivElement,
   React.ComponentProps<"div"> & {
-    payload?: any[];
+    payload?: ChartLegendPayload[];
     verticalAlign?: "top" | "bottom";
     hideIcon?: boolean;
     nameKey?: string;
@@ -292,7 +306,7 @@ const ChartLegendContent = React.forwardRef<
           className,
         )}
       >
-        {payload?.map((item: any) => {
+        {payload?.map((item: ChartLegendPayload) => {
           const key = `${nameKey || item.dataKey || "value"}`;
           const itemConfig = getPayloadConfigFromPayload(config, item, key);
 
