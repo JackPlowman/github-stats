@@ -127,9 +127,17 @@ const ChartTooltipContent = React.forwardRef<
     indicator?: "line" | "dot" | "dashed";
     nameKey?: string;
     labelKey?: string;
-    labelFormatter?: (label: React.ReactNode, payload: ChartTooltipPayload[]) => React.ReactNode;
+    labelFormatter?: (
+      label: React.ReactNode,
+      payload: ChartTooltipPayload[],
+    ) => React.ReactNode;
     labelClassName?: string;
-    formatter?: (value: unknown, name: string, item: ChartTooltipPayload, index: number) => React.ReactNode;
+    formatter?: (
+      value: unknown,
+      name: string,
+      item: ChartTooltipPayload,
+      index: number,
+    ) => React.ReactNode;
     color?: string;
   }
 >(
@@ -208,7 +216,8 @@ const ChartTooltipContent = React.forwardRef<
           {payload?.map((item: ChartTooltipPayload, index: number) => {
             const key = `${nameKey || item.name || item.dataKey || "value"}`;
             const itemConfig = getPayloadConfigFromPayload(config, item, key);
-            const indicatorColor = color || (item.payload?.fill as string) || item.color;
+            const indicatorColor =
+              color || (item.payload?.fill as string) || item.color;
 
             return (
               <div

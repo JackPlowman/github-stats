@@ -60,7 +60,6 @@ export function LanguagesBarChart({
           <BarChart
             accessibilityLayer
             data={chartData}
-
             margin={{
               left: 0,
             }}
