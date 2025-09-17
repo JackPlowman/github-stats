@@ -27,6 +27,7 @@ export interface Commits {
   user: string;
   total: number;
   fill: string;
+  [key: string]: any;
 }
 
 export function CommitsPieChart({
