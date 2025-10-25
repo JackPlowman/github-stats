@@ -55,7 +55,7 @@
     "@types/react": "19.1.9",
     "@types/react-dom": "19.1.7",
     "eslint": "9.35.0",
-    "eslint-config-next": "15.5.3",
+    "eslint-config-next": "16.0.0",
     "eslint-plugin-react-compiler": "19.1.0-rc.2",
     "postcss": "8.5.6",
     "prettier": "3.6.2",
