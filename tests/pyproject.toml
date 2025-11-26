@@ -6,13 +6,13 @@ dependencies = [
   "requests==2.32.5",
   "pytest==8.4.2",
   "defusedxml==0.7.1",
-  "playwright==1.55.0",
+  "playwright==1.56.0",
   "pytest-playwright==0.7.1",
-  "pytest-rerunfailures==16.0.1",
+  "pytest-rerunfailures==16.1",
 ]
 
 [project.optional-dependencies]
-dev = ["ruff==0.14.2", "ty==0.0.1a24"]
+dev = ["ruff==0.14.5", "ty==0.0.1a27"]
 
 [tool.uv]
 required-version = "~=0.9.0"
