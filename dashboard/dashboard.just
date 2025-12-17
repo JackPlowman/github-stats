@@ -20,7 +20,7 @@ build-local:
 
 # Lint typescript code with ESLint
 lint:
-    npm run lint
+    npx eslint . --max-warnings 0
 
 # Lint typescript code with ESLint and generate a SARIF file
 eslint-with-sarif:
