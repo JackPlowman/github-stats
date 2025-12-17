@@ -1,28 +1,12 @@
 import reactCompiler from "eslint-plugin-react-compiler";
-import path from "node:path";
-import { fileURLToPath } from "node:url";
+import { createRequire } from "node:module";
 
-import { FlatCompat } from "@eslint/eslintrc";
-import js from "@eslint/js";
-import { defineConfig } from "eslint/config";
+const require = createRequire(import.meta.url);
+const nextConfig = require("eslint-config-next");
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
-const compat = new FlatCompat({
-  baseDirectory: __dirname,
-  recommendedConfig: js.configs.recommended,
-  allConfig: js.configs.all,
-});
-
-export default defineConfig([
+const config = [
+  ...nextConfig,
   {
-    extends: compat.extends(
-      "eslint:recommended",
-      "next",
-      "next/core-web-vitals",
-      "next/typescript",
-    ),
-
     plugins: {
       "react-compiler": reactCompiler,
     },
@@ -33,4 +17,6 @@ export default defineConfig([
       "react-compiler/react-compiler": "error",
     },
   },
-]);
+];
+
+export default config;
