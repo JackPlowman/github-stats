@@ -23,8 +23,7 @@ jobs:
     name: Run TypeScript Code Checks
     runs-on: ubuntu-latest
     permissions:
-      statuses: write
-      security-events: write
+      security-events: write # Allow the workflow to upload analysis results
     steps:
       - name: Checkout Repository
         uses: actions/checkout@8e8c483db84b4bee98b60c0593521ed34d9990e8 # v6.0.1
@@ -49,9 +48,6 @@ jobs:
   run-typescript-format-checks:
     name: Run TypeScript Format Checks
     runs-on: ubuntu-latest
-    permissions:
-      statuses: write
-      security-events: write
     steps:
       - name: Checkout Repository
         uses: actions/checkout@8e8c483db84b4bee98b60c0593521ed34d9990e8 # v6.0.1
@@ -67,8 +63,7 @@ jobs:
     name: Run Python Tests Lint Checks
     runs-on: ubuntu-latest
     permissions:
-      statuses: write
-      security-events: write
+      security-events: write # Allow the workflow to upload analysis results
     steps:
       - name: Checkout Repository
         uses: actions/checkout@8e8c483db84b4bee98b60c0593521ed34d9990e8 # v6.0.1
@@ -126,9 +121,6 @@ jobs:
   run-python-tests-lockfile-check:
     name: Run Python Tests Lockfile Check
     runs-on: ubuntu-latest
-    permissions:
-      statuses: write
-      security-events: write
     steps:
       - name: Checkout Repository
         uses: actions/checkout@8e8c483db84b4bee98b60c0593521ed34d9990e8 # v6.0.1
@@ -144,9 +136,9 @@ jobs:
     name: Common Code Checks
     permissions:
       contents: read
-      actions: read
-      pull-requests: write
-      security-events: write
+      actions: read # Allow the workflow to read actions metadata
+      pull-requests: write # Allow the workflow to create and modify pull request comments
+      security-events: write # Allow the workflow to upload analysis results
     uses: JackPlowman/reusable-workflows/.github/workflows/common-code-checks.yml@61df2c978dadbc17ea3f190f703531f0dcce6db5 # v2025.12.30.04
     secrets:
       workflow_github_token: ${{ secrets.GITHUB_TOKEN }}
@@ -155,7 +147,7 @@ jobs:
     name: CodeQL Analysis
     permissions:
       contents: read
-      security-events: write
+      security-events: write # Allow the workflow to upload analysis results
     strategy:
       matrix:
         language: [actions, typescript, python]
