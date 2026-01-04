@@ -19,6 +19,102 @@ env:
   FORCE_COLOR: 1
 
 jobs:
+  codeql-checks:
+    name: CodeQL Analysis
+    permissions:
+      contents: read
+      security-events: write # Allow the workflow to upload analysis results
+    strategy:
+      matrix:
+        language: [actions, typescript, python]
+    uses: JackPlowman/reusable-workflows/.github/workflows/codeql-analysis.yml@61df2c978dadbc17ea3f190f703531f0dcce6db5 # v2025.12.30.04
+    with:
+      language: ${{ matrix.language }}
+
+  common-code-checks:
+    name: Common Code Checks
+    permissions:
+      contents: read
+      actions: read # Allow the workflow to read actions metadata
+      pull-requests: write # Allow the workflow to create and modify pull request comments
+      security-events: write # Allow the workflow to upload analysis results
+    uses: JackPlowman/reusable-workflows/.github/workflows/common-code-checks.yml@61df2c978dadbc17ea3f190f703531f0dcce6db5 # v2025.12.30.04
+    secrets:
+      workflow_github_token: ${{ secrets.GITHUB_TOKEN }}
+
+  run-python-tests-format-checks:
+    name: Run Python Tests Format Checks
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@8e8c483db84b4bee98b60c0593521ed34d9990e8 # v6.0.1
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - name: Set up dependencies
+        uses: ./.github/actions/setup-tests-dependencies
+      - name: Check Python Code Format (Ruff)
+        run: just tests::ruff-format-check
+        env:
+          RUFF_OUTPUT_FORMAT: "github"
+
+  run-python-tests-lint-checks:
+    name: Run Python Tests Lint Checks
+    runs-on: ubuntu-latest
+    permissions:
+      security-events: write # Allow the workflow to upload analysis results
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@8e8c483db84b4bee98b60c0593521ed34d9990e8 # v6.0.1
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - name: Set up dependencies
+        uses: ./.github/actions/setup-tests-dependencies
+      - name: Generate Ruff Sarif
+        run: just tests::ruff-lint-check
+        env:
+          RUFF_OUTPUT_FORMAT: "sarif"
+          RUFF_OUTPUT_FILE: "ruff-results.sarif"
+        continue-on-error: true
+      - name: Upload Ruff analysis results to GitHub
+        uses: github/codeql-action/upload-sarif@5d4e8d1aca955e8d8589aabd499c5cae939e33c7 # v4.31.9
+        with:
+          sarif_file: tests/ruff-results.sarif
+          wait-for-processing: true
+      - name: Check Python Code Linting (Ruff)
+        run: just tests::ruff-lint-check
+        env:
+          RUFF_OUTPUT_FORMAT: "github"
+
+  run-python-tests-lockfile-check:
+    name: Run Python Tests Lockfile Check
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@8e8c483db84b4bee98b60c0593521ed34d9990e8 # v6.0.1
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - name: Set up dependencies
+        uses: ./.github/actions/setup-tests-dependencies
+      - name: Check UV Lockfile
+        run: just tests::uv-lock-check
+
+  run-python-tests-type-checks:
+    name: Run Python Tests Type Checks
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@8e8c483db84b4bee98b60c0593521ed34d9990e8 # v6.0.1
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - name: Set up dependencies
+        uses: ./.github/actions/setup-tests-dependencies
+      - name: Check Python Code Types (ty) Checks
+        run: just tests::ty-check
+
   run-typescript-code-checks:
     name: Run TypeScript Code Checks
     runs-on: ubuntu-latest
@@ -58,99 +154,3 @@ jobs:
         uses: ./.github/actions/setup-dashboard-dependencies
       - name: Run Prettier
         run: just dashboard::prettier-check
-
-  run-python-tests-lint-checks:
-    name: Run Python Tests Lint Checks
-    runs-on: ubuntu-latest
-    permissions:
-      security-events: write # Allow the workflow to upload analysis results
-    steps:
-      - name: Checkout Repository
-        uses: actions/checkout@8e8c483db84b4bee98b60c0593521ed34d9990e8 # v6.0.1
-        with:
-          fetch-depth: 0
-          persist-credentials: false
-      - name: Set up dependencies
-        uses: ./.github/actions/setup-tests-dependencies
-      - name: Generate Ruff Sarif
-        run: just tests::ruff-lint-check
-        env:
-          RUFF_OUTPUT_FORMAT: "sarif"
-          RUFF_OUTPUT_FILE: "ruff-results.sarif"
-        continue-on-error: true
-      - name: Upload Ruff analysis results to GitHub
-        uses: github/codeql-action/upload-sarif@5d4e8d1aca955e8d8589aabd499c5cae939e33c7 # v4.31.9
-        with:
-          sarif_file: tests/ruff-results.sarif
-          wait-for-processing: true
-      - name: Check Python Code Linting (Ruff)
-        run: just tests::ruff-lint-check
-        env:
-          RUFF_OUTPUT_FORMAT: "github"
-
-  run-python-tests-format-checks:
-    name: Run Python Tests Format Checks
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout Repository
-        uses: actions/checkout@8e8c483db84b4bee98b60c0593521ed34d9990e8 # v6.0.1
-        with:
-          fetch-depth: 0
-          persist-credentials: false
-      - name: Set up dependencies
-        uses: ./.github/actions/setup-tests-dependencies
-      - name: Check Python Code Format (Ruff)
-        run: just tests::ruff-format-check
-        env:
-          RUFF_OUTPUT_FORMAT: "github"
-
-  run-python-tests-type-checks:
-    name: Run Python Tests Type Checks
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout Repository
-        uses: actions/checkout@8e8c483db84b4bee98b60c0593521ed34d9990e8 # v6.0.1
-        with:
-          fetch-depth: 0
-          persist-credentials: false
-      - name: Set up dependencies
-        uses: ./.github/actions/setup-tests-dependencies
-      - name: Check Python Code Types (ty) Checks
-        run: just tests::ty-check
-
-  run-python-tests-lockfile-check:
-    name: Run Python Tests Lockfile Check
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout Repository
-        uses: actions/checkout@8e8c483db84b4bee98b60c0593521ed34d9990e8 # v6.0.1
-        with:
-          fetch-depth: 0
-          persist-credentials: false
-      - name: Set up dependencies
-        uses: ./.github/actions/setup-tests-dependencies
-      - name: Check UV Lockfile
-        run: just tests::uv-lock-check
-
-  common-code-checks:
-    name: Common Code Checks
-    permissions:
-      contents: read
-      actions: read # Allow the workflow to read actions metadata
-      pull-requests: write # Allow the workflow to create and modify pull request comments
-      security-events: write # Allow the workflow to upload analysis results
-    uses: JackPlowman/reusable-workflows/.github/workflows/common-code-checks.yml@61df2c978dadbc17ea3f190f703531f0dcce6db5 # v2025.12.30.04
-    secrets:
-      workflow_github_token: ${{ secrets.GITHUB_TOKEN }}
-
-  codeql-checks:
-    name: CodeQL Analysis
-    permissions:
-      contents: read
-      security-events: write # Allow the workflow to upload analysis results
-    strategy:
-      matrix:
-        language: [actions, typescript, python]
-    uses: JackPlowman/reusable-workflows/.github/workflows/codeql-analysis.yml@61df2c978dadbc17ea3f190f703531f0dcce6db5 # v2025.12.30.04
-    with:
-      language: ${{ matrix.language }}
