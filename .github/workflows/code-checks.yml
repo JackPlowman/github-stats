@@ -32,6 +32,8 @@ jobs:
       - name: Audit Dashboard Dependencies
         working-directory: dashboard
         run: npm audit
+      - name: Use Test Repository Statistics
+        run: cp test_data/repository_statistics.json dashboard/data/repository_statistics.json
       - name: Check TypeScript
         working-directory: dashboard
         run: npx --no-install tsc --noEmit
