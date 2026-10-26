@@ -23,22 +23,33 @@ const initialState: ThemeProviderState = {
 const ThemeProviderContext =
   React.createContext<ThemeProviderState>(initialState);
 
+function subscribe(onChange: () => void) {
+  window.addEventListener("storage", onChange);
+  window.addEventListener("theme-change", onChange);
+  return () => {
+    window.removeEventListener("storage", onChange);
+    window.removeEventListener("theme-change", onChange);
+  };
+}
+
 export function ThemeProvider({
   children,
   defaultTheme = "system",
   storageKey = "github-stats-theme",
   ...props
 }: ThemeProviderProps) {
-  const [theme, setTheme] = React.useState<Theme>(defaultTheme);
-  const [mounted, setMounted] = React.useState(false);
-
-  React.useEffect(() => {
-    setMounted(true);
-    const storedTheme = localStorage?.getItem(storageKey) as Theme;
-    if (storedTheme) {
-      setTheme(storedTheme);
-    }
-  }, [storageKey]);
+  const theme = React.useSyncExternalStore(
+    subscribe,
+    () => {
+      const storedTheme = localStorage.getItem(storageKey);
+      return storedTheme === "dark" ||
+        storedTheme === "light" ||
+        storedTheme === "system"
+        ? storedTheme
+        : defaultTheme;
+    },
+    () => defaultTheme,
+  );
 
   React.useEffect(() => {
     const root = window.document.documentElement;
@@ -62,13 +73,11 @@ export function ThemeProvider({
     () => ({
       theme,
       setTheme: (theme: Theme) => {
-        if (mounted && typeof window !== "undefined") {
-          localStorage?.setItem(storageKey, theme);
-        }
-        setTheme(theme);
+        localStorage.setItem(storageKey, theme);
+        window.dispatchEvent(new Event("theme-change"));
       },
     }),
-    [theme, storageKey, mounted],
+    [theme, storageKey],
   );
 
   return (

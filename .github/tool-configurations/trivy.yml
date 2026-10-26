@@ -12,7 +12,15 @@ scan:
     - misconfig
     - license
 vulnerability:
-  type:
+  ignore-unfixed: true
+pkg:
+  types:
     - os
     - library
-  ignore-unfixed: true
+license:
+  # Next.js optionally installs LGPL libvips binaries through Sharp. This project
+  # exports static pages with image optimization disabled and does not ship them.
+  ignored:
+    - LGPL-3.0-or-later
+    - Apache-2.0 AND LGPL-3.0-or-later
+    - Apache-2.0 AND LGPL-3.0-or-later AND MIT

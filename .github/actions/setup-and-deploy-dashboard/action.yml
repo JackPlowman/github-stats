@@ -10,7 +10,7 @@ runs:
   using: "composite"
   steps:
     - name: Setup Dashboard Dependencies
-      uses: ./.github/actions/setup-dashboard-dependencies
+      uses: ./.github/actions/setup-dashboard-dependencies # zizmor: ignore[self-repository] actionlint does not support the new syntax yet
 
     - name: GitHub Stats Analyser
       uses: JackPlowman/github-stats-analyser@bef0d7135e14ee15bb9c13b9d1091a93dc23f658 # v2.0.0
@@ -19,7 +19,7 @@ runs:
         REPOSITORY_OWNER: ${{ github.repository_owner }}
 
     - name: Upload Analyser Output
-      uses: actions/upload-artifact@b7c566a772e6b6bfb58ed0dc250532a479d7789f # v6.0.0
+      uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
       with:
         name: repository_statistics
         path: repository_statistics.json
@@ -33,10 +33,6 @@ runs:
       run: just dashboard::build
 
     - name: Upload artifact
-      uses: actions/upload-pages-artifact@7b1f4a764d45c48632c6b24a0339c27f5614fb0b # v4.0.0
+      uses: actions/upload-pages-artifact@fc324d3547104276b827a68afc52ff2a11cc49c9 # v5.0.0
       with:
         path: dashboard/out
-
-    - name: Deploy to GitHub Pages
-      id: deployment
-      uses: actions/deploy-pages@d6db90164ac5ed86f2b6aed7e0febac5b3c0c03e # v4.0.5

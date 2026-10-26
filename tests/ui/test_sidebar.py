@@ -1,3 +1,5 @@
+# Copyright (c) 2026 Jack Plowman
+
 from playwright.sync_api import Page, expect
 
 from ui.utils.variables import PROJECT_URL

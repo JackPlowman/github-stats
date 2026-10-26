@@ -1,3 +1,5 @@
+# Copyright (c) 2026 Jack Plowman
+
 from logging import getLogger
 
 from defusedxml.ElementTree import fromstring

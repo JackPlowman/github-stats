@@ -24,12 +24,12 @@ jobs:
       pages: write # Allow the workflow to deploy to GitHub Pages
     steps:
       - name: Checkout Repository
-        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           fetch-depth: 0
           persist-credentials: false
       - name: Setup and Deploy Dashboard
-        uses: ./.github/actions/setup-and-deploy-dashboard
+        uses: ./.github/actions/setup-and-deploy-dashboard # zizmor: ignore[self-repository] actionlint does not support the new syntax yet
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
 
@@ -46,7 +46,7 @@ jobs:
     steps:
       - name: Deploy to GitHub Pages
         id: deployment
-        uses: actions/deploy-pages@d6db90164ac5ed86f2b6aed7e0febac5b3c0c03e # v4.0.5
+        uses: actions/deploy-pages@368f82528645a54fb793d4d04e342629a3f51346 # v5.0.1
 
   link-tests:
     name: Link Tests
@@ -54,7 +54,7 @@ jobs:
     needs: deploy
     steps:
       - name: Checkout Repository
-        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           fetch-depth: 0
           persist-credentials: false
@@ -73,17 +73,14 @@ jobs:
         browser: [firefox, chromium, webkit]
     steps:
       - name: Checkout Repository
-        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           fetch-depth: 0
           persist-credentials: false
       - name: Set up Python Tests Dependencies
-        uses: ./.github/actions/setup-tests-dependencies
+        uses: ./.github/actions/setup-tests-dependencies # zizmor: ignore[self-repository] actionlint does not support the new syntax yet
         with:
           setup-browsers: true
-      - name: Install Playwright Dependencies
-        shell: bash
-        run: just tests::playwright-install
       - name: Run UI Tests
         run: just tests::run-ci "$BROWSER"
         env:

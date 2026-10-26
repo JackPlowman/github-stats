@@ -4,7 +4,7 @@
 
 # Install Node Dependencies
 install:
-    npm install
+    npm ci
 
 # Start the development server
 dev:
@@ -13,7 +13,7 @@ dev:
 
 # Build an optimized production version of the app
 build:
-    npm run build && npm run postbuild
+    npm run build
 
 build-local:
     npm run build && npm run postbuild:local

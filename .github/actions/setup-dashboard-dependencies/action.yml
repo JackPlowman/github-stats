@@ -5,13 +5,18 @@ runs:
   using: "composite"
   steps:
     - name: Set up Node.js with Cache
-      uses: actions/setup-node@6044e13b5dc448c55e2357c09f80417699197238 # v6.2.0
+      uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
       with:
         node-version-file: "dashboard/package.json"
         cache: "npm"
         cache-dependency-path: "dashboard/package-lock.json"
     - name: Set up Just
-      uses: extractions/setup-just@e33e0265a09d6d736e2ee1e0eb685ef1de4669ff # v3.0.0
+      uses: extractions/setup-just@53165ef7e734c5c07cb06b3c8e7b647c5aa16db3 # v4.0.0
+      with:
+        just-version: "1.59.0"
+    - name: Set up npm
+      shell: bash
+      run: npm install --global npm@12.2.1 # zizmor: ignore[adhoc-packages] npm is pinned to the package.json engine version
     - name: Install Dashboard Dependencies
       shell: bash
       run: just dashboard::install

@@ -1,3 +1,5 @@
+# Copyright (c) 2026 Jack Plowman
+
 from os import getenv
 
 GITHUB_PAGES_URL = "https://jackplowman.github.io/github-stats"
