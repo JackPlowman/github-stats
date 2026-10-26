@@ -1,3 +1,5 @@
+# Copyright (c) 2026 Jack Plowman
+
 from pathlib import Path
 
 from requests import get

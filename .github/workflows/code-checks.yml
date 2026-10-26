@@ -19,6 +19,41 @@ env:
   FORCE_COLOR: 1
 
 jobs:
+  build-dashboard:
+    name: Build and Audit Dashboard
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - name: Setup Dashboard Dependencies
+        uses: ./.github/actions/setup-dashboard-dependencies # zizmor: ignore[self-repository] actionlint does not support the new syntax yet
+      - name: Audit Dashboard Dependencies
+        working-directory: dashboard
+        run: npm audit
+      - name: Check TypeScript
+        working-directory: dashboard
+        run: npx --no-install tsc --noEmit
+      - name: Build Dashboard
+        run: just dashboard::build
+      - name: Setup Browser Test Dependencies
+        uses: ./.github/actions/setup-tests-dependencies # zizmor: ignore[self-repository] actionlint does not support the new syntax yet
+      - name: Install Chromium
+        working-directory: tests
+        run: uv run playwright install --with-deps chromium
+      - name: Test Exported Dashboard
+        env:
+          PROJECT_URL: http://127.0.0.1:8000/github-stats
+        run: |
+          mkdir -p "$RUNNER_TEMP/site/github-stats"
+          cp -r dashboard/out/. "$RUNNER_TEMP/site/github-stats/"
+          uv run --project tests python -m http.server 8000 --bind 127.0.0.1 --directory "$RUNNER_TEMP/site" &
+          server_pid=$!
+          trap 'kill "$server_pid"' EXIT
+          curl --retry 10 --retry-delay 1 --retry-connrefused --fail "$PROJECT_URL/" > /dev/null
+          uv run --project tests pytest tests/ui/test_website.py tests/ui/test_summary.py tests/ui/test_theme.py tests/ui/test_sidebar.py::test_sidebar_navigation_links
+
   codeql-checks:
     name: CodeQL Analysis
     permissions:
@@ -27,7 +62,7 @@ jobs:
     strategy:
       matrix:
         language: [actions, typescript, python]
-    uses: JackPlowman/reusable-workflows/.github/workflows/codeql-analysis.yml@1cbd551e9253d97008c30551ca865be615bb8930 # v2026.01.22.03
+    uses: JackPlowman/reusable-workflows/.github/workflows/codeql-analysis.yml@f82d61d53648ae90f8a0406c0f4bbf1aef332337 # v2026.10.25.01
     with:
       language: ${{ matrix.language }}
 
@@ -38,7 +73,7 @@ jobs:
       actions: read # Allow the workflow to read actions metadata
       pull-requests: write # Allow the workflow to create and modify pull request comments
       security-events: write # Allow the workflow to upload analysis results
-    uses: JackPlowman/reusable-workflows/.github/workflows/common-code-checks.yml@1cbd551e9253d97008c30551ca865be615bb8930 # v2026.01.22.03
+    uses: JackPlowman/reusable-workflows/.github/workflows/common-code-checks.yml@f82d61d53648ae90f8a0406c0f4bbf1aef332337 # v2026.10.25.01
     secrets:
       workflow_github_token: ${{ secrets.GITHUB_TOKEN }}
 
@@ -47,12 +82,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Repository
-        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           fetch-depth: 0
           persist-credentials: false
       - name: Set up dependencies
-        uses: ./.github/actions/setup-tests-dependencies
+        uses: ./.github/actions/setup-tests-dependencies # zizmor: ignore[self-repository] actionlint does not support the new syntax yet
       - name: Check Python Code Format (Ruff)
         run: just tests::ruff-format-check
         env:
@@ -65,12 +100,12 @@ jobs:
       security-events: write # Allow the workflow to upload analysis results
     steps:
       - name: Checkout Repository
-        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           fetch-depth: 0
           persist-credentials: false
       - name: Set up dependencies
-        uses: ./.github/actions/setup-tests-dependencies
+        uses: ./.github/actions/setup-tests-dependencies # zizmor: ignore[self-repository] actionlint does not support the new syntax yet
       - name: Generate Ruff Sarif
         run: just tests::ruff-lint-check
         env:
@@ -78,7 +113,7 @@ jobs:
           RUFF_OUTPUT_FILE: "ruff-results.sarif"
         continue-on-error: true
       - name: Upload Ruff analysis results to GitHub
-        uses: github/codeql-action/upload-sarif@19b2f06db2b6f5108140aeb04014ef02b648f789 # v4.31.11
+        uses: github/codeql-action/upload-sarif@9b3254085494b55a0f7c4c2b3d2d52cc712ce370 # v4.39.1
         with:
           sarif_file: tests/ruff-results.sarif
           wait-for-processing: true
@@ -92,12 +127,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Repository
-        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           fetch-depth: 0
           persist-credentials: false
       - name: Set up dependencies
-        uses: ./.github/actions/setup-tests-dependencies
+        uses: ./.github/actions/setup-tests-dependencies # zizmor: ignore[self-repository] actionlint does not support the new syntax yet
       - name: Check UV Lockfile
         run: just tests::uv-lock-check
 
@@ -106,12 +141,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Repository
-        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           fetch-depth: 0
           persist-credentials: false
       - name: Set up dependencies
-        uses: ./.github/actions/setup-tests-dependencies
+        uses: ./.github/actions/setup-tests-dependencies # zizmor: ignore[self-repository] actionlint does not support the new syntax yet
       - name: Check Python Code Types (ty) Checks
         run: just tests::ty-check
 
@@ -122,19 +157,19 @@ jobs:
       security-events: write # Allow the workflow to upload analysis results
     steps:
       - name: Checkout Repository
-        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           fetch-depth: 0
           persist-credentials: false
       - name: Setup Dashboard Dependencies
-        uses: ./.github/actions/setup-dashboard-dependencies
+        uses: ./.github/actions/setup-dashboard-dependencies # zizmor: ignore[self-repository] actionlint does not support the new syntax yet
       - name: Run ESLint
         env:
           SARIF_ESLINT_IGNORE_SUPPRESSED: "true"
         run: just dashboard::eslint-with-sarif
         continue-on-error: true
       - name: Upload analysis results to GitHub
-        uses: github/codeql-action/upload-sarif@19b2f06db2b6f5108140aeb04014ef02b648f789 # v4.31.11
+        uses: github/codeql-action/upload-sarif@9b3254085494b55a0f7c4c2b3d2d52cc712ce370 # v4.39.1
         with:
           sarif_file: dashboard/eslint-results.sarif
           wait-for-processing: true
@@ -146,11 +181,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Repository
-        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           fetch-depth: 0
           persist-credentials: false
       - name: Setup Dashboard Dependencies
-        uses: ./.github/actions/setup-dashboard-dependencies
+        uses: ./.github/actions/setup-dashboard-dependencies # zizmor: ignore[self-repository] actionlint does not support the new syntax yet
       - name: Run Prettier
         run: just dashboard::prettier-check
